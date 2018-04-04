@@ -3,7 +3,13 @@ const tokens = [
   {match: /\b[a-z]+\b/, type: 'string', value: 'some value'}
 ]
 
-var testString = "say 'hello world'"
+var testString = 'say("hello world")'
+var tokenizedString = [
+  {type: 'function', value: 'say'},
+  {type: 'open paren', value: '('},
+  {type: 'string', value: 'hello world'},
+  {type: 'close paren', value: ')'}
+]
 
 const tokenize = function(input) {
   let output = []
