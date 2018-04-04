@@ -15,8 +15,8 @@ describe('StringNode', () => {
   });
 
   describe('#interpret()', () => {
-    it('concatenated the passed string with this.value', () => {
-      let expectedOutput = 'value'
+    it('returns "this.value" (including quotes)', () => {
+      let expectedOutput = '"value"'
 
       expect(stringNode.interpret()).toEqual(expectedOutput)
     })

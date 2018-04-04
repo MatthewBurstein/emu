@@ -8,5 +8,5 @@ StringNode.new = function(type, value) {
 }
 
 StringNode.prototype.interpret = function() {
-  return this.value;
+  return `"${this.value}"`;
 }

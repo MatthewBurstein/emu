@@ -2,16 +2,7 @@ const interpret = function(tree) {
   let output = '';
   while (tree.length > 0) {
     node = tree.shift();
-    switch (node.type) {
-      case 'function':
-        output += interpretFunction(node);
-        break;
-      case 'string':
-        output += interpretString(node);
-        break;
-      default:
-        throw new Error(`I don't know token type ${expression.type}`);
-    }
+    output += node.interpret(interpret, node.args);
     output += addCommaIfNecessary(tree);
   }
   return output;
@@ -19,11 +10,4 @@ const interpret = function(tree) {
 
 const addCommaIfNecessary = function(array) {
   return array.length > 0 ? ', ' : ''
-}
-
-const interpretFunction = function(node) {
-  return `${node.name}(${interpret(node.args)})`
-}
-const interpretString = function(node) {
-  return `"${node.value}"`;
 }
