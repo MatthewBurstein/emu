@@ -38,4 +38,30 @@ describe('interpret()', function() {
     expect(interpret(tree)).toEqual(expectedOutput)
   })
 
+  it('understands nested functions', () => {
+    let tree = [
+      {type: 'function',
+       name: 'say',
+       args: [
+              {
+                type: 'string',
+                value: 'hello world'
+              },
+              { type: 'function',
+                name: 'sayAgain',
+                args: [
+                      {
+                        type: 'string',
+                        value: 'goodbye cruel world'
+                      }
+                ]
+              }
+            ]
+      }
+    ]
+
+    let expectedOutput = 'say("hello world", sayAgain("goodbye cruel world"))'
+    expect(interpret(tree)).toEqual(expectedOutput)
+  })
+
 })
