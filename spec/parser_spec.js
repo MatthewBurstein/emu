@@ -23,4 +23,16 @@ describe("Parser", function(){
     expect(parser(tokens)).toEqual(tree)
   })
 
+  describe('createStringNode', function() {
+    it('creates an object from parameters', function() {
+      let type = 'function'
+      let value = 'value'
+      let expectedOutput = {
+        type: 'function',
+        value: 'value'
+      }
+      expect(createStringNode(type, value)).toEqual(expectedOutput)
+    })
+  })
+
 })

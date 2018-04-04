@@ -9,11 +9,16 @@ const parser = function(tokens) {
     if (token.type === "open paren"){
       functionNode.arguments = []}
     if(token.type === 'string'){
-      functionNode.arguments.push({
-        type: token.type,
-        value: token.value
-      })
+      let stringNode = createStringNode(token.type, token.value)
+      functionNode.arguments.push(stringNode)
     }
   })
   return output
 };
+
+
+const createStringNode = function(type, value) {
+  return { type, value }
+    // type: type,
+    // value: value
+}
