@@ -6,3 +6,7 @@ const StringNode = function(type, value) {
 StringNode.new = function(type, value) {
   return new this(type, value)
 }
+
+StringNode.prototype.interpret = function(outputString) {
+  return outputString + this.value;
+}

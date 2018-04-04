@@ -1,15 +1,24 @@
 describe('StringNode', () => {
-  let stringNode;
+  let stringNode, outputString;
 
   beforeEach(() => {
-    let outputString;
+    outputString = 'outputString(';
+    stringNode = StringNode.new('type', 'value')
   })
 
   describe('.new()', () => {
     it('returns an instance a methodNode', () => {
-      let stringNode = StringNode.new('type', 'value')
+      stringNode = StringNode.new('type', 'value')
       expect(stringNode.type).toEqual('type')
       expect(stringNode.value).toEqual('value')
     });
+  });
+
+  describe('#interpret()', () => {
+    it('concatenated the passed string with this.value', () => {
+      let expectedOutput = 'outputString(value'
+
+      expect(stringNode.interpret(outputString)).toEqual(expectedOutput)
+    })
   });
 });

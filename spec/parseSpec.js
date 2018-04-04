@@ -1,13 +1,13 @@
 describe("Parse", function(){
 
   it('understands a function with one argument', function() {
-    var tokens = [
+    const tokens = [
       {type: 'function', value: 'say'},
       {type: 'open paren', value: '('},
       {type: 'string', value: 'hello world'},
       {type: 'close paren', value: ')'}
     ]
-    var tree = [
+    const tree = [
       {type: 'function',
       name: 'say',
         args: [
@@ -21,15 +21,15 @@ describe("Parse", function(){
     expect(parse(tokens)).toEqual(tree)
   })
 
-  it('understands a function with two argument', function() {
-    var tokens = [
+  it('understands a function with two arguments', function() {
+    const tokens = [
       {type: 'function', value: 'say'},
       {type: 'open paren', value: '('},
       {type: 'string', value: 'hello world'},
       {type: 'string', value: 'bye world'},
       {type: 'close paren', value: ')'}
     ]
-    var tree = [
+    const tree = [
       {type: 'function',
       name: 'say',
         args: [
@@ -47,6 +47,40 @@ describe("Parse", function(){
     expect(parse(tokens)).toEqual(tree)
   })
 
+  it('returns an abstract syntax tree when passed a nested function', () => {
+    const tokens = [
+      {type: 'function', value: 'say'},
+      {type: 'open paren', value: '('},
+      {type: 'string', value: 'hello'},
+      {type: 'function', value: 'say'},
+      {type: 'open paren', value: '('},
+      {type: 'string', value: 'world'},
+      {type: 'close paren', value: ')'},
+      {type: 'close paren', value: ')'}
+    ]
+
+    const tree = [
+      { type: 'function',
+        name: 'say',
+        args: [
+          {
+            type: 'string',
+            value: 'hello'
+          },
+          {
+            type: 'function',
+            name: 'alsoSay',
+            args: [
+              'world'
+            ]
+          }
+        ]
+      }
+    ]
+
+    expect(parse(tokens)).toEqual(tree)
+  });
+
   describe('createStringNode', function() {
     it('creates an object from parameters', function() {
       let type = 'string'
@@ -61,7 +95,6 @@ describe("Parse", function(){
 
   describe('createFunctionNode', function() {
     it('creates an object from parameters', function() {
-
       let type = 'function';
       let name = 'say';
       let expectedOutput = {
@@ -72,5 +105,4 @@ describe("Parse", function(){
       expect(createFunctionNode(type, name)).toEqual(expectedOutput)
     })
   })
-
 })

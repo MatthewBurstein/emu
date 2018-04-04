@@ -7,7 +7,7 @@ const interpret = function(tree) {
         output += interpretFunction(node);
         break;
       case 'string':
-        output += '"' + node.value + '"';
+        output += interpretString(node);
         break;
       default:
         throw new Error(`I don't know token type ${expression.type}`);
@@ -24,6 +24,6 @@ const addCommaIfNecessary = function(array) {
 const interpretFunction = function(node) {
   return `${node.name}(${interpret(node.args)})`
 }
-const interpretString = function(outputString, node) {
+const interpretString = function(node) {
   return `"${node.value}"`;
 }
