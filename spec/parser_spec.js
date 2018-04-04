@@ -10,7 +10,7 @@ describe("Parser", function(){
   var tree = [
     {type: 'function',
     name: 'say',
-      arguments: [
+      args: [
         {
           type: 'string',
           value: 'hello world'
@@ -25,13 +25,28 @@ describe("Parser", function(){
 
   describe('createStringNode', function() {
     it('creates an object from parameters', function() {
-      let type = 'function'
+      let type = 'string'
       let value = 'value'
       let expectedOutput = {
-        type: 'function',
+        type: 'string',
         value: 'value'
       }
       expect(createStringNode(type, value)).toEqual(expectedOutput)
+    })
+  })
+
+  describe('createFunctionNode', function() {
+    it('creates an object from parameters', function() {
+
+      let type = 'function';
+      let name = 'say';
+      let args = ['hello world']
+      let expectedOutput = {
+        type: 'function',
+        name: 'say',
+        args: []
+      }
+      expect(createFunctionNode(type, name, args)).toEqual(expectedOutput)
     })
   })
 
