@@ -40,13 +40,12 @@ describe("Parser", function(){
 
       let type = 'function';
       let name = 'say';
-      let args = ['hello world']
       let expectedOutput = {
         type: 'function',
         name: 'say',
         args: []
       }
-      expect(createFunctionNode(type, name, args)).toEqual(expectedOutput)
+      expect(createFunctionNode(type, name)).toEqual(expectedOutput)
     })
   })
 
