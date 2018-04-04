@@ -1,4 +1,4 @@
-const parser = function(tokens) {
+const parse = function(tokens) {
   output = [];
   let functionNode;
   tokens.forEach( token => {
