@@ -1,36 +1,21 @@
 ((exports) => {
   const tokenDictionary = [
     { match: /\bsay\b/, type: 'function', value: 'say' },
-    { match: /(\w+)/, type: 'string', value: '' },
     { match: /\(/, type: 'open paren', value: '(' },
+    { match: /"([^"]*)"/, type: 'string', value: '' },
     { match: /\)/, type: 'close paren', value: ')' }
   ]
 
   function tokenize(input) {
     let output = []
     tokenDictionary.forEach(token => {
-      // when there is a match
-      //   tokenize the match
-      //   chop match from the input string
-      //   then iterate again
-      // while (input.length > 0) {
-      //   if(input.match(token.match){
-      //     var match = input.match(token.match)[0]
-      //     output.push({
-      //       type: token.type,
-      //       value: match
-      //     });
-      //     input = input.slice(match.length).trim()
-      //   }
-      // }
-
       if (input.match(token.match)) {
         if (token.type === 'string') {
-          console.log('string')
-          console.log(input.match(token.match))
+          let slicedVal = input.match(token.match)[0].slice(1, -1)
+
           output.push({
             type: token.type,
-            value: input.match(token.match[0])[0]
+            value: slicedVal
           })
         } else {
           output.push({
@@ -39,8 +24,6 @@
           })
         }
           var match = input.match(token.match)[0];
-          input = input.slice(match.length).trim();
-          console.log(input)
         }
       })
       return output
