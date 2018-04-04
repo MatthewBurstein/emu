@@ -1,25 +1,50 @@
 describe("Parser", function(){
 
-  var tokens = [
-    {type: 'function', value: 'say'},
-    {type: 'open paren', value: '('},
-    {type: 'string', value: 'hello world'},
-    {type: 'close paren', value: ')'}
-  ]
-
-  var tree = [
-    {type: 'function',
-    name: 'say',
-      args: [
-        {
-          type: 'string',
-          value: 'hello world'
-        },
-      ]
-  }
-]
-
   it('understands a function with one argument', function() {
+    var tokens = [
+      {type: 'function', value: 'say'},
+      {type: 'open paren', value: '('},
+      {type: 'string', value: 'hello world'},
+      {type: 'close paren', value: ')'}
+    ]
+    var tree = [
+      {type: 'function',
+      name: 'say',
+        args: [
+          {
+            type: 'string',
+            value: 'hello world'
+          },
+        ]
+    }
+  ]
+    expect(parser(tokens)).toEqual(tree)
+  })
+
+  it('understands a function with two argument', function() {
+    var tokens = [
+      {type: 'function', value: 'say'},
+      {type: 'open paren', value: '('},
+      {type: 'string', value: 'hello world'},
+      {type: 'comma', value: ','},
+      {type: 'string', value: 'bye world'},
+      {type: 'close paren', value: ')'}
+    ]
+    var tree = [
+      {type: 'function',
+      name: 'say',
+        args: [
+          {
+            type: 'string',
+            value: 'hello world'
+          },
+          {
+            type: 'string',
+            value: 'bye world'
+          }
+        ]
+    }
+  ]
     expect(parser(tokens)).toEqual(tree)
   })
 
