@@ -14,7 +14,7 @@ describe("Parser", function(){
           {
             type: 'string',
             value: 'hello world'
-          },
+          }
         ]
     }
   ]
