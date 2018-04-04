@@ -1,4 +1,4 @@
-describe("Parser", function(){
+describe("Parse", function(){
 
   it('understands a function with one argument', function() {
     var tokens = [
@@ -18,7 +18,7 @@ describe("Parser", function(){
         ]
     }
   ]
-    expect(parser(tokens)).toEqual(tree)
+    expect(parse(tokens)).toEqual(tree)
   })
 
   it('understands a function with two argument', function() {
@@ -44,7 +44,7 @@ describe("Parser", function(){
         ]
     }
   ]
-    expect(parser(tokens)).toEqual(tree)
+    expect(parse(tokens)).toEqual(tree)
   })
 
   describe('createStringNode', function() {
