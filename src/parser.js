@@ -14,7 +14,6 @@ const parser = function(tokens) {
   return output;
 };
 
-
 const createStringNode = function(type, value) {
   return { type, value };
 }

@@ -26,7 +26,6 @@ describe("Parser", function(){
       {type: 'function', value: 'say'},
       {type: 'open paren', value: '('},
       {type: 'string', value: 'hello world'},
-      {type: 'comma', value: ','},
       {type: 'string', value: 'bye world'},
       {type: 'close paren', value: ')'}
     ]
