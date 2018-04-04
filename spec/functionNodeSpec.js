@@ -1,15 +1,27 @@
 describe('FunctionNode', () => {
-  let functionNode;
+  let functionNode, outputString;
 
   beforeEach(() => {
-    let outputString;
+    outputString;
+    functionNode = FunctionNode.new('type', 'value', ['arg1', 'arg2'])
   })
 
   describe('.new()', () => {
     it('returns an instance a FunctionNode', () => {
-      let functionNode = FunctionNode.new('type', 'value')
       expect(functionNode.type).toEqual('type')
       expect(functionNode.value).toEqual('value')
+      expect(functionNode.args).toEqual(['arg1', 'arg2'])
     });
   });
+
+  describe('#interpret()', () => {
+    it('returns the correct string', function() {
+      const callback = (arg) => `callbackString ${arg}`
+      const  callbackArgument = 'Argument'
+      const expectedOutput = 'callbackString Argument'
+
+      expect(functionNode.interpret(callback, callbackArgument)).toEqual(expectedOutput)
+
+    })
+  })
 })

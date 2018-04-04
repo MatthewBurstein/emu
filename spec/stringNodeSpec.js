@@ -16,9 +16,9 @@ describe('StringNode', () => {
 
   describe('#interpret()', () => {
     it('concatenated the passed string with this.value', () => {
-      let expectedOutput = 'outputString(value'
+      let expectedOutput = 'value'
 
-      expect(stringNode.interpret(outputString)).toEqual(expectedOutput)
+      expect(stringNode.interpret()).toEqual(expectedOutput)
     })
   });
 });
