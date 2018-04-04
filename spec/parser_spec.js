@@ -7,8 +7,9 @@ describe("Parser", function(){
     {type: 'close paren', value: ')'}
   ]
 
-  var tree = {
-    function: 'say',
+  var tree = [
+    {type: 'function',
+    name: 'say',
       arguments: [
         {
           type: 'string',
@@ -16,6 +17,7 @@ describe("Parser", function(){
         },
       ]
   }
+]
 
   it('understands a function with one argument', function() {
     expect(parser(tokens)).toEqual(tree)
