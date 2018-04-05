@@ -9,53 +9,51 @@
     { regEx: /^\>/, type: 'close paren', value: '>' }
   ]
 
-  function tokenize(input) {
+  function tokenize(workingString) {
     let output = [];
-    while (input.length > 0) {
+    while (workingString.length > 0) {
       let thisTokenLex;
       tokenDictionary.forEach(tokenLex => {
-        if (searchDictionary(input, tokenLex)) {
+        if (workingString.match(tokenLex.regEx) !== null) {
           thisTokenLex = tokenLex
         }
       })
-      output.push(process(input, thisTokenLex));
-      input = removeProcessedToken(input, thisTokenLex);
+      output.push(process(workingString, thisTokenLex));
+      workingString = removeProcessedToken(workingString, thisTokenLex);
     }
     return output;
   }
 
-  function process(workingString, tokenLex, output) {
-    if (searchDictionary(workingString, tokenLex)) {
-      switch (tokenLex.type) {
-        case 'string':
-          let stringValue = searchDictionary(workingString, tokenLex)[0].slice(1, -1)
-          return buildToken(tokenLex.type, stringValue)
-          break;
-        case 'function':
-          return buildToken(tokenLex.type, searchDictionary(workingString, tokenLex)[0])
-          break;
-        case 'open paren':
-          return buildToken(tokenLex.type, searchDictionary(workingString, tokenLex)[0])
-          break;
-        case 'close paren':
-          return buildToken(tokenLex.type, searchDictionary(workingString, tokenLex)[0])
-          break;
-        case 'integer':
-          let number = parseInt(searchDictionary(workingString, tokenLex))
-          return buildToken(tokenLex.type, number)
-          break;
-        default:
-          throw new Error('Do not know that token');
-        }
+  function process(workingString, tokenLex) {
+    switch (tokenLex.type) {
+      case 'string':
+        let stringValue = matchRegEx(workingString, tokenLex).slice(1, -1)
+        return buildToken(tokenLex.type, stringValue)
+        break;
+      case 'function':
+        return buildToken(tokenLex.type, matchRegEx(workingString, tokenLex))
+        break;
+      case 'open paren':
+        return buildToken(tokenLex.type, matchRegEx(workingString, tokenLex))
+        break;
+      case 'close paren':
+        return buildToken(tokenLex.type, matchRegEx(workingString, tokenLex))
+        break;
+      case 'integer':
+        let number = parseInt(matchRegEx(workingString, tokenLex))
+        return buildToken(tokenLex.type, number)
+        break;
+      default:
+        throw new Error('Do not know that token');
       }
   }
 
   function addToken(string, token, outputArray) {
-    outputArray.push(buildToken(token.type, searchDictionary(string, token)[0]))
+    outputArray.push(buildToken(token.type, matchRegEx(string, token)))
   }
 
-  function searchDictionary(string, token) {
-    return string.match(token.regEx)
+  function matchRegEx(string, token) {
+    return string.match(token.regEx)[0]
   }
 
   function buildToken(type, value) {
@@ -63,10 +61,9 @@
   }
 
   function removeProcessedToken(workingString, tokenLex) {
-    let matchedString = searchDictionary(workingString, tokenLex)[0]
+    let matchedString = matchRegEx(workingString, tokenLex)
     return workingString.slice(matchedString.length).trim()
   }
 
   exports.tokenize = tokenize
 })(this)
- 
