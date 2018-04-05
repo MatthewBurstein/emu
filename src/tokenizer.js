@@ -14,7 +14,7 @@
     while (workingString.length > 0) {
       let thisTokenLex;
       tokenDictionary.forEach(tokenLex => {
-        if (workingString.match(tokenLex.regEx) !== null) {
+        if (matchRegEx(workingString, tokenLex) !== null) {
           thisTokenLex = tokenLex
         }
       })
@@ -53,7 +53,7 @@
   }
 
   function matchRegEx(string, token) {
-    return string.match(token.regEx)[0]
+    return string.match(token.regEx) ? string.match(token.regEx)[0] : null
   }
 
   function buildToken(type, value) {
