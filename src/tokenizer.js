@@ -9,32 +9,41 @@
 
   function tokenize(input) {
     let output = []
-    tokenDictionary.forEach(token => {
-      if (searchDictionary(input, token)) {
-        switch (token.type) {
-          case 'string':
-            let stringValue = searchDictionary(input, token)[0].slice(1, -1)
-            output.push(buildToken(token.type, stringValue))
-            break;
-          case 'function':
-            addToken(input, token, output)
-            break;
-          case 'open paren':
-            addToken(input, token, output)
-            break;
-          case 'close paren':
-            addToken(input, token, output)
-            break;
-          case 'integer':
-            let number = parseInt(searchDictionary(input, token))
-            output.push(buildToken(token.type, number))
-            break;
-          default:
-            throw new Error('Do not know that token');
+    // tokenDictionary.forEach(token => {
+      while (input.length > 0) {
+        thisTokenLex = tokenDictionary.forEach(tokenLex () => {
+          if (searchDictionary(input, tokenLex)) {
+            return tokenLex
           }
-        }
+        })
+        process(string, tokenKey, output)
+        remove(the match from the input)
+        remove
+      }
+      // if (searchDictionary(input, token)) {
+      //   switch (token.type) {
+      //     case 'string':
+      //       let stringValue = searchDictionary(input, token)[0].slice(1, -1)
+      //       output.push(buildToken(token.type, stringValue))
+      //       break;
+      //     case 'function':
+      //       addToken(input, token, output)
+      //       break;
+      //     case 'open paren':
+      //       addToken(input, token, output)
+      //       break;
+      //     case 'close paren':
+      //       addToken(input, token, output)
+      //       break;
+      //     case 'integer':
+      //       let number = parseInt(searchDictionary(input, token))
+      //       output.push(buildToken(token.type, number))
+      //       break;
+      //     default:
+      //       throw new Error('Do not know that token');
+      //     }
+      //   }
       })
-      console.log(output)
       return output
     }
 
@@ -48,6 +57,11 @@
 
   function buildToken(type, value) {
     return {type, value}
+  }
+
+  function removeProcessedToken(workingString, tokenLex) {
+    let matchedString = searchDictionary(workingString, tokenLex)[0]
+    return workingString.slice(matchedString.length).trim()
   }
 
   exports.tokenize = tokenize
