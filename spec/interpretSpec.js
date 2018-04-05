@@ -25,8 +25,8 @@ describe('interpret()', function() {
   })
 
   it('understands add with two arguments', function() {
-    let integerNode1 = new IntegerNode('integer', 1)
-    let integerNode2 = new IntegerNode('integer', 2)
+    let integerNode1 = new IntegerNode(1)
+    let integerNode2 = new IntegerNode(2)
     let functionNode = new FunctionNode('add', [integerNode1, integerNode2])
     let tree = [functionNode]
 
@@ -41,7 +41,7 @@ describe('interpret()', function() {
   })
 
   it('understands add with one argument', function() {
-    let integerNode1 = new IntegerNode('integer', 1)
+    let integerNode1 = new IntegerNode(1)
     let functionNode = new FunctionNode('add', [integerNode1])
     let tree = [functionNode]
 
