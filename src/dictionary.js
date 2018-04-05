@@ -20,7 +20,7 @@ Dictionary.prototype.say = function(node) {
   }
 }
 
-Dictionary.prototype.leviosa = function(node) {
+Dictionary.prototype.add = function(node) {
   var sum = 0
   node.args.forEach(arg => {
     sum += arg.value

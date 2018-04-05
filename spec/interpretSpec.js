@@ -24,10 +24,10 @@ describe('interpret()', function() {
     expect(interpret(tree)).toEqual('hello world goodbye cruel world')
   })
 
-  it('understands leviosa with two arguments', function() {
+  it('understands add with two arguments', function() {
     let integerNode1 = new IntegerNode('integer', 1)
     let integerNode2 = new IntegerNode('integer', 2)
-    let functionNode = new FunctionNode('function', 'leviosa', [integerNode1, integerNode2])
+    let functionNode = new FunctionNode('function', 'add', [integerNode1, integerNode2])
     let tree = [functionNode]
 
     expect(interpret(tree)).toEqual(3)

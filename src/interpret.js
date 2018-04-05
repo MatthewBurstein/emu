@@ -4,8 +4,8 @@ const interpret = function(tree) {
     node = tree.shift();
     if (node.name === 'say') {
       return dictionary.say(node)
-    } else if (node.name === 'leviosa') {
-      return dictionary.leviosa(node)
+    } else if (node.name === 'add') {
+      return dictionary.add(node)
     }
   }
 };
