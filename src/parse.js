@@ -7,11 +7,11 @@ const parse = function(tokens) {
       tree.push(functionNode);
     }
     if(token.type === 'string') {
-      let stringNode = StringNode.new(token.type, token.value);
+      let stringNode = StringNode.new(token.value);
       functionNode.args.push(stringNode);
     }
     if(token.type === 'integer') {
-      let integerNode = IntegerNode.new(token.type, token.value);
+      let integerNode = IntegerNode.new(token.value);
       functionNode.args.push(integerNode);
     }
   });

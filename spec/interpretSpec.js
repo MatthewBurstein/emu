@@ -8,7 +8,7 @@ describe('interpret()', function() {
   })
 
   it('understands say with one argument', function() {
-    let stringNode = new StringNode('string', 'hello world')
+    let stringNode = new StringNode('hello world')
     let functionNode = new FunctionNode('say', [stringNode])
     let tree = [functionNode]
 
@@ -16,8 +16,8 @@ describe('interpret()', function() {
   })
 
   it('understands say with two arguments', function() {
-    let stringNode1 = new StringNode('string', 'hello world')
-    let stringNode2 = new StringNode('string', 'goodbye cruel world')
+    let stringNode1 = new StringNode('hello world')
+    let stringNode2 = new StringNode('goodbye cruel world')
     let functionNode = new FunctionNode('say', [stringNode1, stringNode2])
     let tree = [functionNode]
 
