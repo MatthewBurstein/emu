@@ -2,28 +2,15 @@ const Dictionary = function () {
 }
 
 Dictionary.prototype.say = function(node) {
-  if (node.args.length === 0) {
-    return ''
-  }
-  if (node.args.length === 1) {
-    return node.args[0].value
-  }
-  else {
-    var joinedString = ''
-    for(i=0; i < args.length; i++){
-      joinedString += node.args[i].value
-      if (i !== args.length -1 ) {
-        joinedString += ' '
-      }
-    }
-    return joinedString
-  }
+  let argValues = this.getArgValues(node)
+  return argValues.join(' ')
 }
 
 Dictionary.prototype.add = function(node) {
-  var sum = 0
-  node.args.forEach(arg => {
-    sum += arg.value
-  })
-  return sum
+  if(node.args.length === 0 ) { return 0 }
+  return this.getArgValues(node).reduce((sum, value) => sum + value)
+}
+
+Dictionary.prototype.getArgValues = function(node) {
+  return node.args.map(argNode => argNode.value)
 }
