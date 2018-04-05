@@ -1,13 +1,11 @@
 const interpret = function(tree) {
-  let output = '';
+  dictionary = new Dictionary()
   while (tree.length > 0) {
     node = tree.shift();
-    output += node.interpretNode(interpret, node.args);
-    output += addCommaIfNecessary(tree);
+    if (node.name === 'say') {
+      return dictionary.say(node)
+    } else if (node.name === 'add') {
+      return dictionary.add(node)
+    }
   }
-  return output;
 };
-
-const addCommaIfNecessary = function(tree) {
-  return tree.length > 0 ? ', ' : ''
-}
