@@ -10,21 +10,18 @@
   ]
 
   function tokenize(workingString) {
-    let output = [];
+    let tokenArray = [];
     while (workingString.length > 0) {
-      let thisTokenLex;
-      tokenDictionary.forEach(tokenLex => {
-        if (matchRegEx(workingString, tokenLex) !== null) {
-          thisTokenLex = tokenLex
-        }
+      let thisTokenLex = tokenDictionary.find(tokenLex => {
+        return matchRegEx(workingString, tokenLex)
       })
-      output.push(process(workingString, thisTokenLex));
+      tokenArray.push(processToken(workingString, thisTokenLex));
       workingString = removeProcessedToken(workingString, thisTokenLex);
     }
-    return output;
+    return tokenArray;
   }
 
-  function process(workingString, tokenLex) {
+  function processToken(workingString, tokenLex) {
     let tokenValue = matchRegEx(workingString, tokenLex);
     switch (tokenLex.type) {
       case 'string':
@@ -45,12 +42,8 @@
     return buildToken(tokenLex.type, tokenValue)
   }
 
-  function addToken(string, token, outputArray) {
-    outputArray.push(buildToken(token.type, matchRegEx(string, token)))
-  }
-
   function matchRegEx(string, token) {
-    return string.match(token.regEx) ? string.match(token.regEx)[0] : null
+    return string.match(token.regEx) ? string.match(token.regEx)[0] : null 
   }
 
   function buildToken(type, value) {
