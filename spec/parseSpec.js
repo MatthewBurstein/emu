@@ -45,38 +45,4 @@ describe("Parse", function(){
     expect(parse(tokens)).toEqual(tree)
   })
 
-  it('returns an abstract syntax tree when passed a nested function', () => {
-    const tokens = [
-      {type: 'function', value: 'say'},
-      {type: 'open paren', value: '('},
-      {type: 'string', value: 'hello'},
-      {type: 'function', value: 'say'},
-      {type: 'open paren', value: '('},
-      {type: 'string', value: 'world'},
-      {type: 'close paren', value: ')'},
-      {type: 'close paren', value: ')'}
-    ]
-
-    const tree = [
-      { type: 'function',
-        name: 'say',
-        args: [
-          {
-            type: 'string',
-            value: 'hello'
-          },
-          {
-            type: 'function',
-            name: 'alsoSay',
-            args: [
-              'world'
-            ]
-          }
-        ]
-      }
-    ]
-
-    expect(parse(tokens)).toEqual(tree)
-  });
-
 })

@@ -1,6 +1,4 @@
 const interpret = function(tree) {
-  // var dictionary = new Dictionary
-  // let output = '';
   while (tree.length > 0) {
     node = tree.shift();
     if (node.name === 'say') {
@@ -9,9 +7,9 @@ const interpret = function(tree) {
       }
       else {
         var joinedString = ''
-        for(i=0; i < args.length + 1; i++){
+        for(i=0; i < args.length; i++){
           joinedString += node.args[i].value
-          if (i !== args.length) {
+          if (i !== args.length -1 ) {
             joinedString += ' '
           }
         }
