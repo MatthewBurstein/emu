@@ -19,3 +19,11 @@ Dictionary.prototype.say = function(node) {
     return joinedString
   }
 }
+
+Dictionary.prototype.leviosa = function(node) {
+  var sum = 0
+  node.args.forEach(arg => {
+    sum += arg.value
+  })
+  return sum
+}
