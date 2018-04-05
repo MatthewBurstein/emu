@@ -8,6 +8,6 @@ FunctionNode.new = function(type, name, args) {
   return new this(type, name, args);
 }
 
-FunctionNode.prototype.interpret = function(callback, callbackArgument) {
-  return `${this.name}(${callback(callbackArgument)})`
+FunctionNode.prototype.interpretNode = function(callback, callbackArgument) {
+  return this.name + "(" + callback(callbackArgument) +")"
 }

@@ -20,7 +20,7 @@ describe('FunctionNode', () => {
       const callbackArgument = 'Argument'
       const expectedOutput = 'functionName(callbackString Argument)'
 
-      expect(functionNode.interpret(callback, callbackArgument)).toEqual(expectedOutput)
+      expect(functionNode.interpretNode(callback, callbackArgument)).toEqual(expectedOutput)
 
     })
   })
