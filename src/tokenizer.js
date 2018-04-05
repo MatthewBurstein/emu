@@ -25,27 +25,24 @@
   }
 
   function process(workingString, tokenLex) {
+    let tokenValue = matchRegEx(workingString, tokenLex);
     switch (tokenLex.type) {
       case 'string':
-        let stringValue = matchRegEx(workingString, tokenLex).slice(1, -1)
-        return buildToken(tokenLex.type, stringValue)
+        tokenValue = tokenValue.slice(1, -1)
         break;
       case 'function':
-        return buildToken(tokenLex.type, matchRegEx(workingString, tokenLex))
         break;
       case 'open paren':
-        return buildToken(tokenLex.type, matchRegEx(workingString, tokenLex))
         break;
       case 'close paren':
-        return buildToken(tokenLex.type, matchRegEx(workingString, tokenLex))
         break;
       case 'integer':
-        let number = parseInt(matchRegEx(workingString, tokenLex))
-        return buildToken(tokenLex.type, number)
+        tokenValue = parseInt(tokenValue)
         break;
       default:
         throw new Error('Do not know that token');
       }
+    return buildToken(tokenLex.type, tokenValue)
   }
 
   function addToken(string, token, outputArray) {
