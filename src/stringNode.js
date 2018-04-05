@@ -1,10 +1,9 @@
-const StringNode = function(type, value) {
-  this.type = type;
+const StringNode = function(value) {
   this.value = value;
 }
 
-StringNode.new = function(type, value) {
-  return new this(type, value)
+StringNode.new = function(value) {
+  return new this(value)
 }
 
 StringNode.prototype.interpretNode = function() {

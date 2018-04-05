@@ -7,7 +7,7 @@ describe("Parse", function(){
       {type: 'close paren', value: ')'}
     ]
 
-    let functionNode = FunctionNode.new('function', 'say', [])
+    let functionNode = FunctionNode.new('say', [])
     let tree = [functionNode]
 
     expect(parse(tokens)).toEqual(tree)
@@ -21,8 +21,8 @@ describe("Parse", function(){
       {type: 'close paren', value: ')'}
     ]
 
-    let stringNode = StringNode.new('string', 'hello world')
-    let functionNode = FunctionNode.new('function', 'say', [stringNode])
+    let stringNode = StringNode.new('hello world')
+    let functionNode = FunctionNode.new('say', [stringNode])
     let tree = [functionNode]
 
     expect(parse(tokens)).toEqual(tree)
@@ -37,9 +37,9 @@ describe("Parse", function(){
       {type: 'close paren', value: ')'}
     ]
 
-    let stringNode1 = StringNode.new('string', 'hello world')
-    let stringNode2 = StringNode.new('string', 'bye world')
-    let functionNode = FunctionNode.new('function', 'say', [stringNode1, stringNode2])
+    let stringNode1 = StringNode.new('hello world')
+    let stringNode2 = StringNode.new('bye world')
+    let functionNode = FunctionNode.new('say', [stringNode1, stringNode2])
     let tree = [functionNode]
 
     expect(parse(tokens)).toEqual(tree)

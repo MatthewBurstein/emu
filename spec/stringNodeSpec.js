@@ -3,13 +3,12 @@ describe('StringNode', () => {
 
   beforeEach(() => {
     outputString = 'outputString(';
-    stringNode = StringNode.new('type', 'value')
+    stringNode = StringNode.new('value')
   })
 
   describe('.new()', () => {
     it('returns an instance a methodNode', () => {
-      stringNode = StringNode.new('type', 'value')
-      expect(stringNode.type).toEqual('type')
+      stringNode = StringNode.new('value')
       expect(stringNode.value).toEqual('value')
     });
   });
