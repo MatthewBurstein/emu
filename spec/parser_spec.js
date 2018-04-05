@@ -72,5 +72,4 @@ describe("Parser", function(){
       expect(createFunctionNode(type, name)).toEqual(expectedOutput)
     })
   })
-
 })

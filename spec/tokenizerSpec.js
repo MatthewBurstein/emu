@@ -10,7 +10,6 @@ describe('tokenize', () => {
   ]
 
   it('formats input into an array of token objects', () => {
-    console.log(tokenize(testString))
     expect(tokenize(testString)).toEqual(tokenizedString)
   })
 })

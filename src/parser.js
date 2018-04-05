@@ -1,23 +1,27 @@
-const parser = function(tokens) {
-  output = [];
+const parser = function (tokens) {
+  const output = [];
+
   let functionNode;
-  tokens.forEach( token => {
-    if (token.type === "function"){
+
+  tokens.forEach((token) => {
+    if (token.type === 'function') {
       functionNode = createFunctionNode(token.type, token.value);
       output.push(functionNode);
     }
-    if(token.type === 'string'){
-      let stringNode = createStringNode(token.type, token.value);
+
+    if (token.type === 'string') {
+      const stringNode = createStringNode(token.type, token.value);
       functionNode.args.push(stringNode);
     }
   });
+
   return output;
 };
 
-const createStringNode = function(type, value) {
+const createStringNode = function (type, value) {
   return { type, value };
-}
+};
 
-const createFunctionNode = function(type, name) {
-  return {type, name, args: []};
-}
+const createFunctionNode = function (type, name) {
+  return { type, name, args: [] };
+};

@@ -1,0 +1,30 @@
+{
+  "name": "emu",
+  "version": "1.0.0",
+  "description": "emu",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "eslint": "^4.19.1"
+  },
+  "devDependencies": {
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.10.0",
+    "eslint-plugin-jasmine": "^2.9.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MatthewBurstein/emu.git"
+  },
+  "author": "moist <jestfer6@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MatthewBurstein/emu/issues"
+  },
+  "homepage": "https://github.com/MatthewBurstein/emu#readme"
+}
