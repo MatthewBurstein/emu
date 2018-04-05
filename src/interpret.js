@@ -8,6 +8,6 @@ const interpret = function(tree) {
   return output;
 };
 
-const addCommaIfNecessary = function(array) {
-  return array.length > 0 ? ', ' : ''
+const addCommaIfNecessary = function(tree) {
+  return tree.length > 0 ? ', ' : ''
 }
