@@ -1,32 +1,48 @@
 ((exports) => {
   const tokenDictionary = [
-    { match: /\bsay\b/, type: 'function', value: 'say' },
-    { match: /\(/, type: 'open paren', value: '(' },
-    { match: /"([^"]*)"/, type: 'string', value: '' },
-    { match: /\)/, type: 'close paren', value: ')' }
+    { regEx: /\bsay\b/, type: 'function', value: 'say' },
+    { regEx: /\(/, type: 'open paren', value: '(' },
+    { regEx: /"([^"]*)"/, type: 'string', value: '' },
+    { regEx: /\)/, type: 'close paren', value: ')' }
   ]
 
   function tokenize(input) {
     let output = []
     tokenDictionary.forEach(token => {
-      if (input.match(token.match)) {
-        if (token.type === 'string') {
-          let slicedVal = input.match(token.match)[0].slice(1, -1)
-
-          output.push({
-            type: token.type,
-            value: slicedVal
-          })
-        } else {
-          output.push({
-            type: token.type,
-            value: input.match(token.match)[0]
-          })
-        }
-          var match = input.match(token.match)[0];
+      if (searchDictionary(input, token)) {
+        switch (token.type) {
+          case 'string':
+            let stringValue = searchDictionary(input, token).slice(1, -1)
+            output.push(buildToken(token.type, stringValue))
+            break;
+          case 'function':
+            addToken(input, token, output)
+            break;
+          case 'open paren':
+            addToken(input, token, output)
+            break;
+          case 'close paren':
+            addToken(input, token, output)
+            break;
+          default:
+            throw new Error('Do not know that token');
+          }
         }
       })
       return output
     }
+
+  function addToken(string, token, outputArray) {
+    outputArray.push(buildToken(token.type, searchDictionary(string, token)))
+  }
+
+  function searchDictionary(string, token) {
+    return string.match(token.regEx)[0]
+  }
+
+  function buildToken(type, value) {
+    return {type, value}
+  }
+
   exports.tokenize = tokenize
 })(this)
