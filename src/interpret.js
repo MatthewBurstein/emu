@@ -1,13 +1,22 @@
 const interpret = function(tree) {
-  let output = '';
+  // var dictionary = new Dictionary
+  // let output = '';
   while (tree.length > 0) {
     node = tree.shift();
-    output += node.interpretNode(interpret, node.args);
-    output += addCommaIfNecessary(tree);
+    if (node.name === 'say') {
+      if (node.args.length === 1) {
+        return node.args[0].value
+      }
+      else {
+        var joinedString = ''
+        for(i=0; i < args.length + 1; i++){
+          joinedString += node.args[i].value
+          if (i !== args.length) {
+            joinedString += ' '
+          }
+        }
+        return joinedString
+      }
+    }
   }
-  return output;
 };
-
-const addCommaIfNecessary = function(tree) {
-  return tree.length > 0 ? ', ' : ''
-}
