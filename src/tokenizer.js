@@ -1,10 +1,12 @@
 ((exports) => {
   const tokenDictionary = [
     { regEx: /^say/, type: 'function', value: 'say' },
-    { regEx: /^\(/, type: 'open paren', value: '(' },
+    { regEx: /^add/, type: 'function', value: 'add' },
+    { regEx: /^subtract/, type: 'function', value: 'subtract' },
+    { regEx: /^\</, type: 'open paren', value: '<' },
     { regEx: /^"([^"]*)"/, type: 'string'},
     { regEx: /^[0-9]+/, type: 'integer'},
-    { regEx: /^\)/, type: 'close paren', value: ')' }
+    { regEx: /^\>/, type: 'close paren', value: '>' }
   ]
 
   function tokenize(input) {
