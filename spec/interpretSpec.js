@@ -1,4 +1,12 @@
 describe('interpret()', function() {
+
+  it('understands a function with zero arguments', function() {
+    let functionNode = FunctionNode.new('function', 'say', [])
+    let tree = [functionNode]
+
+    expect(interpret(tree)).toEqual('')
+  })
+
   it('understands a function with one argument', function() {
     let stringNode = StringNode.new('string', 'hello world')
     let functionNode = FunctionNode.new('function', 'say', [stringNode])
