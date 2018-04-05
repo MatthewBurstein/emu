@@ -11,14 +11,5 @@ const parse = function(tokens) {
       functionNode.args.push(stringNode);
     }
   });
-  console.log(tree)
   return tree;
-};
-
-// const createStringNode = function(type, value) {
-//   return { type, value };
-// }
-//
-// const createFunctionNode = function(type, name) {
-//   return {type, name, args: []};
-// }
+}
