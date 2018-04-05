@@ -1,11 +1,10 @@
-const FunctionNode = function (type, name, args) {
-  this.type = type;
+const FunctionNode = function (name, args) {
   this.name = name;
   this.args = args;
 }
 
-FunctionNode.new = function(type, name, args) {
-  return new this(type, name, args);
+FunctionNode.new = function(name, args) {
+  return new this(name, args);
 }
 
 FunctionNode.prototype.interpretNode = function(callback, callbackArgument) {

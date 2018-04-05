@@ -3,7 +3,7 @@ const parse = function(tokens) {
   let functionNode;
   tokens.forEach( token => {
     if (token.type === "function") {
-      functionNode = FunctionNode.new(token.type, token.value, args = []);
+      functionNode = FunctionNode.new(token.value, args = []);
       tree.push(functionNode);
     }
     if(token.type === 'string') {

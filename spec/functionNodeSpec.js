@@ -3,12 +3,11 @@ describe('FunctionNode', () => {
 
   beforeEach(() => {
     outputString;
-    functionNode = FunctionNode.new('type', 'functionName', ['arg1', 'arg2'])
+    functionNode = FunctionNode.new('functionName', ['arg1', 'arg2'])
   })
 
   describe('.new()', () => {
     it('returns an instance a FunctionNode', () => {
-      expect(functionNode.type).toEqual('type')
       expect(functionNode.name).toEqual('functionName')
       expect(functionNode.args).toEqual(['arg1', 'arg2'])
     });
