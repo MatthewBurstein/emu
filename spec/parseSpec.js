@@ -1,5 +1,18 @@
 describe("Parse", function(){
 
+  it('understands a function with zero argument', function() {
+    const tokens = [
+      {type: 'function', value: 'say'},
+      {type: 'open paren', value: '('},
+      {type: 'close paren', value: ')'}
+    ]
+
+    let functionNode = FunctionNode.new('function', 'say', [])
+    let tree = [functionNode]
+
+    expect(parse(tokens)).toEqual(tree)
+  })
+
   it('understands a function with one argument', function() {
     const tokens = [
       {type: 'function', value: 'say'},
@@ -7,17 +20,11 @@ describe("Parse", function(){
       {type: 'string', value: 'hello world'},
       {type: 'close paren', value: ')'}
     ]
-    const tree = [
-      {type: 'function',
-      name: 'say',
-        args: [
-          {
-            type: 'string',
-            value: 'hello world'
-          }
-        ]
-    }
-  ]
+
+    let stringNode = StringNode.new('string', 'hello world')
+    let functionNode = FunctionNode.new('function', 'say', [stringNode])
+    let tree = [functionNode]
+
     expect(parse(tokens)).toEqual(tree)
   })
 
@@ -29,21 +36,12 @@ describe("Parse", function(){
       {type: 'string', value: 'bye world'},
       {type: 'close paren', value: ')'}
     ]
-    const tree = [
-      {type: 'function',
-      name: 'say',
-        args: [
-          {
-            type: 'string',
-            value: 'hello world'
-          },
-          {
-            type: 'string',
-            value: 'bye world'
-          }
-        ]
-    }
-  ]
+
+    let stringNode1 = StringNode.new('string', 'hello world')
+    let stringNode2 = StringNode.new('string', 'bye world')
+    let functionNode = FunctionNode.new('function', 'say', [stringNode1, stringNode2])
+    let tree = [functionNode]
+
     expect(parse(tokens)).toEqual(tree)
   })
 
@@ -81,28 +79,4 @@ describe("Parse", function(){
     expect(parse(tokens)).toEqual(tree)
   });
 
-  describe('createStringNode', function() {
-    it('creates an object from parameters', function() {
-      let type = 'string'
-      let value = 'value'
-      let expectedOutput = {
-        type: 'string',
-        value: 'value'
-      }
-      expect(createStringNode(type, value)).toEqual(expectedOutput)
-    })
-  })
-
-  describe('createFunctionNode', function() {
-    it('creates an object from parameters', function() {
-      let type = 'function';
-      let name = 'say';
-      let expectedOutput = {
-        type: 'function',
-        name: 'say',
-        args: []
-      }
-      expect(createFunctionNode(type, name)).toEqual(expectedOutput)
-    })
-  })
 })
