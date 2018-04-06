@@ -23,7 +23,16 @@ describe('tokenize', () => {
     expect(tokenize(testString)).toEqual(tokenizedString)
   })
 
-  // it('formats nested function into an array of token objects', () => {
-  //
-  // })
+  it('recognises assignVariable', ()=> {
+    let testString = 'assignVariable<"test" 1>'
+    let tokenizedString = [
+      { type: 'function', value: 'assignVariable' },
+      { type: 'open paren', value: '<' },
+      { type: 'string', value: "test" },
+      { type: 'integer', value: 1 },
+      { type: 'close paren', value: '>' }
+    ]
+    
+    expect(tokenize(testString)).toEqual(tokenizedString)
+  })
 })

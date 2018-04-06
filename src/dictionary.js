@@ -14,3 +14,13 @@ Dictionary.prototype.add = function(node) {
 Dictionary.prototype.getArgValues = function(node) {
   return node.args.map(argNode => argNode.value)
 }
+
+Dictionary.prototype.assignVariable = function(node) {
+  let tokenLex = {
+    regEx: new RegExp(`^${node.args[0].value}`),
+    type: node.args[1].type,
+    value: node.args[1].value
+  }
+
+  tokenDictionary.push(tokenLex)
+}

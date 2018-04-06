@@ -6,7 +6,8 @@
     { regEx: /^\</, type: 'open paren', value: '<' },
     { regEx: /^"([^"]*)"/, type: 'string'},
     { regEx: /^[0-9]+/, type: 'integer'},
-    { regEx: /^\>/, type: 'close paren', value: '>' }
+    { regEx: /^\>/, type: 'close paren', value: '>' },
+    { regEx: /^assignVariable/, type: 'function', value: 'assignVariable' }
   ]
 
   function tokenize(workingString) {
@@ -56,4 +57,5 @@
   }
 
   exports.tokenize = tokenize
+  exports.tokenDictionary = tokenDictionary
 })(this)
