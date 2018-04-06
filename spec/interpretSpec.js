@@ -47,5 +47,13 @@ describe('interpret()', function() {
 
     expect(interpret(tree)).toEqual(1)
   })
+  
+  it('understand subtract with two arguments', function() {
+    let integetNode1 = new IntegerNode(1)
+    let functionNode = new FunctionNode('subtract', [integerNode1])
+    let tree = [functionNode]
+
+    expect(interpret(tree)).toEqual(1)
+  })
 
 })
