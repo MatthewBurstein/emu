@@ -6,6 +6,8 @@ const interpret = function(tree) {
       return dictionary.say(node)
     } else if (node.name === 'add') {
       return dictionary.add(node)
+    } else if (node.name === 'subtract') {
+      return dictionary.subtract(node)
     }
   }
 };
