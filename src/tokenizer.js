@@ -1,4 +1,4 @@
-((exports) => {
+;((exports) => {
   const tokenDictionary = [
     { regEx: /^say/, type: 'function', value: 'say' },
     { regEx: /^add/, type: 'function', value: 'add' },
