@@ -42,8 +42,8 @@
     return buildToken(tokenLex.type, tokenValue)
   }
 
-  function matchRegEx(string, token) {
-    return string.match(token.regEx) ? string.match(token.regEx)[0] : null 
+  function matchRegEx(string, tokenLex) {
+    return string.match(tokenLex.regEx) ? string.match(tokenLex.regEx)[0] : null
   }
 
   function buildToken(type, value) {
