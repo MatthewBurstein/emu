@@ -113,4 +113,10 @@ describe('interpret()', function() {
     expect(interpret(tree)).toEqual(4)
   })
 
+    it('understand modulo with 0 arguments', function() {
+      let functionNode = new FunctionNode('modulo', [])
+      let tree = [functionNode]
+
+      expect(intrepret(tree)).toEqual(0)
+    })
 })
