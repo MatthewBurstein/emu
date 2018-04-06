@@ -5,7 +5,7 @@
     <!-- <script type="text/javascript" src="src/emu.js"></script> -->
     <link rel="stylesheet" type="text/css" href="public/general.css">
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-   
+
     <script type="text/javascript" src="src/tokenizer.js"></script>
     <script type="text/javascript" src="src/parse.js"></script>
 
@@ -15,7 +15,7 @@
     <script type="text/javascript" src="src/interpret.js"></script>
     <script type="text/javascript" src="src/dictionary.js"></script>
     <script type="text/javascript" src="src/interface.js"></script>
-    
+
     <title>Emu</title>
   </head>
   <body>
@@ -23,7 +23,13 @@
       <input type="text" name="code" placeholder="write your code here" class="write_code_form"> <br>
       <input type="submit" value="Submit" class="submit_button">
     </form>
-    <div class="output">
+    <div class="windows">
+      <div class="tokens">
+      </div>
+      <div class="tree">
+      </div>
+      <div class="output">
+      </div>
     </div>
   </body>
 </html>

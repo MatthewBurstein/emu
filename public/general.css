@@ -1,6 +1,25 @@
+.windows {
+  display: block;
+}
+
 .output {
-  width: 5em;
-  float: right;
-  height: 5em;
+  padding: 1em;
+  width: 15em;
+  height: 15em;
   background-color: red;
+}
+
+.tokens {
+  color: white;
+  background-color: black;
+  padding: 1em;
+  width: 15em;
+  height: 15em;
+}
+
+.tree {
+  padding: 1em;
+  width: 15em;
+  height: 15em;
+  background-color: blue;
 }
