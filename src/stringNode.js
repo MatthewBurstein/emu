@@ -1,4 +1,5 @@
 const StringNode = function(value) {
+  this.type = 'string';
   this.value = value;
 }
 

@@ -1,4 +1,5 @@
 const IntegerNode = function (value) {
+  this.type = 'integer'
   this.value = value
 }
 

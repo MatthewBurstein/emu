@@ -8,7 +8,8 @@
     { regEx: /^\</, type: 'open paren', value: '<' },
     { regEx: /^"([^"]*)"/, type: 'string'},
     { regEx: /^[0-9]+/, type: 'integer'},
-    { regEx: /^\>/, type: 'close paren', value: '>' }
+    { regEx: /^\>/, type: 'close paren', value: '>' },
+    { regEx: /^assignVariable/, type: 'function', value: 'assignVariable' }
   ]
 
   function tokenize(workingString) {
@@ -25,6 +26,7 @@
 
   function processToken(workingString, tokenLex) {
     let tokenValue = matchRegEx(workingString, tokenLex);
+    let tokenType = tokenLex.type
     switch (tokenLex.type) {
       case 'string':
         tokenValue = tokenValue.slice(1, -1)
@@ -38,10 +40,14 @@
       case 'integer':
         tokenValue = parseInt(tokenValue)
         break;
+      case 'variable':
+        tokenValue = tokenLex.value
+        tokenType = tokenLex.variableType
+        break;
       default:
         throw new Error('Do not know that token');
       }
-    return buildToken(tokenLex.type, tokenValue)
+    return buildToken(tokenType, tokenValue)
   }
 
   function matchRegEx(string, tokenLex) {
@@ -58,4 +64,5 @@
   }
 
   exports.tokenize = tokenize
+  exports.tokenDictionary = tokenDictionary
 })(this)

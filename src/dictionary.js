@@ -32,3 +32,14 @@ Dictionary.prototype.modulo = function(node) {
 Dictionary.prototype.getArgValues = function(node) {
   return node.args.map(argNode => argNode.value)
 }
+
+Dictionary.prototype.assignVariable = function(node) {
+  let tokenLex = {
+    regEx: new RegExp(`^${node.args[0].value}`),
+    type: 'variable',
+    value: node.args[1].value,
+    variableType: node.args[1].type
+  }
+
+  tokenDictionary.push(tokenLex)
+}
