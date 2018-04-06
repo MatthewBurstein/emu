@@ -24,15 +24,34 @@ describe('tokenize', () => {
   })
 
   it('recognises assignVariable', ()=> {
-    let testString = 'assignVariable<"test" 1>'
+    let testString = 'assignVariable<"variablebeingassigned" 1>'
     let tokenizedString = [
       { type: 'function', value: 'assignVariable' },
       { type: 'open paren', value: '<' },
-      { type: 'string', value: "test" },
+      { type: 'string', value: "variablebeingassigned" },
       { type: 'integer', value: 1 },
       { type: 'close paren', value: '>' }
     ]
     
+    expect(tokenize(testString)).toEqual(tokenizedString)
+  })
+
+  it('recognises user defined variable', () => {
+    let variableTokenLex = {
+      regEx: /^createdvariable/, type: 'variable', value: 1, variableType: 'integer'
+    }
+
+    tokenDictionary.push(variableTokenLex)
+
+    let testString = 'add<2 createdvariable>'
+    let tokenizedString = [
+      { type: 'function', value: 'add' },
+      { type: 'open paren', value: '<' },
+      { type: 'integer', value: 2 },
+      { type: 'integer', value: 1 },
+      { type: 'close paren', value: '>' }
+    ]
+
     expect(tokenize(testString)).toEqual(tokenizedString)
   })
 })

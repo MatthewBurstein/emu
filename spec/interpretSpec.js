@@ -48,17 +48,17 @@ describe('interpret()', function() {
     expect(interpret(tree)).toEqual(1)
   })
 
-  // it('understand assignVariable with two arguments', function() {
-  //   let stringNode = new StringNode('test')
-  //   let integerNode = new IntegerNode(1)
-  //   let functionNode = new FunctionNode('assignVariable', [stringNode, integerNode])
-  //   let newTokenLex = {
-  //     regEx: /^test/, type: 'integer', value: 1
-  //   }
+  it('understand assignVariable with two arguments', function() {
+    let stringNode = new StringNode('test')
+    let integerNode = new IntegerNode(1)
+    let functionNode = new FunctionNode('assignVariable', [stringNode, integerNode])
+    let newTokenLex = {
+      regEx: /^test/, type: 'variable', value: 1, variableType: 'integer'
+    }
 
-  //   let tree = [functionNode]
+    let tree = [functionNode]
 
-  //   interpret(tree)
-  //   expect(tokenDictionary).toContain(newTokenLex)
-  // })
+    interpret(tree)
+    expect(tokenDictionary).toContain(newTokenLex)
+  })
 })

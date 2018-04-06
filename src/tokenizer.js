@@ -24,6 +24,7 @@
 
   function processToken(workingString, tokenLex) {
     let tokenValue = matchRegEx(workingString, tokenLex);
+    let tokenType = tokenLex.type
     switch (tokenLex.type) {
       case 'string':
         tokenValue = tokenValue.slice(1, -1)
@@ -37,10 +38,14 @@
       case 'integer':
         tokenValue = parseInt(tokenValue)
         break;
+      case 'variable':
+        tokenValue = tokenLex.value
+        tokenType = tokenLex.variableType
+        break;
       default:
         throw new Error('Do not know that token');
       }
-    return buildToken(tokenLex.type, tokenValue)
+    return buildToken(tokenType, tokenValue)
   }
 
   function matchRegEx(string, tokenLex) {
