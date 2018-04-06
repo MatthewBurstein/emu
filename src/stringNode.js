@@ -6,6 +6,6 @@ StringNode.new = function(value) {
   return new this(value)
 }
 
-StringNode.prototype.interpretNode = function() {
-  return `"${this.value}"`;
-}
+// StringNode.prototype.interpretNode = function() {
+//   return `"${this.value}"`;
+// }
