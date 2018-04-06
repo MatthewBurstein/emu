@@ -11,6 +11,7 @@ $( document ).ready(function() {
   })
 
   showTokens = function(tokens) {
+    $('.tokens').empty();
     $('.tokens').append('<div class="headline">Tokens: </div>')
     tokens.forEach( token => {
       tokenString = "type: " + token.type + ", value: " + token.value + " ;"
