@@ -14,7 +14,7 @@ $( document ).ready(function() {
     $('.tokens_list').empty();
     tokens.forEach( token => {
       tokenString = "type: " + token.type + ", value: " + token.value + " ;"
-      $('.tokens_list').append('<div>' + tokenString + '</div>')
+      $('.tokens_list').append('<div class="' + token.type + '">' + tokenString + '</div>')
     })
   }
 
