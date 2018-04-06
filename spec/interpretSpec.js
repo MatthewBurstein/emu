@@ -61,4 +61,76 @@ describe('interpret()', function() {
     interpret(tree)
     expect(tokenDictionary).toContain(newTokenLex)
   })
+
+  it('understands subtract with one arguments', function() {
+    let integerNode1 = new IntegerNode(1)
+    let functionNode = new FunctionNode('subtract', [integerNode1])
+    let tree = [functionNode]
+
+    expect(interpret(tree)).toEqual(1)
+  })
+
+  it('understands subtraction with two arguments', function() {
+    let integerNode1 = new IntegerNode(2)
+    let integerNode2 = new IntegerNode(1)
+    let functionNode = new FunctionNode('subtract', [integerNode1, integerNode2])
+    let tree = [functionNode]
+
+    expect(interpret(tree)).toEqual(1)
+  })
+
+  it('understands subtraction with 0 arguments', function() {
+    let functionNode = new FunctionNode('subtract', [])
+    let tree = [functionNode]
+
+    expect(interpret(tree)).toEqual(0)
+  })
+
+  it('understands multiply with two arguments', function() {
+    let integerNode1 = new IntegerNode(5)
+    let integerNode2 = new IntegerNode(4)
+    let functionNode = new FunctionNode('multiply', [integerNode1, integerNode2])
+    let tree = [functionNode]
+
+    expect(interpret(tree)).toEqual(20)
+  })
+
+  it('understands multiply with one argument', function() {
+    let integerNode1 = new IntegerNode(5)
+    let functionNode = new FunctionNode('multiply', [integerNode1])
+    let tree = [functionNode]
+
+    expect(interpret(tree)).toEqual(5)
+  })
+
+  it('understands multiply with zero arguments', function() {
+    let functionNode = new FunctionNode('multiply', [])
+    let tree = [functionNode]
+
+    expect(interpret(tree)).toEqual(0)
+  })
+
+  it('understands modulo with 2 arguments', function() {
+    let integerNode1 = new IntegerNode(5)
+    let integerNode2 = new IntegerNode(2)
+    let functionNode = new FunctionNode('modulo', [integerNode1, integerNode2])
+    let tree = [functionNode]
+
+    expect(interpret(tree)).toEqual(1)
+  })
+
+  it('understands modulo with 1 argument', function() {
+    let integerNode = new IntegerNode(4)
+    let functionNode = new FunctionNode('modulo', [integerNode])
+    let tree = [functionNode]
+
+    expect(interpret(tree)).toEqual(4)
+  })
+
+    it('understand modulo with 0 arguments', function() {
+      let functionNode = new FunctionNode('modulo', [])
+      let tree = [functionNode]
+
+      expect(interpret(tree)).toEqual(0)
+    })
 })
