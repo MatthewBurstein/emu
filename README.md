@@ -1,22 +1,15 @@
-# Flow of work / structure of code
+# Emu
 
-```plain
-          1. Parsing                  2. Interpreting
-User   +-------------->  Structured   +----------------->  Run code in JS
-input                    set of data
-```
+Emu is a new programming language built on top of JavaScript.
 
-1. Parsing
-The aim of parsing is to get user's input, chunk it into relevant parts and put back together as a structured set of data.
-For example, the input is `write Hello`. Our parser will know that `write` is a function that prints arguments and `Hello` is an argument passed to `write`.
+Made by [Josué Estévez Fernández](https://github.com/Jestfer), [Justyna Zygmunt](https://github.com/Kotauror/), [Laura Chan](https://github.com/lwkchan), [Noel Vock](https://github.com/noel1uk) and [Matthew Burstein](https://github.com/MatthewBurstein).
 
-Parsing will be a two-stage process:
-  * tokenizer() - a method that accepts user input and matches the input with types of data. Tokenizer will know that `write` is of type function, and that literals can be passed as arguments. This method will be universal to all types of user input.
-  * tokenizer returns an object having key & value pairs, for example:
-```js
-  { method: write,
-    argument: 'hello'
-  }
-```
+# Documentation
 
-2. 
+The main aim of our project was to learn more about the structure of computer programming languages. When the user inputs Emu into our program, it goes through the following stages:
+
+1. Tokenizer - *Splits input up into tokens*
+2. Parser - *Organises tokens into an abstract syntax tree*
+3. Interpreter - *Outputs the result of the input*
+
+<img src="docs/images/basicStructure2.jpg" width="600">
