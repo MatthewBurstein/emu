@@ -22,6 +22,7 @@ Dictionary.prototype.multiply = function(node) {
 }
 
 Dictionary.prototype.modulo = function(node) {
+  if(node.args.length === 0 ) { return 0 }
   if(node.args.length === 1 ) { return this.getArgValues(node)[0] }
   var left = this.getArgValues(node)[0]
   var right = this.getArgValues(node)[1] 

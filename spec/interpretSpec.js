@@ -117,6 +117,6 @@ describe('interpret()', function() {
       let functionNode = new FunctionNode('modulo', [])
       let tree = [functionNode]
 
-      expect(intrepret(tree)).toEqual(0)
+      expect(interpret(tree)).toEqual(0)
     })
 })
