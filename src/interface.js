@@ -11,12 +11,10 @@ $( document ).ready(function() {
   })
 
   showTokens = function(tokens) {
-    $('.tokens').empty();
-    $('.tokens').append('<div class="headline">Tokens: </div>')
+    $('.tokens_list').empty();
     tokens.forEach( token => {
       tokenString = "type: " + token.type + ", value: " + token.value + " ;"
-      $( "<br>" ).appendTo( ".tokens" )
-      $('.tokens').append(`${tokenString}`)
+      $('.tokens_list').append('<div>' + tokenString + '</div>')
     })
   }
 
