@@ -13,14 +13,4 @@ describe('FunctionNode', () => {
     });
   });
 
-  describe('#interpret()', () => {
-    it('returns the correct string', function() {
-      const callback = (arg) => `callbackString ${arg}`
-      const callbackArgument = 'Argument'
-      const expectedOutput = 'functionName(callbackString Argument)'
-
-      expect(functionNode.interpretNode(callback, callbackArgument)).toEqual(expectedOutput)
-
-    })
-  })
 })

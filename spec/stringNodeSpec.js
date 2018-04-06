@@ -13,11 +13,4 @@ describe('StringNode', () => {
     });
   });
 
-  describe('#interpret()', () => {
-    it('returns "this.value" (including quotes)', () => {
-      let expectedOutput = '"value"'
-
-      expect(stringNode.interpretNode()).toEqual(expectedOutput)
-    })
-  });
 });
