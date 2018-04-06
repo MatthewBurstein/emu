@@ -13,20 +13,20 @@ Dictionary.prototype.add = function(node) {
 
 Dictionary.prototype.subtract = function(node) {
   if(node.args.length === 0 ) { return 0 }
-  return this.getArgValues(node).reduce(function(left, right) { return left - right})
+  return this.getArgValues(node).reduce(function(arg1, arg2) { return arg1 - arg2})
 }
 
 Dictionary.prototype.multiply = function(node) {
   if(node.args.length === 0 ) { return 0 }
-  return this.getArgValues(node).reduce(function(left, right) { return left * right})
+  return this.getArgValues(node).reduce(function(arg1, arg2) { return arg1 * arg2})
 }
 
 Dictionary.prototype.modulo = function(node) {
   if(node.args.length === 0 ) { return 0 }
   if(node.args.length === 1 ) { return this.getArgValues(node)[0] }
-  var left = this.getArgValues(node)[0]
-  var right = this.getArgValues(node)[1] 
-  return left % right
+  var arg1 = this.getArgValues(node)[0]
+  var arg2 = this.getArgValues(node)[1]
+  return arg1 % arg2
 }
 
 Dictionary.prototype.getArgValues = function(node) {
