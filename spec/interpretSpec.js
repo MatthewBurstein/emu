@@ -105,4 +105,12 @@ describe('interpret()', function() {
     expect(interpret(tree)).toEqual(1)
   })
 
+  it('understands modulo with 1 argument', function() {
+    let integerNode = new IntegerNode(4)
+    let functionNode = new FunctionNode('modulo', [integerNode])
+    let tree = [functionNode]
+
+    expect(interpret(tree)).toEqual(4)
+  })
+
 })
