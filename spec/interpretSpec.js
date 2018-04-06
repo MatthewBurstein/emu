@@ -81,4 +81,12 @@ describe('interpret()', function() {
     expect(interpret(tree)).toEqual(20)
   })
 
+  it('understands multiply with one argument', function() {
+    let integerNode1 = new IntegerNode(5)
+    let functionNode = new FunctionNode('multiply', [integerNode1])
+    let tree = [functionNode]
+    
+    expect(interpret(tree)).toEqual(5)
+  })
+
 })
