@@ -10,6 +10,8 @@ const interpret = function(tree) {
       return dictionary.subtract(node)
     } else if (node.name === 'multiply') {
       return dictionary.multiply(node)
+    } else if (node.name === 'modulo') {
+      return dictionary.modulo(node)
     }
   }
 };

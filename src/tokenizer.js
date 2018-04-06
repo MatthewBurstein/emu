@@ -4,6 +4,7 @@
     { regEx: /^add/, type: 'function', value: 'add' },
     { regEx: /^subtract/, type: 'function', value: 'subtract' },
     { regEx: /^multiply/, type: 'function', value: 'multiply' },
+    { regEx: /^modulo/, type: 'function', value: 'modulo' },
     { regEx: /^\</, type: 'open paren', value: '<' },
     { regEx: /^"([^"]*)"/, type: 'string'},
     { regEx: /^[0-9]+/, type: 'integer'},

@@ -21,6 +21,12 @@ Dictionary.prototype.multiply = function(node) {
   return this.getArgValues(node).reduce(function(left, right) { return left * right})
 }
 
+Dictionary.prototype.modulo = function(node) {
+  var left = this.getArgValues(node)[0]
+  var right = this.getArgValues(node)[1] 
+  return left % right
+}
+
 Dictionary.prototype.getArgValues = function(node) {
   return node.args.map(argNode => argNode.value)
 }
