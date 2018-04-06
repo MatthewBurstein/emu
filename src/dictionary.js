@@ -12,6 +12,7 @@ Dictionary.prototype.add = function(node) {
 }
 
 Dictionary.prototype.subtract = function(node) {
+  if(node.args.length === 0 ) { return 0 }
   return this.getArgValues(node).reduce(function(left, right) { return left - right})
 }
 
