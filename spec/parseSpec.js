@@ -6,11 +6,11 @@ describe("Parse", function(){
       {type: 'open paren', value: '('},
       {type: 'close paren', value: ')'}
     ]
-
-    let functionNode = FunctionNode.new('say', [])
-    let tree = [functionNode]
+    spyOn(FunctionNode, 'new').and.returnValue('functionNode')
+    let tree = ['functionNode']
 
     expect(parse(tokens)).toEqual(tree)
+    expect(FunctionNode.new).toHaveBeenCalledWith("say", [])
   })
 
   it('understands a function with one argument', function() {
@@ -20,12 +20,13 @@ describe("Parse", function(){
       {type: 'string', value: 'hello world'},
       {type: 'close paren', value: ')'}
     ]
-
-    let stringNode = StringNode.new('hello world')
-    let functionNode = FunctionNode.new('say', [stringNode])
-    let tree = [functionNode]
+    spyOn(StringNode, 'new').and.returnValue('stringNode')
+    spyOn(FunctionNode, 'new').and.returnValue({args: []})
+    let tree = [{args: ['stringNode']}]
 
     expect(parse(tokens)).toEqual(tree)
+    expect(FunctionNode.new).toHaveBeenCalledWith("say", [])
+    expect(StringNode.new).toHaveBeenCalledWith("hello world")
   })
 
   it('understands a function with two arguments', function() {
@@ -37,12 +38,14 @@ describe("Parse", function(){
       {type: 'close paren', value: ')'}
     ]
 
-    let stringNode1 = StringNode.new('hello world')
-    let stringNode2 = StringNode.new('bye world')
-    let functionNode = FunctionNode.new('say', [stringNode1, stringNode2])
-    let tree = [functionNode]
+    spyOn(StringNode, "new").and.returnValues('hello world', 'bye world');
+    spyOn(FunctionNode, 'new').and.returnValue({args: []})
+    let tree = [{args: ['hello world', 'bye world']}]
 
     expect(parse(tokens)).toEqual(tree)
+    expect(FunctionNode.new).toHaveBeenCalledWith("say", [])
+    expect(StringNode.new).toHaveBeenCalledWith('hello world')
+    expect(StringNode.new).toHaveBeenCalledWith('bye world')
   })
 
 })
