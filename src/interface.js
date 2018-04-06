@@ -6,16 +6,21 @@ $( document ).ready(function() {
     let tokens = tokenize(value)
     showTokens(tokens)
     let parsed = parse(tokens)
+    showTree(parse(tokens))
     let interpreted = interpret(parsed)
-    $('.output').text(interpreted);
+    $('.output').append('<div class="result"> => '  + interpreted + '</div>');
   })
 
   showTokens = function(tokens) {
     $('.tokens_list').empty();
     tokens.forEach( token => {
-      tokenString = "type: " + token.type + ", value: " + token.value + " ;"
+      tokenString = "type: " + token.type + ", value: " + token.value + ";"
       $('.tokens_list').append('<div class="' + token.type + '">' + tokenString + '</div>')
     })
+  }
+
+  showTree = function(tree) {
+    
   }
 
 })

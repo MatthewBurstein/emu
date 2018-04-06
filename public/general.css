@@ -1,25 +1,94 @@
-.windows {
-  display: block;
+body {
+  font-family: Work Sans;
+}
+
+.welcome {
+  text-align: center;
+  margin-top: 2em;
+  font-size: 2em;
+}
+
+.grid {
+  padding-top: 2em;
+  display: grid;
+  height: 30em;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  grid-template-columns: 1fr 1fr;
+}
+
+.headline {
+  padding-bottom: 1em;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+.write_code {
+  padding: 1em;
+  background-color: black;
+  height: 3em;
+  color: white;
+}
+
+.write_code_form {
+  background-color: black;
+  border: none;
+  color: white;
+  font-family: Work Sans;
+  font-size: 1em;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px black inset;
+  -webkit-text-fill-color: white;
 }
 
 .output {
   padding: 1em;
-  width: 15em;
   height: 15em;
-  background-color: red;
+  background-color: black;
+  overflow-y: scroll;
+  color: white;
+  border-style: solid;
+  border-width: 0.1em;
+  border-color: black;
+}
+
+.result {
+  color: #5ee85e;
 }
 
 .tokens {
-  color: white;
-  background-color: black;
+  color: black;
   padding: 1em;
-  width: 15em;
   height: 15em;
+  overflow-y: scroll;
+  border-style: solid;
+  border-width: 0.1em;
 }
 
 .tree {
   padding: 1em;
-  width: 15em;
   height: 15em;
-  background-color: blue;
+  border-style: solid;
+  border-width: 0.1em;
+}
+
+.image {
+  border-style: solid;
+  border-width: 0.1em;
+}
+
+.image_emu {
+  height: 10em;
+  padding: 3em;
+}
+
+.function {
+  color: #59b54e;
+}
+
+.integer {
+  color: #d67aa8;
 }
