@@ -75,6 +75,10 @@ input:-webkit-autofill {
   border-width: 0.1em;
 }
 
+.argument {
+  padding-left: 1em;
+}
+
 .image {
   border-style: solid;
   border-width: 0.1em;
@@ -91,4 +95,8 @@ input:-webkit-autofill {
 
 .integer {
   color: #d67aa8;
+}
+
+.string {
+  color: #0000ffb0;
 }
