@@ -48,7 +48,7 @@ describe('interpret()', function() {
     expect(interpret(tree)).toEqual(1)
   })
   
-  it('understand subtract with one arguments', function() {
+  it('understands subtract with one arguments', function() {
     let integerNode1 = new IntegerNode(1)
     let functionNode = new FunctionNode('subtract', [integerNode1])
     let tree = [functionNode]
@@ -63,6 +63,13 @@ describe('interpret()', function() {
     let tree = [functionNode]
 
     expect(interpret(tree)).toEqual(1)
+  })
+
+  it('understands subtraction with 0 arguments', function() {
+    let functionNode = new FunctionNode('subtract', [])
+    let tree = [functionNode]
+
+    expect(interpret(tree)).toEqual(0)
   })
 
 })
