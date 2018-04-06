@@ -42,4 +42,5 @@ Dictionary.prototype.assignVariable = function(node) {
   }
 
   tokenDictionary.push(tokenLex)
+  return  "Variable " + `${node.args[0].value}` + " is now available in your tokenDictionary"
 }
