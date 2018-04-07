@@ -32,7 +32,7 @@ describe('tokenize', () => {
       { type: 'integer', value: 1 },
       { type: 'close paren', value: '>' }
     ]
-    
+
     expect(tokenize(testString)).toEqual(tokenizedString)
   })
 
@@ -49,6 +49,32 @@ describe('tokenize', () => {
       { type: 'open paren', value: '<' },
       { type: 'integer', value: 2 },
       { type: 'integer', value: 1 },
+      { type: 'close paren', value: '>' }
+    ]
+
+    expect(tokenize(testString)).toEqual(tokenizedString)
+  })
+
+  it('recognises isGreaterThan', () => {
+    let testString = 'isGreaterThan<1 2>'
+    let tokenizedString = [
+      { type: 'function', value: 'isGreaterThan' },
+      { type: 'open paren', value: '<' },
+      { type: 'integer', value: 1 },
+      { type: 'integer', value: 2 },
+      { type: 'close paren', value: '>' }
+    ]
+
+    expect(tokenize(testString)).toEqual(tokenizedString)
+  })
+
+  it('recognises equality', () => {
+    let testString = 'isEqual<2 2>'
+    let tokenizedString = [
+      { type: 'function', value: 'isEqual' },
+      { type: 'open paren', value: '<' },
+      { type: 'integer', value: 2 },
+      { type: 'integer', value: 2 },
       { type: 'close paren', value: '>' }
     ]
 
