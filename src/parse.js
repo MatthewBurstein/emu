@@ -1,21 +1,24 @@
 ;((exports) => {
-  const parse = function(tokens) {
-    tree = [];
-    let functionNode;
-    tokens.forEach( token => {
-      if (token.type === "function") {
-        functionNode = FunctionNode.new(token.value, args = []);
+
+  const parse = function(tokens, tree = []) {
+
+    while (tokens.length > 0) {
+      let thisToken = tokens.shift()
+      if (thisToken.type === "function") {
+        let functionNode = FunctionNode.new(thisToken.value, args = []);
+        parse(tokens, functionNode.args)
         tree.push(functionNode);
       }
-      if(token.type === 'string') {
-        let stringNode = StringNode.new(token.value);
-        functionNode.args.push(stringNode);
+      if(thisToken.type === 'string') {
+        tree.push(StringNode.new(thisToken.value));
       }
-      if(token.type === 'integer') {
-        let integerNode = IntegerNode.new(token.value);
-        functionNode.args.push(integerNode);
+      if(thisToken.type === 'integer') {
+        tree.push(IntegerNode.new(thisToken.value));
       }
-    });
+      if(thisToken.type === 'close paren') {
+        break;
+      }
+    }
     return tree;
   }
 
