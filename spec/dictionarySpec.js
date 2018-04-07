@@ -6,13 +6,13 @@ describe('Dictionary', () => {
     testNodeWithNoArgs = { args: [] }
   })
 
-  describe('.new()', () => {
+  describe('.new<>', () => {
     it('creates a new Dictionary object', () => {
     expect(Dictionary.new()).toEqual(jasmine.any(Dictionary))
     })
   })
 
-  describe('.assignVariable()', () => {
+  describe('.assignVariable<>', () => {
     it('generates a tokenLex using the passed argments and stores it in the tokenDictionary', () => {
       testNodeWithTwoArgs = { args: [
         { value: 'newVariable' },
@@ -30,7 +30,7 @@ describe('Dictionary', () => {
     })
   })
 
-  describe('.say()', () => {
+  describe('.say<>', () => {
     it('when passed no arguments returns an empty string', () => {
       expect(dictionary.say(testNodeWithNoArgs)).toEqual('')
     })
@@ -52,7 +52,7 @@ describe('Dictionary', () => {
       ]}
     })
 
-    describe('.add', () => {
+    describe('.add<>', () => {
       it('when passed no arguments, returns 0', () => {
         expect(dictionary.add(testNodeWithNoArgs)).toEqual(0)
       })
@@ -62,7 +62,7 @@ describe('Dictionary', () => {
       })
     })
 
-    describe('.subtract', () => {
+    describe('.subtract<>', () => {
       it('when passed no arguments, returns 0', () => {
         expect(dictionary.subtract(testNodeWithNoArgs)).toEqual(0)
       })
@@ -72,7 +72,7 @@ describe('Dictionary', () => {
       })
     })
 
-    describe('.multiply()', () => {
+    describe('.multiply<>', () => {
       it('when passed no arguments, returns 0', () => {
         expect(dictionary.multiply(testNodeWithNoArgs)).toEqual(0)
       })
@@ -86,7 +86,7 @@ describe('Dictionary', () => {
       })
     })
 
-    describe('.modulo()', () => {
+    describe('.modulo<>', () => {
       it('returns 0 when passed no arguments', () => {
         expect(dictionary.modulo(testNodeWithNoArgs)).toEqual(0)
       })
@@ -97,6 +97,20 @@ describe('Dictionary', () => {
 
       it('when passed two arguments, returns the arg1 modulo arg2', () => {
         expect(dictionary.modulo(testNodeWithTwoArgs)).toEqual(1)
+      })
+    })
+
+    describe('.isGreaterThan<>', () => {
+      it('returns true if first arg is greater than second arg', () => {
+        expect(dictionary.isGreaterThan(testNodeWithTwoArgs)).toEqual(true)
+      })
+
+      it('returns there is nothing to compare if no args passed', () => {
+        expect(dictionary.isGreaterThan(testNodeWithNoArgs)).toEqual('there is nothing to compare')
+      })
+
+      it ('returns pass two arguments if no second arg passed', () => {
+        expect(dictionary.isGreaterThan(testNodeWithOneArg)).toEqual('pass two arguments')
       })
     })
   })
