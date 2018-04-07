@@ -113,5 +113,11 @@ describe('Dictionary', () => {
         expect(dictionary.isGreaterThan(testNodeWithOneArg)).toEqual('pass two arguments')
       })
     })
+
+    describe('.isLessThan<>', () => {
+      it('returns false if first arg is greater than second arg', () => {
+        expect(dictionary.isLessThan(testNodeWithTwoArgs)).toEqual(false)
+      })
+    })
   })
 })
