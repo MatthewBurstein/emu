@@ -19,14 +19,15 @@ $( document ).ready(function() {
     })
   }
 
-  showTree = function(tree) {
-    $('.nodes').append('<div class="' + tree[0].type + '">' + tree[0].type + " : " + tree[0].name + '</div>')
-    $('.nodes').append('arguments:')
+  showTree = function(tree, margin = 0) {
+    $('.nodes').append('<div class="' + tree[0].type + '" style="margin-left: ' + margin + 'em">' + tree[0].type + " : " + tree[0].name + '</div>')
+    margin += 2
+    $('.nodes').append('<div style="margin-left: ' + margin + 'em"> arguments: </div>')
     tree[0].args.forEach ( argument => {
       if (argument.type === 'function') {
-        showTree([argument])
+        showTree([argument], margin)
       } else {
-        $('.nodes').append('<div class="' + argument.type + " argument" + '">' + argument.type  +  " : " + argument.value + '</div>')
+        $('.nodes').append('<div class="' + argument.type + '" style="margin-left: ' + margin + 'em">' + argument.type  +  " : " + argument.value + '</div>')
       }
     })
   }
