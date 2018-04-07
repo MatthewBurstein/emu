@@ -57,6 +57,9 @@
     if (secondArg === undefined) {
       return 'pass two arguments'
     }
+    if (firstArg === secondArg) {
+      return 'no'
+    }
     if (firstArg > secondArg) {
       return 'yes'
     }

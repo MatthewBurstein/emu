@@ -124,6 +124,10 @@ describe('Dictionary', () => {
       it ('returns pass two arguments if no second arg passed', () => {
         expect(dictionary.isGreaterThan(testNodeWithOneArg)).toEqual('pass two arguments')
       })
+
+      it ('returns no when they are equal', () => {
+        expect(dictionary.isGreaterThan(testNodeWithTwoSameArgs)).toEqual('no')
+      })
     })
 
     describe('.isEqual<>', () => {
