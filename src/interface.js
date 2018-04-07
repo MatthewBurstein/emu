@@ -6,7 +6,7 @@ $( document ).ready(function() {
     let tokens = tokenize(value)
     showTokens(tokens)
     let parsed = parse(tokens)
-    showTree(parse(tokens))
+    showTree(parsed)
     let interpreted = interpret(parsed)
     $('.output').append('<div class="result"> => '  + interpreted + '</div>');
   })
@@ -20,12 +20,14 @@ $( document ).ready(function() {
   }
 
   showTree = function(tree) {
-    console.log(tree)
-    $('.nodes').empty();
     $('.nodes').append('<div class="' + tree[0].type + '">' + tree[0].type + " : " + tree[0].name + '</div>')
     $('.nodes').append('arguments:')
     tree[0].args.forEach ( argument => {
-      $('.nodes').append('<div class="' + argument.type + " argument" + '">' + argument.type  +  " : " + argument.value + '</div>')
+      if (argument.type === 'function') {
+        showTree([argument])
+      } else {
+        $('.nodes').append('<div class="' + argument.type + " argument" + '">' + argument.type  +  " : " + argument.value + '</div>')
+      }
     })
   }
 
