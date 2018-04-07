@@ -2,6 +2,10 @@
   const Dictionary = function () {
   }
 
+  Dictionary.new = function () {
+    return new this();
+  }
+
   Dictionary.prototype.say = function(node) {
     let argValues = this.getArgValues(node)
     return argValues.join(' ')
