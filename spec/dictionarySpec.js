@@ -121,7 +121,7 @@ describe('Dictionary', () => {
         expect(dictionary.isGreaterThan(testNodeWithNoArgs)).toEqual('there is nothing to compare')
       })
 
-      it ('returns pass two arguments if no second arg passed', () => {
+      it('returns pass two arguments if no second arg passed', () => {
         expect(dictionary.isGreaterThan(testNodeWithOneArg)).toEqual('pass two arguments')
       })
 
@@ -142,6 +142,20 @@ describe('Dictionary', () => {
       })
       it ('returns pass two arguments if no second arg passed', () => {
         expect(dictionary.isEqual(testNodeWithOneArg)).toEqual('pass two arguments')
+      })
+    })
+
+    describe('.isLessThan<>', () => {
+      it('returns false if first arg is greater than second arg', () => {
+        expect(dictionary.isLessThan(testNodeWithTwoArgs)).toEqual(false)
+      })
+
+      it('returns there is nothing to compare if no args passed', () => {
+        expect(dictionary.isLessThan(testNodeWithNoArgs)).toEqual('there is nothing to compare')
+      })
+
+      it('returns pass two arguments if no second arg passed', () => {
+        expect(dictionary.isLessThan(testNodeWithOneArg)).toEqual('pass two arguments')
       })
     })
   })
