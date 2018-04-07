@@ -50,6 +50,10 @@ describe('Dictionary', () => {
         { value: 4 },
         { value: 3 }
       ]}
+      testNodeWithTwoArgReversed = { args: [
+        { value: 3 },
+        { value: 4 }
+      ]}
       testNodeWithTwoSameArgs = { args: [
         { value: 4 },
         { value: 4 }
@@ -105,8 +109,12 @@ describe('Dictionary', () => {
     })
 
     describe('.isGreaterThan<>', () => {
-      it('returns true if first arg is greater than second arg', () => {
-        expect(dictionary.isGreaterThan(testNodeWithTwoArgs)).toEqual(true)
+      it('returns yes if first arg is greater than second arg', () => {
+        expect(dictionary.isGreaterThan(testNodeWithTwoArgs)).toEqual('yes')
+      })
+
+      it('returns no if first arg is greater than second arg', () => {
+        expect(dictionary.isGreaterThan(testNodeWithTwoArgReversed)).toEqual('no')
       })
 
       it('returns there is nothing to compare if no args passed', () => {

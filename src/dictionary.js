@@ -58,7 +58,10 @@
       return 'pass two arguments'
     }
     if (firstArg > secondArg) {
-      return true
+      return 'yes'
+    }
+    if (secondArg > firstArg) {
+      return 'no'
     }
   }
 
