@@ -9,6 +9,8 @@
       }
       else {
         break;
+        // for literal nodes, replace node with value
+        // REVIEW! -> Done in Dictionary, need to be in Interpreter
       }
     }
   };
