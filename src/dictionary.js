@@ -65,7 +65,9 @@
   Dictionary.prototype.isLessThan = function(node) {
     var firstArg = this.getArgValues(node)[0]
     var secondArg = this.getArgValues(node)[1]
-
+    if (firstArg === undefined) {
+      return 'there is nothing to compare'
+    }
     return firstArg < secondArg
 
   }
