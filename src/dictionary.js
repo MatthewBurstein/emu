@@ -91,7 +91,10 @@
     if (firstArg === undefined) {
       return 'there is nothing to compare'
     }
-    return firstArg < secondArg
+    if (secondArg === undefined) {
+      return 'pass two arguments'
+    }
+    return firstArg < secondArg ? 'yes' : 'no'
 
   }
 

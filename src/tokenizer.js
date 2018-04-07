@@ -11,7 +11,7 @@
     { regEx: /^\>/, type: 'close paren', value: '>' },
     { regEx: /^assignVariable/, type: 'function', value: 'assignVariable' },
     { regEx: /^isGreaterThan/, type: 'function', value: 'isGreaterThan' },
-    { regEx: /^isLessThan/, type: 'function', value: 'isLessThan' }
+    { regEx: /^isLessThan/, type: 'function', value: 'isLessThan' },
     { regEx: /^isEqual/, type: 'function', value: 'isEqual' }
   ]
 
