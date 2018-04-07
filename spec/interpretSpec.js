@@ -1,10 +1,10 @@
 describe('interpret()', function() {
-  let testFunctionSpy, functionNode, tree;
+  let testFunctionSpy, functionNode, functionNode2, tree;
   beforeEach(() => {
-    testFunctionSpy = jasmine.createSpy('testFunction').and.returnValue('success')
-    spyOn(Dictionary, 'new').and.returnValue({
-      testFunction: testFunctionSpy
-    })
+    // testFunctionSpy = jasmine.createSpy('testFunction').and.returnValue('success')
+    // spyOn(Dictionary, 'new').and.returnValue({
+    //   testFunction: testFunctionSpy
+    // })
     functionNode = { name: 'testFunction' }
     tree = [functionNode]
   })
@@ -17,5 +17,20 @@ describe('interpret()', function() {
   it('understands a tree with one expression', () => {
     interpret(tree)
     expect(testFunctionSpy).toHaveBeenCalledWith(functionNode)
+  })
+
+  describe('when passed nested AST', () => {
+    it('recursively resolves functions', () => {
+      // 'add<1 add<2 3>>'
+      intNode1 = IntegerNode.new(1)
+      intNode2 = IntegerNode.new(2)
+      intNode3 = IntegerNode.new(3)      
+      innerFuncNode = FunctionNode.new('add', [intNode2, intNode3])
+      outerFuncNode = FunctionNode.new('add', [intNode1, innerFuncNode])
+
+      tree = [outerFuncNode]
+
+      expect(interpret(tree)).toEqual(6)
+    })
   })
 })

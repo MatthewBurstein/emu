@@ -50,6 +50,14 @@ describe('Dictionary', () => {
         { value: 4 },
         { value: 3 }
       ]}
+      testNodeWithTwoArgReversed = { args: [
+        { value: 3 },
+        { value: 4 }
+      ]}
+      testNodeWithTwoSameArgs = { args: [
+        { value: 4 },
+        { value: 4 }
+      ]}
     })
 
     describe('.add<>', () => {
@@ -101,8 +109,12 @@ describe('Dictionary', () => {
     })
 
     describe('.isGreaterThan<>', () => {
-      it('returns true if first arg is greater than second arg', () => {
-        expect(dictionary.isGreaterThan(testNodeWithTwoArgs)).toEqual(true)
+      it('returns yes if first arg is greater than second arg', () => {
+        expect(dictionary.isGreaterThan(testNodeWithTwoArgs)).toEqual('yes')
+      })
+
+      it('returns no if first arg is greater than second arg', () => {
+        expect(dictionary.isGreaterThan(testNodeWithTwoArgReversed)).toEqual('no')
       })
 
       it('returns there is nothing to compare if no args passed', () => {
@@ -111,6 +123,25 @@ describe('Dictionary', () => {
 
       it('returns pass two arguments if no second arg passed', () => {
         expect(dictionary.isGreaterThan(testNodeWithOneArg)).toEqual('pass two arguments')
+      })
+
+      it ('returns no when they are equal', () => {
+        expect(dictionary.isGreaterThan(testNodeWithTwoSameArgs)).toEqual('no')
+      })
+    })
+
+    describe('.isEqual<>', () => {
+      it('returns yes if the arguments are equal', () => {
+        expect(dictionary.isEqual(testNodeWithTwoSameArgs)).toEqual('yes')
+      })
+      it('returns no if the arguments are not equal', () => {
+        expect(dictionary.isEqual(testNodeWithTwoArgs)).toEqual('no')
+      })
+      it('returns there is nothing to compare if no args passed', () => {
+        expect(dictionary.isEqual(testNodeWithNoArgs)).toEqual('there is nothing to compare')
+      })
+      it ('returns pass two arguments if no second arg passed', () => {
+        expect(dictionary.isEqual(testNodeWithOneArg)).toEqual('pass two arguments')
       })
     })
 

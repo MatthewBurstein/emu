@@ -12,6 +12,7 @@
     { regEx: /^assignVariable/, type: 'function', value: 'assignVariable' },
     { regEx: /^isGreaterThan/, type: 'function', value: 'isGreaterThan' },
     { regEx: /^isLessThan/, type: 'function', value: 'isLessThan' }
+    { regEx: /^isEqual/, type: 'function', value: 'isEqual' }
   ]
 
   function tokenize(workingString) {

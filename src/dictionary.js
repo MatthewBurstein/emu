@@ -57,8 +57,31 @@
     if (secondArg === undefined) {
       return 'pass two arguments'
     }
+    if (firstArg === secondArg) {
+      return 'no'
+    }
     if (firstArg > secondArg) {
-      return true
+      return 'yes'
+    }
+    if (secondArg > firstArg) {
+      return 'no'
+    }
+  }
+
+  Dictionary.prototype.isEqual = function(node) {
+    var firstArg = this.getArgValues(node)[0]
+    var secondArg = this.getArgValues(node)[1]
+    if (firstArg === undefined) {
+      return 'there is nothing to compare'
+    }
+    if (secondArg === undefined) {
+      return 'pass two arguments'
+    }
+    if (firstArg === secondArg) {
+      return 'yes'
+    }
+    if (firstArg !== secondArg) {
+      return 'no'
     }
   }
 

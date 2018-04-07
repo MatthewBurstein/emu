@@ -48,28 +48,24 @@ describe("Parse", function(){
     expect(StringNode.new).toHaveBeenCalledWith('bye world')
   })
 
-  // it('understands a nested function with one argument', () => {
-  //   const tokens = [
-  //     {type: 'function', value: 'say'},
-  //     {type: 'open paren', value: '<'},
-  //     {type: 'function', value: 'say'},
-  //     {type: 'open paren', value: '<'},
-  //     {type: 'string', value: 'hello world'},
-  //     {type: 'close paren', value: '>'},
-  //     {type: 'string', value: 'bye world'},
-  //     {type: 'close paren', value: '>'}
-  //   ]
-  //
-  //   spyOn(StringNode, "new").and.returnValues('hello world', 'bye world');
-  //   spyOn(FunctionNode, 'new').and.returnValue({args: []})
-  //   let tree = [{args:
-  //     [{args: ['hello world']},
-  //     'bye world']
-  //   }]
-  //
-  //   expect(parse(tokens)).toEqual(tree)
-  //   expect(FunctionNode.new).toHaveBeenCalledWith("say", [])
-  //   expect(StringNode.new).toHaveBeenCalledWith('hello world')
-  //   expect(StringNode.new).toHaveBeenCalledWith('bye world')
-  // })
+  it('understands a nested function with one argument', () => {
+    const tokens = [
+      { type: 'function', value: 'say' },
+      { type: 'open paren', value: '<' },
+      { type: 'string', value: 'hello world' },
+      { type: 'function', value: 'sayAgain' },
+      { type: 'open paren', value: '<' },
+      { type: 'string', value: 'bye world' },
+      { type: 'close paren', value: '>' },
+      { type: 'close paren', value: '>' }
+    ]
+
+    let stringNode1 = StringNode.new('hello world')
+    let stringNode2 = StringNode.new('bye world')
+    let innerFunction = FunctionNode.new('sayAgain', [stringNode2])
+    let outerFunction = FunctionNode.new('say', [stringNode1, innerFunction])
+    let tree = [outerFunction]
+
+    expect(parse(tokens)).toEqual(tree)
+  })
 })
