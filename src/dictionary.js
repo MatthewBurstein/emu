@@ -48,5 +48,19 @@
     tokenDictionary.push(tokenLex)
   }
 
+  Dictionary.prototype.isGreaterThan = function(node) {
+    var firstArg = this.getArgValues(node)[0]
+    var secondArg = this.getArgValues(node)[1]
+    if (firstArg === undefined) {
+      return 'there is nothing to compare'
+    }
+    if (secondArg === undefined) {
+      return 'pass two arguments'
+    }
+    if (firstArg > secondArg) {
+      return true
+    }
+  }
+
   exports.Dictionary = Dictionary
 })(this)
