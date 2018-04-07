@@ -10,7 +10,8 @@
     { regEx: /^[0-9]+/, type: 'integer'},
     { regEx: /^\>/, type: 'close paren', value: '>' },
     { regEx: /^assignVariable/, type: 'function', value: 'assignVariable' },
-    { regEx: /^isGreaterThan/, type: 'function', value: 'isGreaterThan' }
+    { regEx: /^isGreaterThan/, type: 'function', value: 'isGreaterThan' },
+    { regEx: /^isEqual/, type: 'function', value: 'isEqual' }
   ]
 
   function tokenize(workingString) {
