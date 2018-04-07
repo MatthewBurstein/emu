@@ -3,11 +3,48 @@
   <head>
     <meta charset="utf-8">
     <!-- <script type="text/javascript" src="src/emu.js"></script> -->
+    <link rel="stylesheet" type="text/css" href="public/general.css">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
     <script type="text/javascript" src="src/tokenizer.js"></script>
-    <script type="text/javascript" src="src/parser.js"></script>
-    <title>Emu</title>
+    <script type="text/javascript" src="src/parse.js"></script>
+
+    <script type="text/javascript" src="src/functionNode.js"></script>
+    <script type="text/javascript" src="src/integerNode.js"></script>
+    <script type="text/javascript" src="src/stringNode.js"></script>
+    <script type="text/javascript" src="src/interpret.js"></script>
+    <script type="text/javascript" src="src/dictionary.js"></script>
+    <script type="text/javascript" src="src/interface.js"></script>
+
+    <title>Emu transpiler</title>
   </head>
   <body>
 
+    <div class="welcome"> Emu Transpiler</div>
+
+    <div class="grid">
+
+      <div class="output onegrid">
+        <form class="write_code">
+          > <input type="text" name="code" placeholder="write your code here" class="write_code_form">
+        </form>
+      </div>
+
+      <div class="tokens onegrid">
+        <div class="headline"> Tokens: </div>
+        <div class="tokens_list"> </div>
+      </div>
+
+      <div class="image">
+        <div class="divimage"><img src="./public/emu2.png" class="image_emu"></div>
+      </div>
+
+      <div class="tree onegrid">
+        <div class="headline"> Abstract Syntax Tree: </div>
+        <div class="nodes"> </div>
+      </div>
+
+    </div>
   </body>
 </html>
