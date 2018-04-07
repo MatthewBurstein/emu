@@ -2,6 +2,7 @@ $( document ).ready(function() {
 
   $('.write_code').submit(function(e) {
     e.preventDefault();
+    emptyFields()
     let value = $( ".write_code_form" ).val();
     let tokens = tokenize(value)
     showTokens(tokens)
@@ -12,7 +13,6 @@ $( document ).ready(function() {
   })
 
   showTokens = function(tokens) {
-    $('.tokens_list').empty();
     tokens.forEach( token => {
       tokenString = "type: " + token.type + ", value: " + token.value + ";"
       $('.tokens_list').append('<div class="' + token.type + '">' + tokenString + '</div>')
@@ -30,6 +30,11 @@ $( document ).ready(function() {
         $('.nodes').append('<div class="' + argument.type + '" style="margin-left: ' + margin + 'em">' + argument.type  +  " : " + argument.value + '</div>')
       }
     })
+  }
+
+  emptyFields = function() {
+    $('.nodes').empty();
+    $('.tokens_list').empty();
   }
 
 })
