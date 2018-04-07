@@ -118,6 +118,10 @@ describe('Dictionary', () => {
       it('returns false if first arg is greater than second arg', () => {
         expect(dictionary.isLessThan(testNodeWithTwoArgs)).toEqual(false)
       })
+
+      it('returns there is nothing to compare if no args passed', () => {
+        expect(dictionary.isLessThan(testNodeWithNoArgs)).toEqual('there is nothing to compare')
+      })
     })
   })
 })
