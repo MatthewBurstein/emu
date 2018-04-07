@@ -62,5 +62,13 @@
     }
   }
 
+  Dictionary.prototype.isLessThan = function(node) {
+    var firstArg = this.getArgValues(node)[0]
+    var secondArg = this.getArgValues(node)[1]
+
+    return firstArg < secondArg
+
+  }
+
   exports.Dictionary = Dictionary
 })(this)
