@@ -60,13 +60,6 @@ describe("Parse", function(){
       { type: 'close paren', value: '>' }
     ]
 
-    // Mocked stuff, later
-    // spyOn(StringNode, "new").and.returnValues('hello world', 'bye world');
-    // spyOn(FunctionNode, 'new').and.returnValue({args: []})
-    // let tree = [{args:
-    //   [{args: ['hello world']},
-    //   'bye world']
-    // }]
     let stringNode1 = StringNode.new('hello world')
     let stringNode2 = StringNode.new('bye world')
     let innerFunction = FunctionNode.new('sayAgain', [stringNode2])
@@ -76,12 +69,3 @@ describe("Parse", function(){
     expect(parse(tokens)).toEqual(tree)
   })
 })
-
-Expected undefined to equal[FunctionNode(
-  { name: 'say',
-   args: 
-  [StringNode({ type: 'string', value: 'hello world' }),
-   FunctionNode(
-     { name: 'sayAgain', 
-       args: [StringNode({ type: 'string', value: 'bye world' })],
-       type: 'function' })], type: 'function' })].
