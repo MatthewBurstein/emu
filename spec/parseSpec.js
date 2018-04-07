@@ -48,4 +48,28 @@ describe("Parse", function(){
     expect(StringNode.new).toHaveBeenCalledWith('bye world')
   })
 
+  // it('understands a nested function with one argument', () => {
+  //   const tokens = [
+  //     {type: 'function', value: 'say'},
+  //     {type: 'open paren', value: '<'},
+  //     {type: 'function', value: 'say'},
+  //     {type: 'open paren', value: '<'},
+  //     {type: 'string', value: 'hello world'},
+  //     {type: 'close paren', value: '>'},
+  //     {type: 'string', value: 'bye world'},
+  //     {type: 'close paren', value: '>'}
+  //   ]
+  //
+  //   spyOn(StringNode, "new").and.returnValues('hello world', 'bye world');
+  //   spyOn(FunctionNode, 'new').and.returnValue({args: []})
+  //   let tree = [{args:
+  //     [{args: ['hello world']},
+  //     'bye world']
+  //   }]
+  //
+  //   expect(parse(tokens)).toEqual(tree)
+  //   expect(FunctionNode.new).toHaveBeenCalledWith("say", [])
+  //   expect(StringNode.new).toHaveBeenCalledWith('hello world')
+  //   expect(StringNode.new).toHaveBeenCalledWith('bye world')
+  // })
 })
