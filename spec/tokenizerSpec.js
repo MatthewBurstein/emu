@@ -1,96 +1,96 @@
 describe('tokenize', () => {
-
+  let testString, tokenizedString;
   it('formats single argument function into an array of token objects', () => {
-    let testString = 'say<"hello world">'
-    let tokenizedString = [
-      {type: 'function', value: 'say'},
-      {type: 'open paren', value: '<'},
-      {type: 'string', value: 'hello world'},
-      {type: 'close paren', value: '>'}
-    ]
+    testString = 'say<"hello world">';
+    tokenizedString = [
+      { type: 'function', value: 'say' },
+      { type: 'open paren', value: '<' },
+      { type: 'string', value: 'hello world' },
+      { type: 'close paren', value: '>' }
+    ];
 
-    expect(tokenize(testString)).toEqual(tokenizedString)
-  })
+    expect(tokenize(testString)).toEqual(tokenizedString);
+  });
 
   it('recognises integer token', () => {
-    let testString = 'say<1>'
-    let tokenizedString = [
-          {type: 'function', value: 'say'},
-          {type: 'open paren', value: '<'},
-          {type: 'integer', value: 1},
-          {type: 'close paren', value: '>'}
-        ]
-    expect(tokenize(testString)).toEqual(tokenizedString)
-  })
-
-  it('recognises assignVariable', ()=> {
-    let testString = 'assignVariable<"variablebeingassigned" 1>'
-    let tokenizedString = [
-      { type: 'function', value: 'assignVariable' },
+    testString = 'say<1>';
+    tokenizedString = [
+      { type: 'function', value: 'say' },
       { type: 'open paren', value: '<' },
-      { type: 'string', value: "variablebeingassigned" },
       { type: 'integer', value: 1 },
       { type: 'close paren', value: '>' }
-    ]
+    ];
+    expect(tokenize(testString)).toEqual(tokenizedString);
+  });
 
-    expect(tokenize(testString)).toEqual(tokenizedString)
-  })
+  it('recognises assignVariable', () => {
+    testString = 'assignVariable<"variablebeingassigned" 1>';
+    tokenizedString = [
+      { type: 'function', value: 'assignVariable' },
+      { type: 'open paren', value: '<' },
+      { type: 'string', value: 'variablebeingassigned' },
+      { type: 'integer', value: 1 },
+      { type: 'close paren', value: '>' }
+    ];
+
+    expect(tokenize(testString)).toEqual(tokenizedString);
+  });
 
   it('recognises user defined variable', () => {
-    let variableTokenLex = {
+    const variableTokenLex = {
       regEx: /^createdvariable/, type: 'variable', value: 1, variableType: 'integer'
-    }
+    };
 
-    tokenDictionary.push(variableTokenLex)
+    tokenDictionary.push(variableTokenLex);
 
-    let testString = 'add<2 createdvariable>'
-    let tokenizedString = [
+    testString = 'add<2 createdvariable>';
+    tokenizedString = [
       { type: 'function', value: 'add' },
       { type: 'open paren', value: '<' },
       { type: 'integer', value: 2 },
       { type: 'integer', value: 1 },
       { type: 'close paren', value: '>' }
-    ]
+    ];
 
-    expect(tokenize(testString)).toEqual(tokenizedString)
-  })
+    expect(tokenize(testString)).toEqual(tokenizedString);
+  });
 
   it('recognises isGreaterThan', () => {
-    let testString = 'isGreaterThan<1 2>'
-    let tokenizedString = [
+    testString = 'isGreaterThan<1 2>';
+    tokenizedString = [
       { type: 'function', value: 'isGreaterThan' },
       { type: 'open paren', value: '<' },
       { type: 'integer', value: 1 },
       { type: 'integer', value: 2 },
       { type: 'close paren', value: '>' }
-    ]
+    ];
 
-    expect(tokenize(testString)).toEqual(tokenizedString)
-  })
+    expect(tokenize(testString)).toEqual(tokenizedString);
+  });
 
   it('recognises isLessThan', () => {
-    let testString = 'isLessThan<1 2>'
-    let tokenizedString = [
+    testString = 'isLessThan<1 2>';
+    tokenizedString = [
       { type: 'function', value: 'isLessThan' },
       { type: 'open paren', value: '<' },
       { type: 'integer', value: 1 },
       { type: 'integer', value: 2 },
       { type: 'close paren', value: '>' }
-    ]
+    ];
 
-    expect(tokenize(testString)).toEqual(tokenizedString)
-  })
-  
+    expect(tokenize(testString)).toEqual(tokenizedString);
+  });
+
   it('recognises equality', () => {
-    let testString = 'isEqual<2 2>'
-    let tokenizedString = [
+    testString = 'isEqual<2 2>';
+    tokenizedString = [
       { type: 'function', value: 'isEqual' },
       { type: 'open paren', value: '<' },
       { type: 'integer', value: 2 },
       { type: 'integer', value: 2 },
       { type: 'close paren', value: '>' }
-    ]
+    ];
 
-    expect(tokenize(testString)).toEqual(tokenizedString)
-  })
-})
+    expect(tokenize(testString)).toEqual(tokenizedString);
+  });
+});
