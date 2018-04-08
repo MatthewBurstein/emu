@@ -1,0 +1,34 @@
+{
+  "name": "emu",
+  "version": "1.0.0",
+  "description": "emu transpiler",
+  "main": "index.html",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib"
+  },
+  "dependencies": {
+    "eslint": "^4.19.1"
+  },
+  "devDependencies": {
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.10.0",
+    "eslint-plugin-jasmine": "^2.9.3"
+  },
+  "scripts": {
+    "test": "open SpecRunner.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MatthewBurstein/emu.git"
+  },
+  "keywords": [
+    "emu"
+  ],
+  "author": "Matt, Justyna, Noel, Laura and Josue",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MatthewBurstein/emu/issues"
+  },
+  "homepage": "https://github.com/MatthewBurstein/emu#readme"
+}
