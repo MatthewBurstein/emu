@@ -3,50 +3,50 @@ describe('interpret()', function() {
   let intNode1, intNode2, intNode3
 
   beforeEach(() => {
-    intNode1 = {
-      type: 'integer',
-      value: 1
-    }
-    intNode2 = {
-      type: 'integer',
-      value: 2
-    }
-    intNode3 = {
-      type: 'integer',
-      value: 3
-    }
-  })
-  
-  it('instantiates a dictionary object', () => {
-    let testFunctionSpy = jasmine.createSpy('testFunction').and.returnValue('success')
-    let funcNode = { name: 'testFunction' }
-    spyOn(FunctionDictionary, 'new').and.returnValue({
-      testFunction: testFunctionSpy
-    })
-    let tree = [funcNode]
-    interpret(tree)
-    expect(FunctionDictionary.new).toHaveBeenCalledWith()
-  })
-  
-  it('understands a tree with one expression', () => {
-    let funcNode = {
-      name: 'add',
-      type: 'function',
-      args: [intNode1, intNode2]
-    }
-    
+    intNode1 = { }
+    intNode2 = { }
+    intNode3 = { }
+
     let fakeDictionary = {
       add: function() { return 'added'}
     }
 
     spyOn(FunctionDictionary, 'new').and.returnValue(fakeDictionary)
-
-    tree = [funcNode]
-    expect(interpret(tree)).toEqual(['added'])
   })
 
-  describe('when passed nested AST', () => {
-    it('recursively resolves functions', () => {
+  describe('when passed one-node AST', () => {
+    it('instantiates one dictionary', () => {
+      let testFunctionSpy = jasmine.createSpy('testFunction').and.returnValue('success')
+      let funcNode = { name: 'testFunction' }
+      let tree = [funcNode]
+      interpret(tree)
+      expect(FunctionDictionary.new).toHaveBeenCalledTimes(1)
+    })
+  })
+
+  describe('when passed three-node AST', () => {
+
+    beforeEach(() => {
+      let funcNode = {
+        name: 'add',
+        type: 'function',
+        args: [intNode1, intNode2]
+      }
+      tree = [funcNode]
+    })
+
+    it('calls the right function name on the dictionary', () => {
+      expect(interpret(tree)).toEqual(['added'])
+    })
+
+    it('calls FunctionDictionary.new twice', () => {
+      interpret(tree)
+      expect(FunctionDictionary.new).toHaveBeenCalledTimes(2)
+    })
+  })
+
+  describe('when passed five-node nested AST', () => {
+    beforeEach(() => {
       let innerFuncNode = {
         name: 'add',
         type: 'function',
@@ -57,10 +57,16 @@ describe('interpret()', function() {
         type: 'function',
         args: [intNode1, innerFuncNode]
       }
-
       tree = [outerFuncNode]
+    })
 
-      expect(interpret(tree)).toEqual([6])
+    it('recursively resolves functions', () => {
+      expect(interpret(tree)).toEqual(['added'])
+    })
+
+    it('calls FunctionDictionary.new thrice', () => {
+      interpret(tree)
+      expect(FunctionDictionary.new).toHaveBeenCalledTimes(3);
     })
   })
 })
