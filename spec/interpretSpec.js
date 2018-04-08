@@ -1,25 +1,35 @@
 describe('interpret()', function() {
   let testFunctionSpy, functionNode, functionNode2, tree;
   beforeEach(() => {
-    // testFunctionSpy = jasmine.createSpy('testFunction').and.returnValue('success')
-    // spyOn(Dictionary, 'new').and.returnValue({
-    //   testFunction: testFunctionSpy
-    // })
-    // functionNode = { name: 'testFunction' }
-    // tree = [functionNode]
+    testFunctionSpy = jasmine.createSpy('testFunction').and.returnValue('success')
+    functionNode = { name: 'testFunction' }
+    tree = [functionNode]
   })
 
   it('instantiates a dictionary object', () => {
-    // interpret(tree)
-    // expect(Dictionary.new).toHaveBeenCalledWith()
+    spyOn(Dictionary, 'new').and.returnValue({
+      testFunction: testFunctionSpy
+    })
+    interpret(tree)
+    expect(Dictionary.new).toHaveBeenCalledWith()
   })
 
   it('understands a tree with one expression', () => {
-    intNode1 = IntegerNode.new(1)
-    intNode2 = IntegerNode.new(2)
-    funcNode = FunctionNode.new('add', [intNode1, intNode2])
-    tree = [funcNode]
+    intNode1 = { 
+      type: 'integer',
+      value: 1
+    }
+    intNode2 = {
+      type: 'integer',
+      value: 2
+    }
+    funcNode = {
+      name: 'add',
+      type: 'function',
+      args: [intNode1, intNode2]
+    }
 
+    tree = [funcNode]
     expect(interpret(tree)).toEqual([3])
   })
 
