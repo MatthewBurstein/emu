@@ -3,15 +3,15 @@
     this.name = name;
     this.args = args;
     this.type = 'function';
-  }
+  };
 
-  FunctionNode.new = function(name, args) {
+  FunctionNode.new = function (name, args) {
     return new this(name, args);
-  }
+  };
 
   // FunctionNode.prototype.interpretNode = function(callback, callbackArgument) {
   //   return this.name + "(" + callback(callbackArgument) +")"
   // }
 
-  exports.FunctionNode = FunctionNode
-})(this)
+  exports.FunctionNode = FunctionNode;
+})(this);
