@@ -47,9 +47,14 @@ describe('FunctionDictionary', () => {
 
   describe('mathematical functions', () => {
     beforeEach(() => {
-      testNodeWithOneArg = { args: [3] }
-      testNodeWithTwoArgs = { args: [4, 3] }
-      testNodeWithTwoSameArgs = { args: [4, 4] }
+      testNodeWithOneArg = {
+        args: [{value: 3}]
+      }
+      testNodeWithTwoArgs = {
+        args: [{value: 4}, {value: 3}]
+      }
+      testNodeWithTwoSameArgs = {
+        args: [{value: 4}, {value: 4}] }
     })
 
     describe('.add<>', () => {
@@ -157,5 +162,17 @@ describe('FunctionDictionary', () => {
        expect(functionDictionary.isLessThan(testNodeWithOneArg)).toEqual('pass two arguments')
      })
    })
+
+// if<isGreaterThan<1 2> add<1 2> add<3 2>>
+
+    describe('.if<>', () => {
+      it('evaluates second method if first method evaluates to yes', () => {
+        let testNode = {
+          name: 'if',
+          args: ['yes', 3, 30]
+        }
+        expect(functionDictionary.if(testNode)).toEqual(3)
+      })
+    })
   })
 })
