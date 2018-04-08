@@ -15,7 +15,7 @@ describe('interpret()', function() {
   })
 
   it('understands a tree with one expression', () => {
-    intNode1 = { 
+    intNode1 = {
       type: 'integer',
       value: 1
     }
@@ -35,12 +35,28 @@ describe('interpret()', function() {
 
   describe('when passed nested AST', () => {
     it('recursively resolves functions', () => {
-      // 'add<1 add<2 3>>'
-      intNode1 = IntegerNode.new(1)
-      intNode2 = IntegerNode.new(2)
-      intNode3 = IntegerNode.new(3)
-      innerFuncNode = FunctionNode.new('add', [intNode2, intNode3])
-      outerFuncNode = FunctionNode.new('add', [intNode1, innerFuncNode])
+      intNode1 = {
+        type: 'integer',
+        value: 1
+      }
+      intNode2 = {
+        type: 'integer',
+        value: 2
+      }
+      intNode3 = {
+        type: 'integer',
+        value: 3
+      }
+      innerFuncNode = {
+        name: 'add',
+        type: 'function',
+        args: [intNode2, intNode3]
+      }
+      outerFuncNode = {
+        name: 'add',
+        type: 'function',
+        args: [intNode1, innerFuncNode]
+      }
 
       tree = [outerFuncNode]
 
