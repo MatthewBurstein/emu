@@ -16,7 +16,7 @@ describe('interpret()', function() {
       value: 3
     }
   })
-
+  
   it('instantiates a dictionary object', () => {
     let testFunctionSpy = jasmine.createSpy('testFunction').and.returnValue('success')
     let funcNode = { name: 'testFunction' }
@@ -27,16 +27,22 @@ describe('interpret()', function() {
     interpret(tree)
     expect(FunctionDictionary.new).toHaveBeenCalledWith()
   })
-
+  
   it('understands a tree with one expression', () => {
     let funcNode = {
       name: 'add',
       type: 'function',
       args: [intNode1, intNode2]
     }
+    
+    let fakeDictionary = {
+      add: function() { return 'added'}
+    }
+
+    spyOn(FunctionDictionary, 'new').and.returnValue(fakeDictionary)
 
     tree = [funcNode]
-    expect(interpret(tree)).toEqual([3])
+    expect(interpret(tree)).toEqual(['added'])
   })
 
   describe('when passed nested AST', () => {
