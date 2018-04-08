@@ -48,13 +48,14 @@ describe('FunctionDictionary', () => {
   describe('mathematical functions', () => {
     beforeEach(() => {
       testNodeWithOneArg = {
-        args: [{value: 3}]
+        args: [3]
       }
       testNodeWithTwoArgs = {
-        args: [{value: 4}, {value: 3}]
+        args: [4, 3]
       }
       testNodeWithTwoSameArgs = {
-        args: [{value: 4}, {value: 4}] }
+        args: [4, 4]
+      }
     })
 
     describe('.add<>', () => {
