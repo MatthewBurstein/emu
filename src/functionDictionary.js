@@ -32,27 +32,21 @@
   }
 
   FunctionDictionary.prototype.assignVariable = function(node) {
-    const idx = tokenDictionary.findIndex(tokenLex => {
+    const existingTokenLex = tokenDictionary.find(tokenLex => {
       return tokenLex.variableName === node.args[0]
     })
-    if (idx !== -1) {
-      tokenDictionary.splice(idx, 1)
-      tokenDictionary.push({
-        regEx: new RegExp(`^${node.args[0]}`),
-        type: 'variable',
-        value: node.args[1],
-        variableType: typeof node.args[1],
-        variableName: node.args[0]
-      })
+    if (existingTokenLex) {
+      existingTokenLex.value = node.args[1]
+      existingTokenLex.variableType = typeof node.args[1]
     } else {
-      const tokenLex = {
+      const newTokenLex = {
         regEx: new RegExp(`^${node.args[0]}`),
         type: 'variable',
         value: node.args[1],
         variableType: typeof node.args[1],
         variableName: node.args[0]
       }
-    tokenDictionary.push(tokenLex)
+    tokenDictionary.push(newTokenLex)
     }
   }
 
