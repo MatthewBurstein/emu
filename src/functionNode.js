@@ -1,5 +1,5 @@
 ;((exports) => {
-  const FunctionNode = function (name, args) {
+  const FunctionNode = function (name, args = []) {
     this.name = name;
     this.args = args;
     this.type = 'function';
