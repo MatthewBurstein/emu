@@ -1,44 +1,41 @@
 ;((exports) => {
-  const Dictionary = function () {
+  const FunctionDictionary = function () {
   }
 
-  Dictionary.new = function () {
+  FunctionDictionary.new = function () {
     return new this();
   }
 
-  Dictionary.prototype.say = function(node) {
-    let argValues = this.getArgValues(node)
-    return argValues.join(' ')
+  FunctionDictionary.prototype.say = function(node) {
+    return node.args.join(' ')
   }
 
-  Dictionary.prototype.add = function(node) {
-    if(node.args.length === 0 ) { return 0 }
+  FunctionDictionary.prototype.add = function(node) {
+    if (node.args.length === 0 ) { return 0 }
     return node.args.reduce((sum, value) => sum + value)
   }
 
-  Dictionary.prototype.subtract = function(node) {
-    if(node.args.length === 0 ) { return 0 }
-    return this.getArgValues(node).reduce(function(left, right) { return left - right})
+  FunctionDictionary.prototype.subtract = function(node) {
+    if (node.args.length === 0 ) { return 0 }
+    return node.args.reduce(function(accumulator, elem) { return accumulator - elem })
   }
 
-  Dictionary.prototype.multiply = function(node) {
-    if(node.args.length === 0 ) { return 0 }
-    return this.getArgValues(node).reduce(function(left, right) { return left * right})
+  FunctionDictionary.prototype.multiply = function(node) {
+    if (node.args.length === 0 ) { return 0 }
+    return node.args.reduce(function(accumulator, elem) { return accumulator * elem })
   }
 
-  Dictionary.prototype.modulo = function(node) {
-    if(node.args.length === 0 ) { return 0 }
-    if(node.args.length === 1 ) { return this.getArgValues(node)[0] }
-    var left = this.getArgValues(node)[0]
-    var right = this.getArgValues(node)[1]
-    return left % right
+  FunctionDictionary.prototype.modulo = function(node) {
+    if (node.args.length === 0 ) { return 0 }
+    if (node.args.length === 1 ) { return node.args[0] }
+    return node.args[0] % node.args[1]
   }
 
-  Dictionary.prototype.getArgValues = function(node) {
+  FunctionDictionary.prototype.getArgValues = function(node) {
     return node.args.map(argNode => argNode.value)
   }
 
-  Dictionary.prototype.assignVariable = function(node) {
+  FunctionDictionary.prototype.assignVariable = function(node) {
     let tokenLex = {
       regEx: new RegExp(`^${node.args[0].value}`),
       type: 'variable',
@@ -48,55 +45,35 @@
     tokenDictionary.push(tokenLex)
   }
 
-  Dictionary.prototype.isGreaterThan = function(node) {
-    var firstArg = this.getArgValues(node)[0]
-    var secondArg = this.getArgValues(node)[1]
-    if (firstArg === undefined) {
+  FunctionDictionary.prototype.isGreaterThan = function(node) {
+    if (node.args.length === 0) {
       return 'there is nothing to compare'
     }
-    if (secondArg === undefined) {
+    if (node.args.length === 1) {
       return 'pass two arguments'
     }
-    if (firstArg === secondArg) {
-      return 'no'
-    }
-    if (firstArg > secondArg) {
-      return 'yes'
-    }
-    if (secondArg > firstArg) {
-      return 'no'
-    }
+    return node.args[0] > node.args[1] ? 'yes' : 'no'
   }
 
-  Dictionary.prototype.isEqual = function(node) {
-    var firstArg = this.getArgValues(node)[0]
-    var secondArg = this.getArgValues(node)[1]
-    if (firstArg === undefined) {
+  FunctionDictionary.prototype.isEqual = function(node) {
+    if (node.args.length === 0) {
       return 'there is nothing to compare'
     }
-    if (secondArg === undefined) {
+    if (node.args.length === 1) {
       return 'pass two arguments'
     }
-    if (firstArg === secondArg) {
-      return 'yes'
-    }
-    if (firstArg !== secondArg) {
-      return 'no'
-    }
+    return node.args[0] === node.args[1] ? 'yes' : 'no'
   }
 
-  Dictionary.prototype.isLessThan = function(node) {
-    var firstArg = this.getArgValues(node)[0]
-    var secondArg = this.getArgValues(node)[1]
-    if (firstArg === undefined) {
+  FunctionDictionary.prototype.isLessThan = function(node) {
+    if (node.args.length === 0) {
       return 'there is nothing to compare'
     }
-    if (secondArg === undefined) {
+    if (node.args.length === 1) {
       return 'pass two arguments'
     }
-    return firstArg < secondArg ? 'yes' : 'no'
-
+    return node.args[0] < node.args[1] ? 'yes' : 'no'
   }
 
-  exports.Dictionary = Dictionary
+  exports.FunctionDictionary = FunctionDictionary
 })(this)

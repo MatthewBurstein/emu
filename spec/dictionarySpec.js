@@ -1,14 +1,14 @@
-describe('Dictionary', () => {
-  let dictionary, testNodeWithNoArgs, testNodeWithOneArg, testNodeWithTwoArgs;
+describe('FunctionDictionary', () => {
+  let functionDictionary, testNodeWithNoArgs, testNodeWithOneArg, testNodeWithTwoArgs;
 
   beforeEach(() => {
-    dictionary = new Dictionary()
+    functionDictionary = new FunctionDictionary()
     testNodeWithNoArgs = { args: [] }
   })
 
   describe('.new<>', () => {
-    it('creates a new Dictionary object', () => {
-    expect(Dictionary.new()).toEqual(jasmine.any(Dictionary))
+    it('creates a new FunctionDictionary object', () => {
+    expect(FunctionDictionary.new()).toEqual(jasmine.any(FunctionDictionary))
     })
   })
 
@@ -25,151 +25,132 @@ describe('Dictionary', () => {
         value: 3,
         variableType: 'integer'
       }
-      dictionary.assignVariable(testNodeWithTwoArgs)
+      functionDictionary.assignVariable(testNodeWithTwoArgs)
       expect(tokenDictionary).toContain(newTokenLex)
     })
   })
 
   describe('.say<>', () => {
     it('when passed no arguments returns an empty string', () => {
-      expect(dictionary.say(testNodeWithNoArgs)).toEqual('')
+      expect(functionDictionary.say(testNodeWithNoArgs)).toEqual('')
     })
+
     it("when passed arguments returns the concatenation of the arguments values", () => {
-      testNodeWithTwoArgs = { args: [
-        {value: "arg1"},
-        {value: "arg2"}
-      ]}
-      expect(dictionary.say(testNodeWithTwoArgs)).toEqual('arg1 arg2')
+      testNodeWithTwoArgs = { args: ["hello", "world"] }
+      expect(functionDictionary.say(testNodeWithTwoArgs)).toEqual("hello world")
     })
   })
 
   describe('mathematical functions', () => {
     beforeEach(() => {
-      testNodeWithOneArg = { args: [{ value: 3 }] }
-      testNodeWithTwoArgs = { args: [
-        4,
-        3
-      ]}
-      testNodeWithTwoArgReversed = { args: [
-        { value: 3 },
-        { value: 4 }
-      ]}
-      testNodeWithTwoSameArgs = { args: [
-        { value: 4 },
-        { value: 4 }
-      ]}
+      testNodeWithOneArg = { args: [3] }
+      testNodeWithTwoArgs = { args: [4, 3] }
+      testNodeWithTwoArgReversed = { args: [3, 4] }
+      testNodeWithTwoSameArgs = { args: [4, 4] }
     })
 
     describe('.add<>', () => {
       it('when passed no arguments, returns 0', () => {
-        expect(dictionary.add(testNodeWithNoArgs)).toEqual(0)
+        expect(functionDictionary.add(testNodeWithNoArgs)).toEqual(0)
       })
 
       it('when passed arguments, returns the sum of the arguments', () => {
-        expect(dictionary.add(testNodeWithTwoArgs)).toEqual(7)
+        expect(functionDictionary.add(testNodeWithTwoArgs)).toEqual(7)
       })
     })
 
     describe('.subtract<>', () => {
       it('when passed no arguments, returns 0', () => {
-        expect(dictionary.subtract(testNodeWithNoArgs)).toEqual(0)
+        expect(functionDictionary.subtract(testNodeWithNoArgs)).toEqual(0)
       })
 
       it('when passed arguments, subtracts the second argument from the first', () => {
-        expect(dictionary.subtract(testNodeWithTwoArgs)).toEqual(1)
+        expect(functionDictionary.subtract(testNodeWithTwoArgs)).toEqual(1)
       })
     })
 
     describe('.multiply<>', () => {
       it('when passed no arguments, returns 0', () => {
-        expect(dictionary.multiply(testNodeWithNoArgs)).toEqual(0)
+        expect(functionDictionary.multiply(testNodeWithNoArgs)).toEqual(0)
       })
 
       it("when passed one argument, returns the agument's value", () => {
-        expect(dictionary.multiply(testNodeWithOneArg)).toEqual(3)
+        expect(functionDictionary.multiply(testNodeWithOneArg)).toEqual(3)
       })
 
       it('when passed two arguments, returns their product', () => {
-        expect(dictionary.multiply(testNodeWithTwoArgs)).toEqual(12)
+        expect(functionDictionary.multiply(testNodeWithTwoArgs)).toEqual(12)
       })
     })
 
     describe('.modulo<>', () => {
       it('returns 0 when passed no arguments', () => {
-        expect(dictionary.modulo(testNodeWithNoArgs)).toEqual(0)
+        expect(functionDictionary.modulo(testNodeWithNoArgs)).toEqual(0)
       })
 
       it('when passed one argument, returns the value of the argument', () => {
-        expect(dictionary.modulo(testNodeWithOneArg)).toEqual(3)
+        expect(functionDictionary.modulo(testNodeWithOneArg)).toEqual(3)
       })
 
       it('when passed two arguments, returns the arg1 modulo arg2', () => {
-        expect(dictionary.modulo(testNodeWithTwoArgs)).toEqual(1)
+        expect(functionDictionary.modulo(testNodeWithTwoArgs)).toEqual(1)
       })
     })
 
     describe('.isGreaterThan<>', () => {
       it('returns yes if first arg is greater than second arg', () => {
-        expect(dictionary.isGreaterThan(testNodeWithTwoArgs)).toEqual('yes')
+        expect(functionDictionary.isGreaterThan(testNodeWithTwoArgs)).toEqual('yes')
       })
 
       it('returns no if first arg is greater than second arg', () => {
-        expect(dictionary.isGreaterThan(testNodeWithTwoArgReversed)).toEqual('no')
+        expect(functionDictionary.isGreaterThan(testNodeWithTwoArgReversed)).toEqual('no')
       })
 
       it('returns there is nothing to compare if no args passed', () => {
-        expect(dictionary.isGreaterThan(testNodeWithNoArgs)).toEqual('there is nothing to compare')
+        expect(functionDictionary.isGreaterThan(testNodeWithNoArgs)).toEqual('there is nothing to compare')
       })
 
       it('returns pass two arguments if no second arg passed', () => {
-        expect(dictionary.isGreaterThan(testNodeWithOneArg)).toEqual('pass two arguments')
+        expect(functionDictionary.isGreaterThan(testNodeWithOneArg)).toEqual('pass two arguments')
       })
 
       it ('returns no when they are equal', () => {
-        expect(dictionary.isGreaterThan(testNodeWithTwoSameArgs)).toEqual('no')
+        expect(functionDictionary.isGreaterThan(testNodeWithTwoSameArgs)).toEqual('no')
       })
     })
 
     describe('.isEqual<>', () => {
       it('returns yes if the arguments are equal', () => {
-        expect(dictionary.isEqual(testNodeWithTwoSameArgs)).toEqual('yes')
+        expect(functionDictionary.isEqual(testNodeWithTwoSameArgs)).toEqual('yes')
       })
       it('returns no if the arguments are not equal', () => {
-        expect(dictionary.isEqual(testNodeWithTwoArgs)).toEqual('no')
+        expect(functionDictionary.isEqual(testNodeWithTwoArgs)).toEqual('no')
       })
       it('returns there is nothing to compare if no args passed', () => {
-        expect(dictionary.isEqual(testNodeWithNoArgs)).toEqual('there is nothing to compare')
+        expect(functionDictionary.isEqual(testNodeWithNoArgs)).toEqual('there is nothing to compare')
       })
       it ('returns pass two arguments if no second arg passed', () => {
-        expect(dictionary.isEqual(testNodeWithOneArg)).toEqual('pass two arguments')
+        expect(functionDictionary.isEqual(testNodeWithOneArg)).toEqual('pass two arguments')
       })
     })
 
     describe('.isLessThan<>', () => {
-
-     var testNodeWithTwoArgs1 = { args: [
-       { value: 3 },
-       { value: 4 }
-     ]}
-     var testNodeWithTwoArgs2 = { args: [
-       { value: 4 },
-       { value: 3 }
-     ]}
-
      it('returns yes if the first argument is less than the second', () => {
-       expect(dictionary.isLessThan(testNodeWithTwoArgs1)).toEqual('yes')
+       testNodeWithTwoArgs = { args: [3, 4] }
+       expect(functionDictionary.isLessThan(testNodeWithTwoArgs)).toEqual('yes')
      })
 
      it('returns no if the first argument is greater or equal to the second', () => {
-       expect(dictionary.isLessThan(testNodeWithTwoArgs2)).toEqual('no')
+       testNodeWithTwoArgs = { args: [4, 3] }
+       expect(functionDictionary.isLessThan(testNodeWithTwoArgs)).toEqual('no')
      })
 
      it('returns there is nothing to compare if no args passed', () => {
-       expect(dictionary.isLessThan(testNodeWithNoArgs)).toEqual('there is nothing to compare')
+       expect(functionDictionary.isLessThan(testNodeWithNoArgs)).toEqual('there is nothing to compare')
      })
 
      it('returns pass two arguments if no second arg passed', () => {
-       expect(dictionary.isLessThan(testNodeWithOneArg)).toEqual('pass two arguments')
+       expect(functionDictionary.isLessThan(testNodeWithOneArg)).toEqual('pass two arguments')
      })
    })
   })
