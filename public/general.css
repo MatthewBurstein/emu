@@ -71,8 +71,13 @@ input:-webkit-autofill {
 .tree {
   padding: 1em;
   height: 15em;
+  overflow-y: scroll;
   border-style: solid;
   border-width: 0.1em;
+}
+
+.nodes {
+  overflow-y: scroll;
 }
 
 .argument {
