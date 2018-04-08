@@ -157,5 +157,29 @@ describe('FunctionDictionary', () => {
        expect(functionDictionary.isLessThan(testNodeWithOneArg)).toEqual('pass two arguments')
      })
    })
+
+// if<isGreaterThan<1 2> add<1 2> add<3 2>>
+
+    describe('.if<>', () => {
+      it('evaluates second method if first method evaluates to yes', () => {
+        let firstFuncNode = {
+          name: 'isGreaterThan',
+          args: [3, 2]
+        }
+        let secondFuncNode = {
+          name: 'add',
+          args: [1, 2]
+        }
+        let thirdFuncNode = {
+          name: 'add',
+          args: [10, 20]
+        }
+        let outerFuncNode = {
+          name: 'if',
+          args: [firstFuncNode, secondFuncNode, thirdFuncNode]
+        }
+        expect(functionDictionary.if(outerFuncNode)).toEqual(3)
+      })
+    })
   })
 })
