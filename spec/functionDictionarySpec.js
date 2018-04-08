@@ -17,20 +17,65 @@ describe('FunctionDictionary', () => {
   })
 
   describe('.assignVariable<>', () => {
-    it('generates a tokenLex using the passed argments and stores it in the tokenDictionary', () => {
-      testNodeWithTwoArgs = { args: [
-        { value: 'newVariable' },
-        { value: 3,
-          type: 'integer' }
-      ]}
-      let newTokenLex = {
-        regEx: /^newVariable/,
-        type: 'variable',
-        value: 3,
-        variableType: 'integer'
-      }
-      functionDictionary.assignVariable(testNodeWithTwoArgs)
-      expect(tokenDictionary).toContain(newTokenLex)
+    let newtokenLex, reassignedTokenLex;
+    beforeAll(() => {
+      // testNodeWithTwoArgs = { args: [
+      //   'newVariable',
+      //   3
+      // ]}
+      // newTokenLex = {
+      //   regEx: /^newVariable/,
+      //   type: 'variable',
+      //   value: 3,
+      //   variableType: 'number',
+      //   variableName: 'newVariable'
+      // }
+      // functionDictionary.assignVariable(testNodeWithTwoArgs)
+    })
+
+    describe('when variable has not been previously assigned', () => {
+      it('generates a tokenLex using the passed argments and stores it in the tokenDictionary', () => {
+        testNodeWithTwoArgs = { args: [
+          'newVariable',
+          3
+        ]}
+        newTokenLex = {
+          regEx: /^newVariable/,
+          type: 'variable',
+          value: 3,
+          variableType: 'number',
+          variableName: 'newVariable'
+        }
+        functionDictionary.assignVariable(testNodeWithTwoArgs)
+        expect(tokenDictionary).toContain(newTokenLex)
+      })
+    })
+
+    describe('when variable has been assigned before', () => {
+      it('replaces the tokenLex with the new value', () => {
+        let tokenLexForReplacement = {
+          regEx: /^forReplacement/,
+          type: 'variable',
+          value: 4,
+          variableType: 'number',
+          variableName: 'forReplacement'
+        };
+        tokenDictionary.push(tokenLexForReplacement)
+        reassignedTokenLex = {
+          regEx: /^forReplacement/,
+          type: 'variable',
+          value: 'updated variable value',
+          variableType: 'string',
+          variableName: 'forReplacement'
+        };
+        testNodeWithTwoArgs = { args: [
+          'forReplacement',
+          'updated variable value'
+        ]}
+        functionDictionary.assignVariable(testNodeWithTwoArgs);
+        expect(tokenDictionary).toContain(reassignedTokenLex);
+        expect(tokenDictionary).not.toContain(tokenLexForReplacement);
+      })
     })
   })
 

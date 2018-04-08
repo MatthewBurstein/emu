@@ -32,13 +32,28 @@
   }
 
   FunctionDictionary.prototype.assignVariable = function(node) {
-    let tokenLex = {
-      regEx: new RegExp(`^${node.args[0].value}`),
-      type: 'variable',
-      value: node.args[1].value,
-      variableType: node.args[1].type
-    }
+    const idx = tokenDictionary.findIndex(tokenLex => {
+      return tokenLex.variableName === node.args[0]
+    })
+    if (idx !== -1) {
+      tokenDictionary.splice(idx, 1)
+      tokenDictionary.push({
+        regEx: new RegExp(`^${node.args[0]}`),
+        type: 'variable',
+        value: node.args[1],
+        variableType: typeof node.args[1],
+        variableName: node.args[0]
+      })
+    } else {
+      const tokenLex = {
+        regEx: new RegExp(`^${node.args[0]}`),
+        type: 'variable',
+        value: node.args[1],
+        variableType: typeof node.args[1],
+        variableName: node.args[0]
+      }
     tokenDictionary.push(tokenLex)
+    }
   }
 
   FunctionDictionary.prototype.isGreaterThan = function(node) {
