@@ -7,8 +7,7 @@
   }
 
   Dictionary.prototype.say = function(node) {
-    let argValues = this.getArgValues(node)
-    return argValues.join(' ')
+    return node.args.join(' ')
   }
 
   Dictionary.prototype.add = function(node) {
@@ -18,19 +17,19 @@
 
   Dictionary.prototype.subtract = function(node) {
     if(node.args.length === 0 ) { return 0 }
-    return this.getArgValues(node).reduce(function(left, right) { return left - right})
+    return node.args.reduce(function(left, right) { return left - right})
   }
 
   Dictionary.prototype.multiply = function(node) {
     if(node.args.length === 0 ) { return 0 }
-    return this.getArgValues(node).reduce(function(left, right) { return left * right})
+    return node.args.reduce(function(left, right) { return left * right})
   }
 
   Dictionary.prototype.modulo = function(node) {
     if(node.args.length === 0 ) { return 0 }
-    if(node.args.length === 1 ) { return this.getArgValues(node)[0] }
-    var left = this.getArgValues(node)[0]
-    var right = this.getArgValues(node)[1]
+    if(node.args.length === 1 ) { return node.args[0] }
+    var left = node.args[0]
+    var right = node.args[1]
     return left % right
   }
 
@@ -49,8 +48,8 @@
   }
 
   Dictionary.prototype.isGreaterThan = function(node) {
-    var firstArg = this.getArgValues(node)[0]
-    var secondArg = this.getArgValues(node)[1]
+    var firstArg = node.args[0]
+    var secondArg = node.args[1]
     if (firstArg === undefined) {
       return 'there is nothing to compare'
     }
@@ -69,8 +68,8 @@
   }
 
   Dictionary.prototype.isEqual = function(node) {
-    var firstArg = this.getArgValues(node)[0]
-    var secondArg = this.getArgValues(node)[1]
+    var firstArg = node.args[0]
+    var secondArg = node.args[1]
     if (firstArg === undefined) {
       return 'there is nothing to compare'
     }
@@ -86,8 +85,8 @@
   }
 
   Dictionary.prototype.isLessThan = function(node) {
-    var firstArg = this.getArgValues(node)[0]
-    var secondArg = this.getArgValues(node)[1]
+    var firstArg = node.args[0]
+    var secondArg = node.args[1]
     if (firstArg === undefined) {
       return 'there is nothing to compare'
     }

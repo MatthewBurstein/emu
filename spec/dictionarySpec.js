@@ -34,30 +34,19 @@ describe('Dictionary', () => {
     it('when passed no arguments returns an empty string', () => {
       expect(dictionary.say(testNodeWithNoArgs)).toEqual('')
     })
+
     it("when passed arguments returns the concatenation of the arguments values", () => {
-      testNodeWithTwoArgs = { args: [
-        {value: "arg1"},
-        {value: "arg2"}
-      ]}
-      expect(dictionary.say(testNodeWithTwoArgs)).toEqual('arg1 arg2')
+      testNodeWithTwoArgs = { args: ["hello", "world"] }
+      expect(dictionary.say(testNodeWithTwoArgs)).toEqual("hello world")
     })
   })
 
   describe('mathematical functions', () => {
     beforeEach(() => {
-      testNodeWithOneArg = { args: [{ value: 3 }] }
-      testNodeWithTwoArgs = { args: [
-        4,
-        3
-      ]}
-      testNodeWithTwoArgReversed = { args: [
-        { value: 3 },
-        { value: 4 }
-      ]}
-      testNodeWithTwoSameArgs = { args: [
-        { value: 4 },
-        { value: 4 }
-      ]}
+      testNodeWithOneArg = { args: [3] }
+      testNodeWithTwoArgs = { args: [4, 3] }
+      testNodeWithTwoArgReversed = { args: [3, 4] }
+      testNodeWithTwoSameArgs = { args: [4, 4] }
     })
 
     describe('.add<>', () => {
@@ -147,21 +136,14 @@ describe('Dictionary', () => {
 
     describe('.isLessThan<>', () => {
 
-     var testNodeWithTwoArgs1 = { args: [
-       { value: 3 },
-       { value: 4 }
-     ]}
-     var testNodeWithTwoArgs2 = { args: [
-       { value: 4 },
-       { value: 3 }
-     ]}
-
      it('returns yes if the first argument is less than the second', () => {
-       expect(dictionary.isLessThan(testNodeWithTwoArgs1)).toEqual('yes')
+       testNodeWithTwoArgs = { args: [3, 4] }
+       expect(dictionary.isLessThan(testNodeWithTwoArgs)).toEqual('yes')
      })
 
      it('returns no if the first argument is greater or equal to the second', () => {
-       expect(dictionary.isLessThan(testNodeWithTwoArgs2)).toEqual('no')
+       testNodeWithTwoArgs = { args: [4, 3] }
+       expect(dictionary.isLessThan(testNodeWithTwoArgs)).toEqual('no')
      })
 
      it('returns there is nothing to compare if no args passed', () => {
