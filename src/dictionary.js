@@ -13,7 +13,7 @@
 
   Dictionary.prototype.add = function(node) {
     if(node.args.length === 0 ) { return 0 }
-    return this.getArgValues(node).reduce((sum, value) => sum + value)
+    return node.args.reduce((sum, value) => sum + value)
   }
 
   Dictionary.prototype.subtract = function(node) {

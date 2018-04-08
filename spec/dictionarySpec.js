@@ -47,8 +47,8 @@ describe('Dictionary', () => {
     beforeEach(() => {
       testNodeWithOneArg = { args: [{ value: 3 }] }
       testNodeWithTwoArgs = { args: [
-        { value: 4 },
-        { value: 3 }
+        4,
+        3
       ]}
       testNodeWithTwoArgReversed = { args: [
         { value: 3 },
