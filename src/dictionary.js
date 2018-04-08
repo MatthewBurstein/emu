@@ -31,10 +31,6 @@
     return node.args[0] % node.args[1]
   }
 
-  FunctionDictionary.prototype.getArgValues = function(node) {
-    return node.args.map(argNode => argNode.value)
-  }
-
   FunctionDictionary.prototype.assignVariable = function(node) {
     let tokenLex = {
       regEx: new RegExp(`^${node.args[0].value}`),
