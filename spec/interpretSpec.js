@@ -20,12 +20,12 @@ describe('interpret()', function() {
   it('instantiates a dictionary object', () => {
     let testFunctionSpy = jasmine.createSpy('testFunction').and.returnValue('success')
     let funcNode = { name: 'testFunction' }
-    spyOn(Dictionary, 'new').and.returnValue({
+    spyOn(FunctionDictionary, 'new').and.returnValue({
       testFunction: testFunctionSpy
     })
     let tree = [funcNode]
     interpret(tree)
-    expect(Dictionary.new).toHaveBeenCalledWith()
+    expect(FunctionDictionary.new).toHaveBeenCalledWith()
   })
 
   it('understands a tree with one expression', () => {
