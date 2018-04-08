@@ -11,7 +11,7 @@ describe('Parse', () => {
     tree = ['functionNode'];
 
     expect(parse(tokens)).toEqual(tree);
-    expect(FunctionNode.new).toHaveBeenCalledWith('say', []);
+    expect(FunctionNode.new).toHaveBeenCalledWith('say');
   });
 
   it('understands a function with one argument', () => {
@@ -26,7 +26,7 @@ describe('Parse', () => {
     tree = [{ args: ['stringNode'] }];
 
     expect(parse(tokens)).toEqual(tree);
-    expect(FunctionNode.new).toHaveBeenCalledWith('say', []);
+    expect(FunctionNode.new).toHaveBeenCalledWith('say');
     expect(StringNode.new).toHaveBeenCalledWith('hello world');
   });
 
@@ -44,7 +44,7 @@ describe('Parse', () => {
     tree = [{ args: ['hello world', 'bye world'] }];
 
     expect(parse(tokens)).toEqual(tree);
-    expect(FunctionNode.new).toHaveBeenCalledWith('say', []);
+    expect(FunctionNode.new).toHaveBeenCalledWith('say');
     expect(StringNode.new).toHaveBeenCalledWith('hello world');
     expect(StringNode.new).toHaveBeenCalledWith('bye world');
   });
