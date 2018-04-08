@@ -164,15 +164,24 @@ describe('FunctionDictionary', () => {
       it('evaluates second method if first method evaluates to yes', () => {
         let firstFuncNode = {
           name: 'isGreaterThan',
-          args: [3, 2]
+          args: [
+            {value: 3},
+            {value: 2}
+          ]
         }
         let secondFuncNode = {
           name: 'add',
-          args: [1, 2]
+          args: [
+            {value: 1},
+            {value: 2}
+          ]
         }
         let thirdFuncNode = {
           name: 'add',
-          args: [10, 20]
+          args: [
+            {value: 10},
+            {value: 20}
+          ]
         }
         let outerFuncNode = {
           name: 'if',

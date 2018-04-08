@@ -42,6 +42,7 @@
   }
 
   FunctionDictionary.prototype.isGreaterThan = function(node) {
+    console.log('hello')
     if (node.args.length === 0) {
       return 'there is nothing to compare'
     }
@@ -69,6 +70,16 @@
       return 'pass two arguments'
     }
     return node.args[0] < node.args[1] ? 'yes' : 'no'
+  }
+
+  FunctionDictionary.prototype.if = function(node) {
+    let v = interpret([node.args[0]]) 
+    console.log(node.args[0])
+    if ( v === 'yes') {
+      return interpret([node.args[1]])
+    } else {
+      return interpret([node.args[2]])
+    }
   }
 
   exports.FunctionDictionary = FunctionDictionary
