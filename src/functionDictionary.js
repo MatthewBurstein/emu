@@ -73,12 +73,10 @@
   }
 
   FunctionDictionary.prototype.if = function(node) {
-    let v = interpret([node.args[0]]) 
-    console.log(node.args[0])
-    if ( v === 'yes') {
-      return interpret([node.args[1]])
+    if ( node.args[0] === 'yes') {
+      return node.args[1]
     } else {
-      return interpret([node.args[2]])
+      return node.args[2]
     }
   }
 
