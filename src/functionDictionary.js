@@ -42,7 +42,6 @@
   }
 
   FunctionDictionary.prototype.isGreaterThan = function(node) {
-    console.log('hello')
     if (node.args.length === 0) {
       return 'there is nothing to compare'
     }
