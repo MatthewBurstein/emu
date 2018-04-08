@@ -1,5 +1,9 @@
 describe('FunctionDictionary', () => {
-  let functionDictionary, testNodeWithNoArgs, testNodeWithOneArg, testNodeWithTwoArgs;
+  let functionDictionary,
+    testNodeWithNoArgs,
+    testNodeWithOneArg,
+    testNodeWithTwoArgs,
+    testNodeWithTwoSameArgs;
 
   beforeEach(() => {
     functionDictionary = new FunctionDictionary()
@@ -45,7 +49,6 @@ describe('FunctionDictionary', () => {
     beforeEach(() => {
       testNodeWithOneArg = { args: [3] }
       testNodeWithTwoArgs = { args: [4, 3] }
-      testNodeWithTwoArgReversed = { args: [3, 4] }
       testNodeWithTwoSameArgs = { args: [4, 4] }
     })
 
@@ -103,7 +106,8 @@ describe('FunctionDictionary', () => {
       })
 
       it('returns no if first arg is greater than second arg', () => {
-        expect(functionDictionary.isGreaterThan(testNodeWithTwoArgReversed)).toEqual('no')
+        testNodeWithTwoArgs = { args: [3, 4] }
+        expect(functionDictionary.isGreaterThan(testNodeWithTwoArgs)).toEqual('no')
       })
 
       it('returns there is nothing to compare if no args passed', () => {
