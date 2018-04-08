@@ -3,5 +3,17 @@
 
     "plugins": ["jasmine"],
 
-    "env": { "jasmine": true }
+    "env": { "jasmine": true },
+
+    "rules": {
+      "comma-dangle": ["error", "never"],
+      "no-loop-func": 0,
+      "no-use-before-define": ["error", {
+        "functions": false,
+        "classes": false
+      }],
+      "no-param-reassign": 0,
+      "one-var": 0,
+      "one-var-declaration-per-line": 0
+    }
 }
