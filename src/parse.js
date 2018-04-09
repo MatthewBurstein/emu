@@ -8,7 +8,6 @@
         tree.push(functionNode);
       }
       if (thisToken.type === 'loop') {
-        console.log('hey')
         const functionNode = FunctionNode.new(thisToken.value);
         parse(tokens, functionNode.args);
         tree.push(functionNode);
@@ -28,6 +27,3 @@
 
   exports.parse = parse;
 })(this);
-
-// [ FunctionNode({ name: 'condition', args: [ FunctionNode({ name: 'operation', args: [  ], type: 'function' }) ], type: 'function' }) ]
-// [ FunctionNode({ name: 'condition', args: [  ], type: 'function' }), FunctionNode({ name: 'operation', args: [  ], type: 'function' }) ].
