@@ -1,5 +1,16 @@
 .drawer {
+  top: 0;
   width: 20%;
   height: 100%;
+  position: fixed;
   background-color: green;
+}
+
+.drawer.open {
+  width: 3%;
+}
+
+.show_hide_button {
+  margin-top: 2em;
+  float: right;
 }

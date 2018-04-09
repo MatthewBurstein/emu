@@ -12,6 +12,10 @@ $( document ).ready(function() {
     $('.output').append('<div class="result"> => '  + interpreted + '</div>');
   })
 
+  $('.show_hide_button').click( event => {
+    $( ".drawer" ).toggleClass('open');
+  })
+
   showTokens = function(tokens) {
     tokens.forEach( token => {
       tokenString = "type: " + token.type + ", value: " + token.value + ";"
