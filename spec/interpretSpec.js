@@ -69,4 +69,31 @@ describe('interpret()', function() {
       expect(FunctionDictionary.new).toHaveBeenCalledTimes(3);
     })
   })
+
+  describe('it interprets a while loop', () => {
+    xit('calls interpretLoop method', () => {
+      let spyLoop = {
+        type: 'loop',
+        args: []
+      }
+      // const spyInterpretLoop = jasmine.createSpy('interpretLoop').and.returnValue('success')
+      // let funcNode1 = {
+      //   type: 'function'
+      // }
+      // let funcNode2= {
+      //
+      // }
+      // let whileNode = {
+      //   type: 'loop',
+      //   name: 'while',
+      //   args: []
+      // }
+      tree = [spyLoop]
+      spyOn(spyLoop, '')
+      interpret(tree)
+      expect(spyLoop).toHaveBeenCalledWith(spyLoop.args)
+    })
+
+  })
+
 })
