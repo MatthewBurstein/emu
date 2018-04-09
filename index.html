@@ -26,9 +26,49 @@
     <div class="welcome"> Emu Transpiler</div>
 
     <div class="drawer">
-      <button class="show_hide_button">
-        <i class="fab fa-earlybirds fa-2x"></i>
-      </button>
+      <div class="menu_content">
+        <div class="methods">
+          <h1> Available methods: </h1>
+          <h2> Maths: </h2>
+          <p1> <code>add</code> </p1> <br>
+          <p2> Returns a sum of given arguments </p2> <br>
+          <p3> eg. add<1 2> </p3>
+          <br><p1> <code>subtract</code> </p1> <br>
+          <p2> Returns result of substraction </p2> <br>
+          <p3> eg. subtract<1 2> </p3>
+          <br><p1> <code>multiply</code> </p1> <br>
+          <p2> Returns result of multiplication </p2> <br>
+          <p3> eg. multiply<1 2> </p3>
+          <br><p1> <code>modulo</code> </p1> <br>
+          <p2> Returns result of modulo </p2> <br>
+          <p3> eg. modulo<1 2> </p3>
+          <h2> Comparisons: </h2>
+          <p1> <code>isGreaterThan</code> </p1><br>
+          <p2> Tells if the first passed argument is greater than the second </p2> <br>
+          <p3> eg. isGreaterThan<1 2> </p3>
+          <br><p1> <code>isLessThan</code> </p1> <br>
+          <p2> Tells if the first passed argument is smaller than the second </p2> <br>
+          <p3> eg. isLessThan<1 2> </p3>
+          <br><p1> <code>isEqual</code> </p1> <br>
+          <p2> Tells if two arguements passed are equal </p2> <br>
+          <p3> eg. isEqual<1 2> </p3>
+          <h2> Other: </h2>
+          <p1> <code>say</code> </p1> <br>
+          <p2> Returns a given argument</p2> <br>
+          <p3> eg. say<"hello world"></p3>
+          <br><p1> <code>assignVariable</code> </p1> <br>
+          <p2> Assigns a variable. This variable can be later used in other methods </p2> <br>
+          <p3> eg. assignVariable<"x" 1> </p3>
+          <br><p1> <code>if</code> </p1> <br>
+          <p2> If the first argument evaluates to true it runs the second argument, otherwise it runs the third.</p2> <br>
+          <p3> eg. if<isEqual<1 1> say<"they are equal"> say<"they are not equal">> </p3>
+        </div>
+      </div>
+      <div class="button_div">
+        <button class="show_hide_button">
+          <i class="fab fa-earlybirds fa-2x"></i>
+        </button>
+      </div>
     </div>
 
     <div class="grid">
