@@ -118,3 +118,15 @@ input:-webkit-autofill {
 .string {
   color: #0000ffb0;
 }
+
+.about {
+  bottom: 1em;
+  position: fixed;
+  width: 100%;
+  text-align: center;
+}
+
+.about a:link, a:active, a:visited {
+  text-decoration: none;
+  color: black;
+}
