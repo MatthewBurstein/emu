@@ -27,7 +27,7 @@ describe('Parse', () => {
 
     expect(parse(tokens)).toEqual(tree);
     expect(FunctionNode.new).toHaveBeenCalledWith('say');
-    expect(StringNode.new).toHaveBeenCalledWith('hello world');
+    expect(StringNode.new).toHaveBeenCalledWith('hello world', undefined);
   });
 
   it('understands a function with two arguments', () => {
@@ -45,8 +45,8 @@ describe('Parse', () => {
 
     expect(parse(tokens)).toEqual(tree);
     expect(FunctionNode.new).toHaveBeenCalledWith('say');
-    expect(StringNode.new).toHaveBeenCalledWith('hello world');
-    expect(StringNode.new).toHaveBeenCalledWith('bye world');
+    expect(StringNode.new).toHaveBeenCalledWith('hello world', undefined);
+    expect(StringNode.new).toHaveBeenCalledWith('bye world', undefined);
   });
 
   it('understands a nested function with one argument', () => {

@@ -8,13 +8,12 @@
         tree.push(functionNode);
       }
       if (thisToken.type === 'loop') {
-        console.log('hey')
         const functionNode = FunctionNode.new(thisToken.value);
         parse(tokens, functionNode.args);
         tree.push(functionNode);
       }
       if (thisToken.type === 'string') {
-        tree.push(StringNode.new(thisToken.value));
+        tree.push(StringNode.new(thisToken.value, thisToken.variableName));
       }
       if (thisToken.type === 'number') {
         tree.push(IntegerNode.new(thisToken.value));
