@@ -80,5 +80,13 @@
     return node.args[0] < node.args[1] ? 'yes' : 'no'
   }
 
+  FunctionDictionary.prototype.if = function(node) {
+    if ( node.args[0] === 'yes') {
+      return node.args[1]
+    } else {
+      return node.args[2]
+    }
+  }
+
   exports.FunctionDictionary = FunctionDictionary
 })(this)
