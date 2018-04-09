@@ -32,7 +32,6 @@
   }
 
   FunctionDictionary.prototype.assignVariable = function(node) {
-    console.log('node.args', node.args)
     const existingTokenLex = tokenDictionary.find(tokenLex => {
       return tokenLex.variableName === node.args[0]
     })

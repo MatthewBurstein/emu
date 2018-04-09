@@ -7,6 +7,8 @@
         return functionDictionary[node.name](node);
       } else if (node.type === 'loop') {
         interpretLoop(node.args)
+      } else if (node.variableName) {
+        return node.variableName;
       } else {
         return node.value;
       }
@@ -15,7 +17,7 @@
   };
 
   const interpretLoop = function(nodeArguments) {
-    console.log('interpret loop node arguments', nodeArguments)
+    
   }
 
   exports.interpretLoop = interpretLoop;

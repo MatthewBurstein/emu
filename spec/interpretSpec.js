@@ -125,7 +125,6 @@ describe('interpretLoop', () => {
   })
     // tree = [outerFuncNode]
   it('epects true to eb true', () => {
-    console.log('variableDictionary in here', variableDictionary)
     expect(true).toEqual(true)
   })
 })
