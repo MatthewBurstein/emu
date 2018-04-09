@@ -16,7 +16,7 @@
       if (thisToken.type === 'string') {
         tree.push(StringNode.new(thisToken.value));
       }
-      if (thisToken.type === 'integer') {
+      if (thisToken.type === 'number') {
         tree.push(IntegerNode.new(thisToken.value));
       }
       if (thisToken.type === 'close paren') {
@@ -28,6 +28,3 @@
 
   exports.parse = parse;
 })(this);
-
-// [ FunctionNode({ name: 'condition', args: [ FunctionNode({ name: 'operation', args: [  ], type: 'function' }) ], type: 'function' }) ]
-// [ FunctionNode({ name: 'condition', args: [  ], type: 'function' }), FunctionNode({ name: 'operation', args: [  ], type: 'function' }) ].

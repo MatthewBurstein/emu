@@ -7,7 +7,7 @@
     { regEx: /^modulo/, type: 'function', value: 'modulo' },
     { regEx: /^</, type: 'open paren', value: '<' },
     { regEx: /^"([^"]*)"/, type: 'string' },
-    { regEx: /^[0-9]+/, type: 'integer' },
+    { regEx: /^[0-9]+/, type: 'number' },
     { regEx: /^>/, type: 'close paren', value: '>' },
     { regEx: /^assignVariable/, type: 'function', value: 'assignVariable' },
     { regEx: /^isGreaterThan/, type: 'function', value: 'isGreaterThan' },
@@ -40,7 +40,7 @@
         break;
       case 'close paren':
         break;
-      case 'integer':
+      case 'number':
         tokenValue = parseInt(tokenValue, 10);
         break;
       case 'variable':

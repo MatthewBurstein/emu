@@ -1,7 +1,7 @@
 ;((exports) => {
   const interpret = function (tree) {
     functionDictionary = FunctionDictionary.new();
-    tree = tree.map((node, idx) => {
+    let output = tree.map((node, idx) => {
       if (node.type === 'function') {
         node.args = interpret(node.args);
         return functionDictionary[node.name](node);
@@ -11,11 +11,11 @@
         return node.value;
       }
     });
-    return tree;
+    return output;
   };
 
   const interpretLoop = function(nodeArguments) {
-    console.log('hi')
+    console.log('interpret loop node arguments', nodeArguments)
   }
 
   exports.interpretLoop = interpretLoop;

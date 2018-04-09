@@ -1,6 +1,6 @@
 ;((exports) => {
   const IntegerNode = function (value) {
-    this.type = 'integer';
+    this.type = 'number';
     this.value = value;
   };
 
