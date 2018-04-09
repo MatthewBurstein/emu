@@ -32,6 +32,7 @@
   }
 
   FunctionDictionary.prototype.assignVariable = function(node) {
+    console.log('node.args', node.args)
     const existingTokenLex = tokenDictionary.find(tokenLex => {
       return tokenLex.variableName === node.args[0]
     })
@@ -47,6 +48,14 @@
         variableName: node.args[0]
       }
     tokenDictionary.push(newTokenLex)
+    }
+    const existingDictionaryVariable = variableDictionary.find(variable => {
+      return variable.name = node.args[0]
+    })
+    if (existingDictionaryVariable) {
+      existingDictionaryVariable.value = node.args[1]
+    } else {
+      variableDictionary.push({ name: node.args[0], value: node.args[1] })
     }
   }
 
@@ -90,3 +99,5 @@
 
   exports.FunctionDictionary = FunctionDictionary
 })(this)
+
+const variableDictionary = [];

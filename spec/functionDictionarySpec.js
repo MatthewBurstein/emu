@@ -35,6 +35,17 @@ describe('FunctionDictionary', () => {
         functionDictionary.assignVariable(testNodeWithTwoArgs)
         expect(tokenDictionary).toContain(newTokenLex)
       })
+
+      it('generates a new variable in the variableDictionary', () => {
+        testNodeWithTwoArgs = { args: [
+          'newDictionaryVariable',
+          3
+        ]}
+        let newDictionaryVariable = { name: 'newDictionaryVariable', value: 3 }
+        functionDictionary.assignVariable(testNodeWithTwoArgs)
+        expect(tokenDictionary).toContain(newTokenLex)
+        expect(variableDictionary).toContain(newDictionaryVariable)
+      })
     })
 
     describe('when variable has been assigned before', () => {
@@ -58,11 +69,27 @@ describe('FunctionDictionary', () => {
           'forReplacement',
           'updated variable value'
         ]}
-        tokenDictionary.push(previouslyCreatedTokenLex)
+        tokenDictionary.push(previouslyCreatedTokenLex);
         functionDictionary.assignVariable(testNodeWithTwoArgs);
 
         expect(tokenDictionary).toContain(reassignedTokenLex);
         expect(tokenDictionary).not.toContain(tokenLexBeforeReplacement);
+
+      })
+
+      it('replaces the dictionaryVariable with the new value', () => {
+        testNodeWithTwoArgs = { args: [
+          'forReplacementInDictionary',
+          'newVariableValue'
+        ]}
+        oldDictionaryVariable = { name: 'forReplacementInDictionary', value: 'oldVariableValue' }
+        newDictionaryVariable = { name: 'forReplacementInDictionary', value: 'newVariableValue'}
+        dictionaryVariableBeforeReplacement = Object.create(oldDictionaryVariable)
+        variableDictionary.push(oldDictionaryVariable)
+        functionDictionary.assignVariable(testNodeWithTwoArgs);
+
+        expect(variableDictionary).toContain(newDictionaryVariable);
+        expect(variableDictionary).not.toContain(dictionaryVariableBeforeReplacement);
       })
     })
   })

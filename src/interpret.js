@@ -21,3 +21,29 @@
   exports.interpretLoop = interpretLoop;
   exports.interpret = interpret;
 })(this);
+
+
+updateVariableInNode = function(parentNode, variableName, variableValue) {
+  if (parentNode.variableName === variableName) {
+    parentNode.value = variableValue
+  }
+  if(parentNode.args) {
+    parentNode.args.forEach( arg => {
+      updateVariableInNode(arg, variableName, variableValue)
+    })
+  }
+}
+
+searchNodeForVariable = function(node) {
+  if (node.variableName) {
+    return node
+  }
+  if(node.args) {
+    node.args.SOMEITERATOR( node => {
+      searchNodeForVariable(node)
+    })
+  }
+}
+
+// let currentVariableNode = searchNodeForVariable(node)
+// updateVariableInNode(node, currentVariableNode.variableName, currentVariableNode.value)
