@@ -20,7 +20,9 @@
   function tokenize(workingString) {
     const tokenArray = [];
     while (workingString.length > 0) {
-      const thisTokenLex = tokenDictionary.find(tokenLex => matchRegEx(workingString, tokenLex));
+      const thisTokenLex = tokenDictionary.find(tokenLex => {
+        return matchRegEx(workingString, tokenLex)
+      });
       tokenArray.push(processToken(workingString, thisTokenLex));
       workingString = removeProcessedToken(workingString, thisTokenLex);
     }

@@ -6,6 +6,7 @@ describe('interpret()', function() {
     intNode1 = { }
     intNode2 = { }
     intNode3 = { }
+    intNode4 = { }
 
     let fakeDictionary = {
       add: function() { return 'added'}
@@ -96,4 +97,35 @@ describe('interpret()', function() {
 
   })
 
+})
+
+describe('interpretLoop', () => {
+  beforeEach(() => {
+    emu('assignVariable<"x" 1>')
+    // 'while<isLessThan<x 1> add<3 4>>'
+    intNode1 = 1
+    intNode2 = 2
+    intNode3 = 3
+    intNode4 = 4
+    let innerFuncNode1 = {
+      name: 'add',
+      type: 'function',
+      args: [intNode1, intNode2]
+    }
+    let innerFuncNode2 = {
+      name: 'add',
+      type: 'function',
+      args: [intNode3, intNode4]
+    }
+    let outerFuncNode = {
+        name: 'while',
+        type: 'loop',
+        args: [innerFuncNode1, innerFuncNode2]
+      }
+  })
+    // tree = [outerFuncNode]
+  it('epects true to eb true', () => {
+    console.log('variableDictionary in here', variableDictionary)
+    expect(true).toEqual(true)
+  })
 })
