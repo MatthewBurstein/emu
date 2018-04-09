@@ -69,4 +69,26 @@ describe('Parse', () => {
 
     expect(parse(tokens)).toEqual(tree);
   });
+
+  it('understands a while node', () => {
+    tokens = [
+      { type: 'loop', value: 'while' },
+      { type: 'open paren', value: '<' },
+      { type: 'function', value: 'condition' },
+      { type: 'open paren', value: '<' },
+      { type: 'close paren', value: '>' },
+      { type: 'function', value: 'operation' },
+      { type: 'open paren', value: '<' },
+      { type: 'close paren', value: '>' },
+      { type: 'close paren', value: '>' }
+    ];
+    const funcNode1 = FunctionNode.new('condition')
+    const funcNode2 = FunctionNode.new('operation')
+    const funcNode3 = FunctionNode.new('while', [funcNode1, funcNode2])
+
+    tree = [funcNode3]
+
+    expect(parse(tokens)).toEqual(tree);
+
+  })
 });
