@@ -16,6 +16,13 @@ $( document ).ready(function() {
     $( ".drawer" ).toggleClass('open');
   })
 
+  $(".about").hover(function(){
+      $('.emu').removeClass('hidden');
+  },function(){
+      $('.emu').addClass('hidden');
+  });
+
+
   showTokens = function(tokens) {
     tokens.forEach( token => {
       tokenString = "type: " + token.type + ", value: " + token.value + ";"

@@ -126,6 +126,23 @@ input:-webkit-autofill {
   text-align: center;
 }
 
+.emu {
+  background-image: url('emu.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  bottom: 0;
+  height: 20em;
+  width: 20em;
+  float: right;
+  right: 0;
+  transition: 0.2s ease-in;
+}
+
+.emu.hidden {
+  bottom: -20em;
+}
+
 .about a:link, a:active, a:visited {
   text-decoration: none;
   color: black;
