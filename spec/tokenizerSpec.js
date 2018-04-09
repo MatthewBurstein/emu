@@ -93,4 +93,17 @@ describe('tokenize', () => {
 
     expect(tokenize(testString)).toEqual(tokenizedString);
   });
+
+  it('recognises while', () => {
+    testString = 'while<2 1>';
+    tokenizedString = [
+      { type: 'loop', value: 'while' },
+      { type: 'open paren', value: '<' },
+      { type: 'integer', value: 2 },
+      { type: 'integer', value: 1 },
+      { type: 'close paren', value: '>' }
+    ];
+
+    expect(tokenize(testString)).toEqual(tokenizedString);
+  });
 });

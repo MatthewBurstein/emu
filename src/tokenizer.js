@@ -13,7 +13,8 @@
     { regEx: /^isGreaterThan/, type: 'function', value: 'isGreaterThan' },
     { regEx: /^isLessThan/, type: 'function', value: 'isLessThan' },
     { regEx: /^isEqual/, type: 'function', value: 'isEqual' },
-    { regEx: /^if/, type: 'function', value: 'if' }
+    { regEx: /^if/, type: 'function', value: 'if' },
+    { regEx: /^while/, type: 'loop', value: 'while' }
   ];
 
   function tokenize(workingString) {
@@ -45,6 +46,8 @@
       case 'variable':
         tokenValue = tokenLex.value;
         tokenType = tokenLex.variableType;
+        break;
+      case 'loop':
         break;
       default:
         throw new Error('Do not know that token');
