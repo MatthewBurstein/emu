@@ -32,8 +32,10 @@ describe('FunctionDictionary', () => {
           variableType: 'number',
           variableName: 'newVariable'
         }
+        let newDictionaryVariable = { name: 'newVariable', value: 3 }
         functionDictionary.assignVariable(testNodeWithTwoArgs)
         expect(tokenDictionary).toContain(newTokenLex)
+        expect(variableDictionary).toContain(newDictionaryVariable)
       })
     })
 

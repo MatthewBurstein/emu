@@ -44,3 +44,6 @@ searchNodeForVariable = function(node) {
     })
   }
 }
+
+// let currentVariableNode = searchNodeForVariable(node)
+// updateVariableInNode(node, currentVariableNode.variableName, currentVariableNode.value)
