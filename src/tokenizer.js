@@ -46,21 +46,26 @@
       case 'variable':
         tokenValue = tokenLex.value;
         tokenType = tokenLex.variableType;
+        // tokenVariableName = tokenLex.variableName;
         break;
       case 'loop':
         break;
       default:
         throw new Error('Do not know that token');
     }
-    return buildToken(tokenType, tokenValue);
+    return buildToken(tokenType, tokenValue, tokenLex.variableName);
   }
 
   function matchRegEx(string, tokenLex) {
     return string.match(tokenLex.regEx) ? string.match(tokenLex.regEx)[0] : null;
   }
 
-  function buildToken(type, value) {
-    return { type, value };
+  function buildToken(type, value, variableName) {
+    if(variableName) {
+      return { type, value, variableName }
+    } else {
+      return { type, value };
+    }
   }
 
   function removeProcessedToken(workingString, tokenLex) {
