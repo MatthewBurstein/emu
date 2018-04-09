@@ -12,12 +12,12 @@ describe('tokenize', () => {
     expect(tokenize(testString)).toEqual(tokenizedString);
   });
 
-  it('recognises integer token', () => {
+  it('recognises number token', () => {
     testString = 'say<1>';
     tokenizedString = [
       { type: 'function', value: 'say' },
       { type: 'open paren', value: '<' },
-      { type: 'integer', value: 1 },
+      { type: 'number', value: 1 },
       { type: 'close paren', value: '>' }
     ];
     expect(tokenize(testString)).toEqual(tokenizedString);
@@ -29,7 +29,7 @@ describe('tokenize', () => {
       { type: 'function', value: 'assignVariable' },
       { type: 'open paren', value: '<' },
       { type: 'string', value: 'variablebeingassigned' },
-      { type: 'integer', value: 1 },
+      { type: 'number', value: 1 },
       { type: 'close paren', value: '>' }
     ];
 
@@ -38,7 +38,7 @@ describe('tokenize', () => {
 
   it('recognises user defined variable', () => {
     const variableTokenLex = {
-      regEx: /^createdvariable/, type: 'variable', value: 1, variableType: 'integer'
+      regEx: /^createdvariable/, type: 'variable', value: 1, variableType: 'number'
     };
 
     tokenDictionary.push(variableTokenLex);
@@ -47,8 +47,8 @@ describe('tokenize', () => {
     tokenizedString = [
       { type: 'function', value: 'add' },
       { type: 'open paren', value: '<' },
-      { type: 'integer', value: 2 },
-      { type: 'integer', value: 1 },
+      { type: 'number', value: 2 },
+      { type: 'number', value: 1 },
       { type: 'close paren', value: '>' }
     ];
 
@@ -60,8 +60,8 @@ describe('tokenize', () => {
     tokenizedString = [
       { type: 'function', value: 'isGreaterThan' },
       { type: 'open paren', value: '<' },
-      { type: 'integer', value: 1 },
-      { type: 'integer', value: 2 },
+      { type: 'number', value: 1 },
+      { type: 'number', value: 2 },
       { type: 'close paren', value: '>' }
     ];
 
@@ -73,8 +73,8 @@ describe('tokenize', () => {
     tokenizedString = [
       { type: 'function', value: 'isLessThan' },
       { type: 'open paren', value: '<' },
-      { type: 'integer', value: 1 },
-      { type: 'integer', value: 2 },
+      { type: 'number', value: 1 },
+      { type: 'number', value: 2 },
       { type: 'close paren', value: '>' }
     ];
 
@@ -86,8 +86,8 @@ describe('tokenize', () => {
     tokenizedString = [
       { type: 'function', value: 'isEqual' },
       { type: 'open paren', value: '<' },
-      { type: 'integer', value: 2 },
-      { type: 'integer', value: 2 },
+      { type: 'number', value: 2 },
+      { type: 'number', value: 2 },
       { type: 'close paren', value: '>' }
     ];
 
@@ -99,8 +99,8 @@ describe('tokenize', () => {
     tokenizedString = [
       { type: 'loop', value: 'while' },
       { type: 'open paren', value: '<' },
-      { type: 'integer', value: 2 },
-      { type: 'integer', value: 1 },
+      { type: 'number', value: 2 },
+      { type: 'number', value: 1 },
       { type: 'close paren', value: '>' }
     ];
 

@@ -16,7 +16,7 @@
       if (thisToken.type === 'string') {
         tree.push(StringNode.new(thisToken.value));
       }
-      if (thisToken.type === 'integer') {
+      if (thisToken.type === 'number') {
         tree.push(IntegerNode.new(thisToken.value));
       }
       if (thisToken.type === 'close paren') {
