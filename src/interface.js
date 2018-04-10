@@ -9,7 +9,15 @@ $( document ).ready(function() {
     let parsed = parse(tokens)
     showTree(parsed)
     let interpreted = interpret(parsed)
-    $('.output').append('<div class="result"> => '  + interpreted + '</div>');
+    if (interpreted[0] !== undefined) {
+      if (typeof interpreted[0] === 'string') {
+        $('.output').append('<div class="result"> => '  + interpreted + '</div>');
+      } else {
+        interpreted[0].forEach(singleOutput => {
+          $('.output').append('<div class="result"> => '  + singleOutput + '</div>');
+        })
+      }
+    }
   })
 
   $('.show_hide_button').click( event => {
