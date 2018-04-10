@@ -18,6 +18,7 @@ $( document ).ready(function() {
         })
       }
     }
+    showVariables(value)
   })
 
   $('.show_hide_button').click( event => {
@@ -29,6 +30,21 @@ $( document ).ready(function() {
   },function(){
       $('.emu').addClass('hidden');
   });
+
+  showVariables = function(value) {
+    let substring = value.substring(0, 14)
+    if (substring === 'assignVariable') {
+      let variables = []
+      variableDictionary.forEach(variable => {
+        variables.push(variable)
+      })
+      variables.forEach(variable => {
+        $('.variable').empty();
+        $('.var_info').text('');
+        $('.variable').append('<div class="variable">'  + variable.variableName + '</div>');
+      })
+    }
+  }
 
   showTokens = function(tokens) {
     tokens.forEach( token => {
