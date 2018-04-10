@@ -115,6 +115,6 @@ describe('interpretLoop', () => {
   let whileNode = FunctionNode.new('while', 'loop', [isLessThanNode, sayNode, assignVariableNode])
 
   it('evaluates a simple while node', () => {
-    expect(interpretLoop(whileNode)).toEqual([1, 2])
+    expect(interpretLoop(whileNode)).toEqual(['1', '2'])
   })
 })
