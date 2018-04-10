@@ -20,8 +20,8 @@ $( document ).ready(function() {
     let parsed = parse(tokens)
     showTree(parsed)
     let interpreted = interpret(parsed)
-    showVariables(value)
     showOutput(interpreted)
+    showVariables(value)
   })
 
   cleanOutputWindow = function(value) {
@@ -33,15 +33,9 @@ $( document ).ready(function() {
   showVariables = function(value) {
     let substring = value.substring(0, 14)
     if (substring === 'assignVariable') {
-      let variables = []
-      variableDictionary.forEach(variable => {
-        variables.push(variable)
-      })
-      $('.variable').empty();
-      variables.forEach(variable => {
-        $('.var_info').text('');
-        $('.variable').append('<div class="variable">'  + variable.variableName + '</div>');
-      })
+      let last = variableDictionary.slice(-1)[0]
+      $('.var_info').text('');
+      $('.variable').append('<div class="variable_one"> variable: '  + last.variableName + ", value: " + last.value + '</div>');
     }
   }
 
