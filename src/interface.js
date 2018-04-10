@@ -24,7 +24,11 @@ $( document ).ready(function() {
 
   showTokens = function(tokens) {
     tokens.forEach( token => {
-      tokenString = "type: " + token.type + ", value: " + token.value + ";"
+      if (token.type === 'variable') {
+        tokenString = "type: " + token.type + ", variable name: " + token.variableName + ";"
+      } else {
+        tokenString = "type: " + token.type + ", value: " + token.value + ";"
+      }
       $('.tokens_list').append('<div class="' + token.type + '">' + tokenString + '</div>')
     })
   }
@@ -37,7 +41,11 @@ $( document ).ready(function() {
       if (argument.type === 'function') {
         showTree([argument], margin)
       } else {
-        $('.nodes').append('<div class="' + argument.type + '" style="margin-left: ' + margin + 'em">' + argument.type  +  " : " + argument.value + '</div>')
+        if (argument.type === 'variable') {
+          $('.nodes').append('<div class="' + argument.type + '" style="margin-left: ' + margin + 'em">' + argument.type  +  " : " + argument.variableName + '</div>')
+        } else {
+          $('.nodes').append('<div class="' + argument.type + '" style="margin-left: ' + margin + 'em">' + argument.type  +  " : " + argument.value + '</div>')
+        }
       }
     })
   }
