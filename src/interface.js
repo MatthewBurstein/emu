@@ -22,7 +22,6 @@ $( document ).ready(function() {
       $('.emu').addClass('hidden');
   });
 
-
   showTokens = function(tokens) {
     tokens.forEach( token => {
       tokenString = "type: " + token.type + ", value: " + token.value + ";"

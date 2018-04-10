@@ -54,7 +54,7 @@
           <br><p1> <code>isEqual</code> </p1> <br>
           <p2> Tells if two arguements passed are equal </p2> <br>
           <p3> eg. isEqual<1 2> </p3>
-          <h2> Other: </h2>
+          <h2> Advanced functionalities: </h2>
           <p1> <code>say</code> </p1> <br>
           <p2> Returns a given argument</p2> <br>
           <p3> eg. say<"hello world"></p3>
@@ -64,6 +64,10 @@
           <br><p1> <code>if</code> </p1> <br>
           <p2> If the first argument evaluates to true, it runs the second argument, otherwise it runs the third.</p2> <br>
           <p3> eg. if&lt;isLessThan<2 1> say<"they are equal"> say<"they are not equal">> </p3>
+          <br><p1> <code>while</code> </p1> <br>
+          <p2> It takes two expressions: the condition and the operation. The operation can consist of several operations. As long as the condition is met, while will run the operation. In order to run while properly you need to assign a variable first.</p2> <br>
+          <p3> eg. assignVariable<"x" 1> </p3><br>
+          <p3> while&lt;isLessThan&lt;x 5> say&lt;x> assignVariable&lt;x add&lt;x 1>>> </p3>
         </div>
       </div>
       <div class="button_div">
@@ -77,7 +81,7 @@
 
       <div class="output onegrid">
         <form class="write_code">
-          > <input type="text" name="code" placeholder="write your code here" class="write_code_form">
+          > <input type="textarea" placeholder="write your code here" class="write_code_form">
         </form>
       </div>
 
@@ -86,8 +90,8 @@
         <div class="tokens_list"> </div>
       </div>
 
-      <div class="image">
-        <div class="divimage"><img src="./public/emu2.png" class="image_emu"></div>
+      <div class="image onegrid">
+        <div><img src="./public/emu2.png" class="image_emu"></div>
       </div>
 
       <div class="tree onegrid">
