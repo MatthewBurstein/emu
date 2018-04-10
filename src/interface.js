@@ -1,26 +1,5 @@
 $( document ).ready(function() {
 
-  $('.write_code').submit(function(e) {
-    e.preventDefault();
-    emptyFields()
-    let value = $( ".write_code_form" ).val();
-    let tokens = tokenize(value)
-    showTokens(tokens)
-    let parsed = parse(tokens)
-    showTree(parsed)
-    let interpreted = interpret(parsed)
-    if (interpreted[0] !== undefined) {
-      if (typeof interpreted[0] === 'string') {
-        $('.output').append('<div class="result"> => '  + interpreted + '</div>');
-      } else {
-        interpreted[0].forEach(singleOutput => {
-          $('.output').append('<div class="result"> => '  + singleOutput + '</div>');
-        })
-      }
-    }
-    showVariables(value)
-  })
-
   $('.show_hide_button').click( event => {
     $( ".drawer" ).toggleClass('open');
   })
@@ -30,6 +9,31 @@ $( document ).ready(function() {
   },function(){
       $('.emu').addClass('hidden');
   });
+
+  $('.write_code').submit(function(e) {
+    e.preventDefault();
+    emptyFields()
+    let value = $( ".write_code_form" ).val();
+    showVariables(value)
+    let tokens = tokenize(value)
+    showTokens(tokens)
+    let parsed = parse(tokens)
+    showTree(parsed)
+    let interpreted = interpret(parsed)
+    showOutput(interpreted)
+  })
+
+  showOutput = function(interpreted) {
+    if (interpreted[0] !== undefined) {
+      if (typeof interpreted[0] === 'string') {
+        $('.output').append('<div class="result"> => '  + interpreted + '</div>');
+      } else {
+        interpreted[0].forEach(singleOutput => {
+          $('.output').append('<div class="result"> => '  + singleOutput + '</div>');
+        })
+      }
+    }
+  }
 
   showVariables = function(value) {
     let substring = value.substring(0, 14)
