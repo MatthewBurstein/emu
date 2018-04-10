@@ -100,31 +100,21 @@ describe('interpret()', function() {
 })
 
 describe('interpretLoop', () => {
-  beforeEach(() => {
-    emu('assignVariable<"x" 1>')
-    // 'while<isLessThan<x 1> add<3 4>>'
-    intNode1 = 1
-    intNode2 = 2
-    intNode3 = 3
-    intNode4 = 4
-    let innerFuncNode1 = {
-      name: 'add',
-      type: 'function',
-      args: [intNode1, intNode2]
-    }
-    let innerFuncNode2 = {
-      name: 'add',
-      type: 'function',
-      args: [intNode3, intNode4]
-    }
-    let outerFuncNode = {
-        name: 'while',
-        type: 'loop',
-        args: [innerFuncNode1, innerFuncNode2]
-      }
-  })
-    // tree = [outerFuncNode]
-  it('epects true to eb true', () => {
-    expect(true).toEqual(true)
+  emu('assignVariable<"x" 1>')
+  // 'while<isLessThan<x 3> assignVariable<x add<x 1>>>'
+  // array of 2 3
+  let variableNode = VariableNode.new('x')
+  let threeNode = IntegerNode.new(15)
+  let isLessThanNode = FunctionNode.new('isLessThan', 'function', [variableNode, threeNode])
+
+  let oneNode = IntegerNode.new(1)
+  let addNode = FunctionNode.new('add', 'function', [variableNode, oneNode])
+
+  let assignVariableNode = FunctionNode.new('assignVariable', 'function', [variableNode, addNode])
+
+  let whileNode = FunctionNode.new('while', 'loop', [isLessThanNode, assignVariableNode])
+
+  it('evaluates a simple while node', () => {
+    expect(interpretLoop(whileNode)).toEqual([2, 3])
   })
 })
