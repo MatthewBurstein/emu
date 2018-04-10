@@ -15,7 +15,6 @@
       } else if (typeof node === 'number') {
         return node;
       } else {
-        console.log(node);
         return node.value;
       }
     });
