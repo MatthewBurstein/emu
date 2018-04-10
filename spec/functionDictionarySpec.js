@@ -29,7 +29,6 @@ describe('FunctionDictionary', () => {
           regEx: /^newVariable/,
           type: 'variable',
           value: 3,
-          variableType: 'number',
           variableName: 'newVariable'
         }
         functionDictionary.assignVariable(testNodeWithTwoArgs)
@@ -53,7 +52,6 @@ describe('FunctionDictionary', () => {
           regEx: /^forReplacement/,
           type: 'variable',
           value: 4,
-          variableType: 'number',
           variableName: 'forReplacement'
         };
         tokenLexBeforeReplacement = Object.create(previouslyCreatedTokenLex)
@@ -61,7 +59,6 @@ describe('FunctionDictionary', () => {
           regEx: /^forReplacement/,
           type: 'variable',
           value: 'updated variable value',
-          variableType: 'string',
           variableName: 'forReplacement'
         };
         testNodeWithTwoArgs = { args: [
