@@ -37,9 +37,8 @@ $( document ).ready(function() {
       variableDictionary.forEach(variable => {
         variables.push(variable)
       })
-      console.log(variables)
+      $('.variable').empty();
       variables.forEach(variable => {
-        $('.variable').empty();
         $('.var_info').text('');
         $('.variable').append('<div class="variable">'  + variable.variableName + '</div>');
       })
