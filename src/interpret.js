@@ -31,8 +31,7 @@
     while (interpret([condition])[0] === 'yes') {
       node.args.forEach((arg) => {
         const interpretedArgs = interpret([arg])[0]
-        if (interpretedArgs) {
-          output.push(interpretedArgs)
+        output.push(interpretedArgs)
       })
     }
     return output;
@@ -41,27 +40,3 @@
   exports.interpretLoop = interpretLoop;
   exports.interpret = interpret;
 })(this);
-
-
-
-// updateVariableInNode = function(parentNode, variableName, variableValue) {
-//   if (parentNode.variableName === variableName) {
-//     parentNode.value = variableValue
-//   }
-//   if(parentNode.args) {
-//     parentNode.args.forEach( arg => {
-//       updateVariableInNode(arg, variableName, variableValue)
-//     })
-//   }
-// }
-//
-// searchNodeForVariable = function(node) {
-//   if (node.variableName) {
-//     return node
-//   }
-//   if(node.args) {
-//     node.args.SOMEITERATOR( node => {
-//       searchNodeForVariable(node)
-//     })
-//   }
-// }
