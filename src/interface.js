@@ -14,6 +14,7 @@ $( document ).ready(function() {
     e.preventDefault();
     emptyFields()
     let value = $( ".write_code_form" ).val();
+    cleanOutputWindow(value)
     let tokens = tokenize(value)
     showTokens(tokens)
     let parsed = parse(tokens)
@@ -22,6 +23,12 @@ $( document ).ready(function() {
     showVariables(value)
     showOutput(interpreted)
   })
+
+  cleanOutputWindow = function(value) {
+    if (value === 'clean') {
+      $('.output_lines').empty();
+    }
+  }
 
   showVariables = function(value) {
     let substring = value.substring(0, 14)
@@ -69,11 +76,11 @@ $( document ).ready(function() {
 
   showOutput = function(interpreted) {
     if (interpreted[0] !== undefined) {
-      if (typeof interpreted[0] === 'string') {
-        $('.output').append('<div class="result"> => '  + interpreted + '</div>');
+      if (typeof interpreted[0] === 'string' || typeof interpreted[0] === 'number') {
+        $('.output_lines').append('<div class="result"> => '  + interpreted + '</div>');
       } else {
         interpreted[0].forEach(singleOutput => {
-          $('.output').append('<div class="result"> => '  + singleOutput + '</div>');
+          $('.output_lines').append('<div class="result"> => '  + singleOutput + '</div>');
         })
       }
     }
