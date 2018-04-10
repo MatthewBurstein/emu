@@ -60,7 +60,6 @@
     } else {
       variableDictionary.push({ variableName: arguments[0], value: arguments[1] })
     }
-    return arguments[1]
   }
 
   FunctionDictionary.prototype.isGreaterThan = function(node) {

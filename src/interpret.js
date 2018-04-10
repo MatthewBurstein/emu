@@ -15,6 +15,7 @@
       } else if (typeof node === 'number') {
         return node;
       } else {
+        console.log(node);
         return node.value;
       }
     });
@@ -28,7 +29,10 @@
 
     while (interpret([condition])[0] === 'yes') {
       node.args.forEach((arg) => {
-        output.push(interpret([arg])[0])
+        const interpretedArgs = interpret([arg])[0]        
+        if (interpretedArgs) {
+          output.push(interpretedArgs)
+        }
       })
     }
     return output;

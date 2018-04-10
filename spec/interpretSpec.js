@@ -102,9 +102,8 @@ describe('interpret()', function() {
 describe('interpretLoop', () => {
   emu('assignVariable<"x" 1>')
   // 'while<isLessThan<x 3> say<x> assignVariable<x add<x 1>>>'
-  // array of 2 3
   let variableNode = VariableNode.new('x')
-  let threeNode = IntegerNode.new(15)
+  let threeNode = IntegerNode.new(3)
   let isLessThanNode = FunctionNode.new('isLessThan', 'function', [variableNode, threeNode])
 
   let oneNode = IntegerNode.new(1)
@@ -116,6 +115,6 @@ describe('interpretLoop', () => {
   let whileNode = FunctionNode.new('while', 'loop', [isLessThanNode, sayNode, assignVariableNode])
 
   it('evaluates a simple while node', () => {
-    expect(interpretLoop(whileNode)).toEqual([2, 3])
+    expect(interpretLoop(whileNode)).toEqual([1, 2])
   })
 })
