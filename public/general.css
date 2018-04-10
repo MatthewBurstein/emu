@@ -119,6 +119,10 @@ input:-webkit-autofill {
   color: #0000ffb0;
 }
 
+.variable {
+  color: #ab7933;
+}
+
 .about {
   bottom: 1em;
   position: fixed;

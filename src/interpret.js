@@ -9,7 +9,7 @@
         }
         return functionDictionary[node.name](tempFunctionNode);
       } else if (node.type === 'loop') {
-        interpretLoop(node)
+        return interpretLoop(node)
       } else if (node.variableName) {
         return node;
       } else if (typeof node === 'number') {
@@ -28,7 +28,7 @@
 
     while (interpret([condition])[0] === 'yes') {
       node.args.forEach((arg) => {
-        const interpretedArgs = interpret([arg])[0]        
+        const interpretedArgs = interpret([arg])[0]
         if (interpretedArgs) {
           output.push(interpretedArgs)
         }
