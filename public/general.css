@@ -53,10 +53,14 @@ body {
   border: none;
   color: white;
   font-family: Work Sans;
-  font-size: 1em;
+  font-size: 0.9em;
   width: 95%;
   resize: none;
-  height: 3em;
+  height: 2em;
+}
+
+.write_code_form:hover {
+  background-color: #4d4d4d;
 }
 
 input:-webkit-autofill {
