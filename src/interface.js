@@ -14,26 +14,14 @@ $( document ).ready(function() {
     e.preventDefault();
     emptyFields()
     let value = $( ".write_code_form" ).val();
-    showVariables(value)
     let tokens = tokenize(value)
     showTokens(tokens)
     let parsed = parse(tokens)
     showTree(parsed)
     let interpreted = interpret(parsed)
+    showVariables(value)
     showOutput(interpreted)
   })
-
-  showOutput = function(interpreted) {
-    if (interpreted[0] !== undefined) {
-      if (typeof interpreted[0] === 'string') {
-        $('.output').append('<div class="result"> => '  + interpreted + '</div>');
-      } else {
-        interpreted[0].forEach(singleOutput => {
-          $('.output').append('<div class="result"> => '  + singleOutput + '</div>');
-        })
-      }
-    }
-  }
 
   showVariables = function(value) {
     let substring = value.substring(0, 14)
@@ -42,6 +30,7 @@ $( document ).ready(function() {
       variableDictionary.forEach(variable => {
         variables.push(variable)
       })
+      console.log(variables)
       variables.forEach(variable => {
         $('.variable').empty();
         $('.var_info').text('');
@@ -76,6 +65,18 @@ $( document ).ready(function() {
         }
       }
     })
+  }
+
+  showOutput = function(interpreted) {
+    if (interpreted[0] !== undefined) {
+      if (typeof interpreted[0] === 'string') {
+        $('.output').append('<div class="result"> => '  + interpreted + '</div>');
+      } else {
+        interpreted[0].forEach(singleOutput => {
+          $('.output').append('<div class="result"> => '  + singleOutput + '</div>');
+        })
+      }
+    }
   }
 
   emptyFields = function() {
