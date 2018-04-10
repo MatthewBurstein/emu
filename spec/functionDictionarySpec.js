@@ -28,7 +28,6 @@ describe('FunctionDictionary', () => {
         newTokenLex = {
           regEx: /^newVariable/,
           type: 'variable',
-          value: 3,
           variableName: 'newVariable'
         }
         functionDictionary.assignVariable(testNodeWithTwoArgs)

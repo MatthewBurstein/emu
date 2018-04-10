@@ -47,7 +47,7 @@
       const newTokenLex = {
         regEx: new RegExp(`^${arguments[0]}`),
         type: 'variable',
-        value: arguments[1],
+        // value: arguments[1],
         variableName: arguments[0]
       }
     tokenDictionary.push(newTokenLex)
