@@ -29,9 +29,7 @@
     while (interpret([condition])[0] === 'yes') {
       node.args.forEach((arg) => {
         const interpretedArgs = interpret([arg])[0]
-        if (interpretedArgs) {
           output.push(interpretedArgs)
-        }
       })
     }
     return output;
