@@ -2,7 +2,7 @@ describe('FunctionNode', () => {
   let functionNode;
 
   beforeEach(() => {
-    functionNode = FunctionNode.new('functionName', ['arg1', 'arg2']);
+    functionNode = FunctionNode.new('functionName', 'function', ['arg1', 'arg2']);
   });
 
   describe('.new()', () => {

@@ -1,12 +1,12 @@
 ;((exports) => {
-  const FunctionNode = function (name, args = []) {
+  const FunctionNode = function (name, type, args = []) {
     this.name = name;
     this.args = args;
-    this.type = 'function';
+    this.type = type;
   };
 
-  FunctionNode.new = function (name, args) {
-    return new this(name, args);
+  FunctionNode.new = function (name, type, args) {
+    return new this(name, type, args);
   };
 
   exports.FunctionNode = FunctionNode;
