@@ -9,9 +9,5 @@
     return new this(name, args);
   };
 
-  // FunctionNode.prototype.interpretNode = function(callback, callbackArgument) {
-  //   return this.name + "(" + callback(callbackArgument) +")"
-  // }
-
   exports.FunctionNode = FunctionNode;
 })(this);

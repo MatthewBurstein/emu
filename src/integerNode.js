@@ -1,14 +1,11 @@
 ;((exports) => {
-  const IntegerNode = function (value, variableName) {
+  const IntegerNode = function (value) {
     this.type = 'number';
     this.value = value;
-    if (variableName) {
-      this.variableName = variableName;
-    }
   };
 
-  IntegerNode.new = function(value, variableName) {
-    return new this(value, variableName);
+  IntegerNode.new = function(value) {
+    return new this(value);
   };
 
   exports.IntegerNode = IntegerNode;

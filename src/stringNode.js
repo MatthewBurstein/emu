@@ -1,14 +1,11 @@
 ;((exports) => {
-  const StringNode = function (value, variableName) {
+  const StringNode = function (value) {
     this.type = 'string';
     this.value = value;
-    if (variableName) {
-      this.variableName = variableName;
-    }
   };
 
-  StringNode.new = function (value, variableName) {
-    return new this(value, variableName);
+  StringNode.new = function (value) {
+    return new this(value);
   };
 
   exports.StringNode = StringNode;

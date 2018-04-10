@@ -3,6 +3,7 @@
     functionDictionary = FunctionDictionary.new();
     let output = tree.map((node, idx) => {
       if (node.type === 'function') {
+        console.log(node)
         node.args = interpret(node.args);
         return functionDictionary[node.name](node);
       } else if (node.type === 'loop') {
