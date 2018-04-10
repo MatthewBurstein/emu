@@ -3,9 +3,11 @@
     functionDictionary = FunctionDictionary.new();
     let output = tree.map((node, idx) => {
       if (node.type === 'function') {
-        // node.args = interpret(node.args);       
-        output[idx].args = interpret(node.args);
-        return functionDictionary[node.name](node);
+        const interpretedArgs = interpret(node.args);
+        const tempFunctionNode = {
+          args: interpretedArgs
+        }
+        return functionDictionary[node.name](tempFunctionNode);
       } else if (node.type === 'loop') {
         interpretLoop(node)
       } else if (node.variableName) {
@@ -25,15 +27,9 @@
     let condition = node.args.shift()
 
     while (interpret([condition])[0] === 'yes') {
-      console.log(node.args);
-                 
       node.args.forEach((arg) => {
-        output.push(interpret([arg]))
+        output.push(interpret([arg])[0])
       })
-      i++
-      if (i === 100) {
-        break
-      }
     }
     return output;
   }
