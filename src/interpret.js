@@ -3,13 +3,12 @@
     functionDictionary = FunctionDictionary.new();
     let output = tree.map((node, idx) => {
       if (node.type === 'function') {
-        console.log(node)
         node.args = interpret(node.args);
         return functionDictionary[node.name](node);
       } else if (node.type === 'loop') {
         interpretLoop(node.args)
       } else if (node.variableName) {
-        return node.variableName;
+        return node;
       } else {
         return node.value;
       }
@@ -47,6 +46,3 @@ searchNodeForVariable = function(node) {
     })
   }
 }
-
-// let currentVariableNode = searchNodeForVariable(node)
-// updateVariableInNode(node, currentVariableNode.variableName, currentVariableNode.value)
