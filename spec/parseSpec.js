@@ -11,7 +11,7 @@ describe('Parse', () => {
     tree = ['functionNode'];
 
     expect(parse(tokens)).toEqual(tree);
-    expect(FunctionNode.new).toHaveBeenCalledWith('say');
+    expect(FunctionNode.new).toHaveBeenCalledWith('say', 'function');
   });
 
   it('understands a function with one argument', () => {
@@ -26,8 +26,8 @@ describe('Parse', () => {
     tree = [{ args: ['stringNode'] }];
 
     expect(parse(tokens)).toEqual(tree);
-    expect(FunctionNode.new).toHaveBeenCalledWith('say');
-    expect(StringNode.new).toHaveBeenCalledWith('hello world');
+    expect(FunctionNode.new).toHaveBeenCalledWith('say', 'function');
+    expect(StringNode.new).toHaveBeenCalledWith('hello world', undefined);
   });
 
   it('understands a function with two arguments', () => {
@@ -44,9 +44,9 @@ describe('Parse', () => {
     tree = [{ args: ['hello world', 'bye world'] }];
 
     expect(parse(tokens)).toEqual(tree);
-    expect(FunctionNode.new).toHaveBeenCalledWith('say');
-    expect(StringNode.new).toHaveBeenCalledWith('hello world');
-    expect(StringNode.new).toHaveBeenCalledWith('bye world');
+    expect(FunctionNode.new).toHaveBeenCalledWith('say', 'function');
+    expect(StringNode.new).toHaveBeenCalledWith('hello world', undefined);
+    expect(StringNode.new).toHaveBeenCalledWith('bye world', undefined);
   });
 
   it('understands a nested function with one argument', () => {
@@ -63,8 +63,8 @@ describe('Parse', () => {
 
     const stringNode1 = StringNode.new('hello world');
     const stringNode2 = StringNode.new('bye world');
-    const innerFunction = FunctionNode.new('sayAgain', [stringNode2]);
-    const outerFunction = FunctionNode.new('say', [stringNode1, innerFunction]);
+    const innerFunction = FunctionNode.new('sayAgain', 'function', [stringNode2]);
+    const outerFunction = FunctionNode.new('say', 'function', [stringNode1, innerFunction]);
     tree = [outerFunction];
 
     expect(parse(tokens)).toEqual(tree);
@@ -82,9 +82,9 @@ describe('Parse', () => {
       { type: 'close paren', value: '>' },
       { type: 'close paren', value: '>' }
     ];
-    const funcNode1 = FunctionNode.new('condition')
-    const funcNode2 = FunctionNode.new('operation')
-    const funcNode3 = FunctionNode.new('while', [funcNode1, funcNode2])
+    const funcNode1 = FunctionNode.new('condition', 'function')
+    const funcNode2 = FunctionNode.new('operation', 'function')
+    const funcNode3 = FunctionNode.new('while', 'loop', [funcNode1, funcNode2])
 
     tree = [funcNode3]
 

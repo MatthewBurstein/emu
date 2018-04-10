@@ -28,12 +28,20 @@ describe('FunctionDictionary', () => {
         newTokenLex = {
           regEx: /^newVariable/,
           type: 'variable',
-          value: 3,
-          variableType: 'number',
           variableName: 'newVariable'
         }
         functionDictionary.assignVariable(testNodeWithTwoArgs)
         expect(tokenDictionary).toContain(newTokenLex)
+      })
+
+      it('generates a new variable in the variableDictionary', () => {
+        testNodeWithTwoArgs = { args: [
+          'newDictionaryVariable',
+          3
+        ]}
+        let newDictionaryVariable = { variableName: 'newDictionaryVariable', value: 3 }
+        functionDictionary.assignVariable(testNodeWithTwoArgs)
+        expect(variableDictionary).toContain(newDictionaryVariable)
       })
     })
 
@@ -43,7 +51,6 @@ describe('FunctionDictionary', () => {
           regEx: /^forReplacement/,
           type: 'variable',
           value: 4,
-          variableType: 'number',
           variableName: 'forReplacement'
         };
         tokenLexBeforeReplacement = Object.create(previouslyCreatedTokenLex)
@@ -51,18 +58,33 @@ describe('FunctionDictionary', () => {
           regEx: /^forReplacement/,
           type: 'variable',
           value: 'updated variable value',
-          variableType: 'string',
           variableName: 'forReplacement'
         };
         testNodeWithTwoArgs = { args: [
           'forReplacement',
           'updated variable value'
         ]}
-        tokenDictionary.push(previouslyCreatedTokenLex)
+        tokenDictionary.push(previouslyCreatedTokenLex);
         functionDictionary.assignVariable(testNodeWithTwoArgs);
 
         expect(tokenDictionary).toContain(reassignedTokenLex);
         expect(tokenDictionary).not.toContain(tokenLexBeforeReplacement);
+
+      })
+
+      it('replaces the dictionaryVariable with the new value', () => {
+        testNodeWithTwoArgs = { args: [
+          'forReplacementInDictionary',
+          'newVariableValue'
+        ]}
+        oldDictionaryVariable = { variableName: 'forReplacementInDictionary', value: 'oldVariableValue' }
+        newDictionaryVariable = { variableName: 'forReplacementInDictionary', value: 'newVariableValue'}
+        dictionaryVariableBeforeReplacement = Object.create(oldDictionaryVariable)
+        variableDictionary.push(oldDictionaryVariable)
+        functionDictionary.assignVariable(testNodeWithTwoArgs);
+
+        expect(variableDictionary).toContain(newDictionaryVariable);
+        expect(variableDictionary).not.toContain(dictionaryVariableBeforeReplacement);
       })
     })
   })
