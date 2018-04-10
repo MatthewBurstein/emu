@@ -1,0 +1,54 @@
+.drawer {
+  display: flex;
+  top: 0;
+  width: 0%;
+  height: 100%;
+  position: fixed;
+  transition-duration: 1s;
+}
+
+.drawer.open {
+  width: 22%;
+}
+
+.menu_content {
+  padding-left: 0.4em;
+  width: 100%;
+  overflow-x: hidden;
+  border-right: 1px;
+  border-right-style: solid;
+  border-right-width: 1px;
+  margin-right: 1px;
+  background-color: #fdfdfd;
+}
+
+.button_div {
+  width: 3em;
+}
+
+.show_hide_button {
+  height: 3em;
+  width: 3.5em;
+  margin-top: 2em;
+}
+
+.methods p1 {
+  background-color: gainsboro;
+}
+
+.methods p2 {
+  font-size: 0.8em;
+}
+
+.methods p3 {
+  font-size: 0.75em;
+  color: purple;
+}
+
+.methods h1 {
+  font-size: 1.3em
+}
+
+.methods h2 {
+  font-size: 1.15em;
+}

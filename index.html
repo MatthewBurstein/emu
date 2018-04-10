@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <!-- <script type="text/javascript" src="src/emu.js"></script> -->
     <link rel="stylesheet" type="text/css" href="public/general.css">
+    <link rel="stylesheet" type="text/css" href="public/drawer.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 
@@ -13,10 +15,10 @@
     <script type="text/javascript" src="src/functionNode.js"></script>
     <script type="text/javascript" src="src/integerNode.js"></script>
     <script type="text/javascript" src="src/stringNode.js"></script>
+    <script type="text/javascript" src="src/variableNode.js"></script>
     <script type="text/javascript" src="src/interpret.js"></script>
     <script type="text/javascript" src="src/Functiondictionary.js"></script>
     <script type="text/javascript" src="src/variableDictionary.js"></script>
-    <script type="text/javascript" src="src/variableNode.js"></script>
     <script type="text/javascript" src="src/interface.js"></script>
 
     <title>Emu transpiler</title>
@@ -24,6 +26,52 @@
   <body>
 
     <div class="welcome"> Emu Transpiler</div>
+
+    <div class="drawer">
+      <div class="menu_content">
+        <div class="methods">
+          <h1> Available methods: </h1>
+          <h2> Maths: </h2>
+          <p1> <code>add</code> </p1> <br>
+          <p2> Returns a sum of given arguments </p2> <br>
+          <p3> eg. add<1 2> </p3>
+          <br><p1> <code>subtract</code> </p1> <br>
+          <p2> Returns result of substraction </p2> <br>
+          <p3> eg. subtract<1 2> </p3>
+          <br><p1> <code>multiply</code> </p1> <br>
+          <p2> Returns result of multiplication </p2> <br>
+          <p3> eg. multiply<1 2> </p3>
+          <br><p1> <code>modulo</code> </p1> <br>
+          <p2> Returns result of modulo </p2> <br>
+          <p3> eg. modulo<1 2> </p3>
+          <h2> Comparisons: </h2>
+          <p1> <code>isGreaterThan</code> </p1><br>
+          <p2> Tells if the first passed argument is greater than the second </p2> <br>
+          <p3> eg. isGreaterThan<1 2> </p3>
+          <br><p1> <code>isLessThan</code> </p1> <br>
+          <p2> Tells if the first passed argument is smaller than the second </p2> <br>
+          <p3> eg. isLessThan<1 2> </p3>
+          <br><p1> <code>isEqual</code> </p1> <br>
+          <p2> Tells if two arguements passed are equal </p2> <br>
+          <p3> eg. isEqual<1 2> </p3>
+          <h2> Other: </h2>
+          <p1> <code>say</code> </p1> <br>
+          <p2> Returns a given argument</p2> <br>
+          <p3> eg. say<"hello world"></p3>
+          <br><p1> <code>assignVariable</code> </p1> <br>
+          <p2> Assigns a variable. This variable can be later used in other methods </p2> <br>
+          <p3> eg. assignVariable<"x" 1> </p3>
+          <br><p1> <code>if</code> </p1> <br>
+          <p2> If the first argument evaluates to true, it runs the second argument, otherwise it runs the third.</p2> <br>
+          <p3> eg. if&lt;isLessThan<2 1> say<"they are equal"> say<"they are not equal">> </p3>
+        </div>
+      </div>
+      <div class="button_div">
+        <button class="show_hide_button">
+          <i class="fas fa-code"></i>
+        </button>
+      </div>
+    </div>
 
     <div class="grid">
 
@@ -48,5 +96,10 @@
       </div>
 
     </div>
+
+    <div class="emu hidden">
+    </div>
+
+    <div class="about"> <a href="https://github.com/MatthewBurstein/emu">About</a> </div>
   </body>
 </html>

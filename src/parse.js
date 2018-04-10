@@ -19,7 +19,7 @@
         tree.push(StringNode.new(thisToken.value, thisToken.variableName));
       }
       if (thisToken.type === 'number') {
-        tree.push(IntegerNode.new(thisToken.value, thisToken.variableName));
+        tree.push(IntegerNode.new(thisToken.value));
       }
       
       if (thisToken.type === 'close paren') {
