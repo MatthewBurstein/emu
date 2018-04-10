@@ -14,6 +14,7 @@
     { regEx: /^isLessThan/, type: 'function', value: 'isLessThan' },
     { regEx: /^isEqual/, type: 'function', value: 'isEqual' },
     { regEx: /^if/, type: 'function', value: 'if' },
+    { regEx: /^returnFirst/, type: 'function', value: 'returnFirst' },
     { regEx: /^while/, type: 'loop', value: 'while' }
   ];
 
