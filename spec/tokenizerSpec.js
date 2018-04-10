@@ -106,4 +106,17 @@ describe('tokenize', () => {
 
     expect(tokenize(testString)).toEqual(tokenizedString);
   });
+
+  it('recognises returnFirst', () => {
+    testString = 'returnFirst<2 1>';
+    tokenizedString = [
+      { type: 'function', value: 'returnFirst' },
+      { type: 'open paren', value: '<' },
+      { type: 'number', value: 2 },
+      { type: 'number', value: 1 },
+      { type: 'close paren', value: '>' }
+    ];
+
+    expect(tokenize(testString)).toEqual(tokenizedString);
+  })
 });

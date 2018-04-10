@@ -231,5 +231,15 @@ describe('FunctionDictionary', () => {
         expect(functionDictionary.if(testNode)).toEqual(3);
       });
     });
+
+    describe('.returnFirst<>', () => {
+      it('returns the first argument passed', () => {
+        testNodeWithTwoArgs = { args: [
+          1,
+          2
+        ]}
+        expect(functionDictionary.returnFirst(testNodeWithTwoArgs)).toEqual(1)
+      })
+    })
   });
 });

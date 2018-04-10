@@ -9,7 +9,7 @@
         }
         return functionDictionary[node.name](tempFunctionNode);
       } else if (node.type === 'loop') {
-        interpretLoop(node)
+        return interpretLoop(node)
       } else if (node.variableName) {
         return node;
       } else if (typeof node === 'number') {
@@ -28,10 +28,8 @@
 
     while (interpret([condition])[0] === 'yes') {
       node.args.forEach((arg) => {
-        const interpretedArgs = interpret([arg])[0]        
-        if (interpretedArgs) {
+        const interpretedArgs = interpret([arg])[0]
           output.push(interpretedArgs)
-        }
       })
     }
     return output;
@@ -42,24 +40,25 @@
 })(this);
 
 
-updateVariableInNode = function(parentNode, variableName, variableValue) {
-  if (parentNode.variableName === variableName) {
-    parentNode.value = variableValue
-  }
-  if(parentNode.args) {
-    parentNode.args.forEach( arg => {
-      updateVariableInNode(arg, variableName, variableValue)
-    })
-  }
-}
 
-searchNodeForVariable = function(node) {
-  if (node.variableName) {
-    return node
-  }
-  if(node.args) {
-    node.args.SOMEITERATOR( node => {
-      searchNodeForVariable(node)
-    })
-  }
-}
+// updateVariableInNode = function(parentNode, variableName, variableValue) {
+//   if (parentNode.variableName === variableName) {
+//     parentNode.value = variableValue
+//   }
+//   if(parentNode.args) {
+//     parentNode.args.forEach( arg => {
+//       updateVariableInNode(arg, variableName, variableValue)
+//     })
+//   }
+// }
+//
+// searchNodeForVariable = function(node) {
+//   if (node.variableName) {
+//     return node
+//   }
+//   if(node.args) {
+//     node.args.SOMEITERATOR( node => {
+//       searchNodeForVariable(node)
+//     })
+//   }
+// }

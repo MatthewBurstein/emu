@@ -84,7 +84,7 @@
     return arguments[0] === arguments[1] ? 'yes' : 'no'
   }
 
-  FunctionDictionary.prototype.isLessThan = function(node) {    
+  FunctionDictionary.prototype.isLessThan = function(node) {
     const arguments = this._convertVariablesToValues(node.args)
     if (arguments.length === 0) {
       return 'there is nothing to compare'
@@ -102,6 +102,10 @@
     } else {
       return arguments[2]
     }
+  }
+
+  FunctionDictionary.prototype.returnFirst = function(node) {
+    return node.args[0]
   }
 
   FunctionDictionary.prototype._convertVariablesToNames = function(functionNodeArgs) {
