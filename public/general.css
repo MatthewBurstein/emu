@@ -24,11 +24,15 @@ body {
 .grid {
   padding-top: 2em;
   display: grid;
-  height: 30em;
+  height: 40em;
   width: 60%;
   margin-left: auto;
   margin-right: auto;
   grid-template-columns: 1fr 1fr;
+}
+
+.onegrid {
+  height: 20em;
 }
 
 .headline {
@@ -49,7 +53,14 @@ body {
   border: none;
   color: white;
   font-family: Work Sans;
-  font-size: 1em;
+  font-size: 0.9em;
+  width: 95%;
+  resize: none;
+  height: 2em;
+}
+
+.write_code_form:hover {
+  background-color: #4d4d4d;
 }
 
 input:-webkit-autofill {
@@ -59,7 +70,7 @@ input:-webkit-autofill {
 
 .output {
   padding: 1em;
-  height: 15em;
+  /* height: 15em; */
   background-color: black;
   overflow-y: scroll;
   color: white;
@@ -75,7 +86,7 @@ input:-webkit-autofill {
 .tokens {
   color: black;
   padding: 1em;
-  height: 15em;
+  /* height: 15em; */
   overflow-y: scroll;
   border-style: solid;
   border-width: 0.1em;
@@ -83,7 +94,7 @@ input:-webkit-autofill {
 
 .tree {
   padding: 1em;
-  height: 15em;
+  /* height: 15em; */
   overflow-y: scroll;
   border-style: solid;
   border-width: 0.1em;
@@ -100,6 +111,7 @@ input:-webkit-autofill {
 .image {
   border-style: solid;
   border-width: 0.1em;
+  height: 22em;
 }
 
 .image_emu {
@@ -117,6 +129,10 @@ input:-webkit-autofill {
 
 .string {
   color: #0000ffb0;
+}
+
+.variable {
+  color: #ab7933;
 }
 
 .about {
