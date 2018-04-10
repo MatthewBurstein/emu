@@ -49,12 +49,12 @@
     tokenDictionary.push(newTokenLex)
     }
     const existingDictionaryVariable = variableDictionary.find(variable => {
-      return variable.name = node.args[0]
+      return variable.variableName = node.args[0]
     })
     if (existingDictionaryVariable) {
       existingDictionaryVariable.value = node.args[1]
     } else {
-      variableDictionary.push({ name: node.args[0], value: node.args[1] })
+      variableDictionary.push({ variableName: node.args[0], value: node.args[1] })
     }
   }
 
@@ -96,7 +96,17 @@
     }
   }
 
+  FunctionDictionary.prototype._convertVariablesToNames = function(functionNodeArgs) {
+    return functionNodeArgs.map(arg => {
+      return arg.variableName ? getVariableName(arg) : arg;
+    })
+  };
+
+  FunctionDictionary.prototype._convertVariablesToValues = function(functionNodeArgs) {
+    return functionNodeArgs.map(arg => {
+      return arg.variableName ? getVariableValue(arg) : arg;
+    })
+  };
+
   exports.FunctionDictionary = FunctionDictionary
 })(this)
-
-const variableDictionary = [];
