@@ -12,6 +12,9 @@
         parse(tokens, functionNode.args);
         tree.push(functionNode);
       }
+      if (thisToken.type === 'variable') {
+        tree.push(VariableNode.new(thisToken.variableName))
+      }
       if (thisToken.type === 'string') {
         tree.push(StringNode.new(thisToken.value, thisToken.variableName));
       }

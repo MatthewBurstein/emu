@@ -47,7 +47,7 @@
         break;
       case 'variable':
         tokenValue = tokenLex.value;
-        tokenType = tokenLex.variableType;
+        // tokenType = tokenLex.variableType;
         // tokenVariableName = tokenLex.variableName;
         break;
       case 'loop':

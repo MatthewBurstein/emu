@@ -48,7 +48,7 @@ describe('tokenize', () => {
       { type: 'function', value: 'add' },
       { type: 'open paren', value: '<' },
       { type: 'number', value: 2 },
-      { type: 'number', value: 1, variableName: 'createdVariable' },
+      { type: 'variable', value: 1, variableName: 'createdVariable' },
       { type: 'close paren', value: '>' }
     ];
 
