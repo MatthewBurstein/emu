@@ -32,7 +32,6 @@
 
   function processToken(workingString, tokenLex) {
     let tokenValue = matchRegEx(workingString, tokenLex);
-    let tokenType = tokenLex.type;
     switch (tokenLex.type) {
       case 'string':
         tokenValue = tokenValue.slice(1, -1);
@@ -54,19 +53,15 @@
       default:
         throw new Error('Do not know that token');
     }
-    return buildToken(tokenType, tokenValue, tokenLex.variableName);
+    return buildToken(tokenLex.type, tokenValue)
   }
 
   function matchRegEx(string, tokenLex) {
     return string.match(tokenLex.regEx) ? string.match(tokenLex.regEx)[0] : null;
   }
 
-  function buildToken(type, data, variableName) {
-    if(variableName) {
-      return { type, data, variableName }
-    } else {
-      return { type, data };
-    }
+  function buildToken(type, data) {
+      return { type, data }
   }
 
   function removeProcessedToken(workingString, tokenLex) {
