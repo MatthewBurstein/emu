@@ -42,9 +42,9 @@ $( document ).ready(function() {
   showTokens = function(tokens) {
     tokens.forEach( token => {
       if (token.type === 'variable') {
-        tokenString = "type: " + token.type + ", variable name: " + token.data + ";"
+        tokenString = "type: " + token.type + ", variable name: " + token.value + ";"
       } else {
-        tokenString = "type: " + token.type + ", value: " + token.data + ";"
+        tokenString = "type: " + token.type + ", value: " + token.value + ";"
       }
       $('.tokens_list').append('<div class="' + token.type + '">' + tokenString + '</div>')
     })
