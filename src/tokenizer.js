@@ -22,16 +22,16 @@
     const tokenArray = [];
     while (workingString.length > 0) {
       const thisTokenLex = tokenDictionary.find(tokenLex => {
-        return matchRegEx(workingString, tokenLex)
+        return _matchRegEx(workingString, tokenLex)
       });
-      tokenArray.push(processToken(workingString, thisTokenLex));
-      workingString = removeProcessedToken(workingString, thisTokenLex);
+      tokenArray.push(_processToken(workingString, thisTokenLex));
+      workingString = _removeProcessedToken(workingString, thisTokenLex);
     }
     return tokenArray;
   }
 
-  function processToken(workingString, tokenLex) {
-    let tokenValue = matchRegEx(workingString, tokenLex);
+  function _processToken(workingString, tokenLex) {
+    let tokenValue = _matchRegEx(workingString, tokenLex);
     switch (tokenLex.type) {
       case 'string':
         tokenValue = tokenValue.slice(1, -1);
@@ -53,19 +53,19 @@
       default:
         throw new Error('Do not know that token');
     }
-    return buildToken(tokenLex.type, tokenValue)
+    return _buildToken(tokenLex.type, tokenValue)
   }
 
-  function matchRegEx(string, tokenLex) {
+  function _matchRegEx(string, tokenLex) {
     return string.match(tokenLex.regEx) ? string.match(tokenLex.regEx)[0] : null;
   }
 
-  function buildToken(type, data) {
+  function _buildToken(type, data) {
       return { type, data }
   }
 
-  function removeProcessedToken(workingString, tokenLex) {
-    const matchedString = matchRegEx(workingString, tokenLex);
+  function _removeProcessedToken(workingString, tokenLex) {
+    const matchedString = _matchRegEx(workingString, tokenLex);
     return workingString.slice(matchedString.length).trim();
   }
 
