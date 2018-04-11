@@ -1,5 +1,10 @@
 describe('Parse', () => {
-  let tree, tokens;
+  let tree, tokens, stringNode1, stringNode2;
+
+  beforeEach(() => {
+    stringNode1 = { data: 'hello world', type: 'string', children: [] }
+    stringNode2 = { data: 'bye world', type: 'string', children: [] }
+  })
 
   it('understands a function with zero argument', () => {
     tokens = [
@@ -7,11 +12,9 @@ describe('Parse', () => {
       { type: 'open paren', value: '(' },
       { type: 'close paren', value: ')' }
     ];
-    spyOn(FunctionNode, 'new').and.returnValue('functionNode');
-    tree = ['functionNode'];
+    tree = [ {data: 'say', type: 'function', children: []} ]
 
     expect(parse(tokens)).toEqual(tree);
-    expect(FunctionNode.new).toHaveBeenCalledWith('say', 'function');
   });
 
   it('understands a function with one argument', () => {
@@ -21,13 +24,9 @@ describe('Parse', () => {
       { type: 'string', value: 'hello world' },
       { type: 'close paren', value: ')' }
     ];
-    spyOn(StringNode, 'new').and.returnValue('stringNode');
-    spyOn(FunctionNode, 'new').and.returnValue({ args: [] });
-    tree = [{ args: ['stringNode'] }];
+    tree = [ {data: 'say', type: 'function', children: [stringNode1] } ]
 
     expect(parse(tokens)).toEqual(tree);
-    expect(FunctionNode.new).toHaveBeenCalledWith('say', 'function');
-    expect(StringNode.new).toHaveBeenCalledWith('hello world', undefined);
   });
 
   it('understands a function with two arguments', () => {
@@ -38,15 +37,9 @@ describe('Parse', () => {
       { type: 'string', value: 'bye world' },
       { type: 'close paren', value: ')' }
     ];
-
-    spyOn(StringNode, 'new').and.returnValues('hello world', 'bye world');
-    spyOn(FunctionNode, 'new').and.returnValue({ args: [] });
-    tree = [{ args: ['hello world', 'bye world'] }];
+    tree = [ { data: 'say', type: 'function', children: [stringNode1, stringNode2] } ];
 
     expect(parse(tokens)).toEqual(tree);
-    expect(FunctionNode.new).toHaveBeenCalledWith('say', 'function');
-    expect(StringNode.new).toHaveBeenCalledWith('hello world', undefined);
-    expect(StringNode.new).toHaveBeenCalledWith('bye world', undefined);
   });
 
   it('understands a nested function with one argument', () => {
@@ -61,11 +54,9 @@ describe('Parse', () => {
       { type: 'close paren', value: '>' }
     ];
 
-    const stringNode1 = StringNode.new('hello world');
-    const stringNode2 = StringNode.new('bye world');
-    const innerFunction = FunctionNode.new('sayAgain', 'function', [stringNode2]);
-    const outerFunction = FunctionNode.new('say', 'function', [stringNode1, innerFunction]);
-    tree = [outerFunction];
+    const innerFuncNode = { data: 'sayAgain', type: 'function', children: [stringNode2] }
+    const outerFuncNode = { data: 'say', type: 'function', children: [stringNode1, innerFuncNode] }
+    tree = [outerFuncNode];
 
     expect(parse(tokens)).toEqual(tree);
   });
@@ -82,11 +73,11 @@ describe('Parse', () => {
       { type: 'close paren', value: '>' },
       { type: 'close paren', value: '>' }
     ];
-    const funcNode1 = FunctionNode.new('condition', 'function')
-    const funcNode2 = FunctionNode.new('operation', 'function')
-    const funcNode3 = FunctionNode.new('while', 'loop', [funcNode1, funcNode2])
 
-    tree = [funcNode3]
+    const funcNode1 = { data: 'condition', type: 'function', children: [] }
+    const funcNode2 = { data: 'operation', type: 'function', children: [] }
+    const whileNode = { data: 'while', type: 'loop', children: [funcNode1, funcNode2] }
+    tree = [whileNode]
 
     expect(parse(tokens)).toEqual(tree);
 
