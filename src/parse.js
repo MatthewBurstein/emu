@@ -21,13 +21,17 @@
       if (thisToken.type === 'number') {
         tree.push(IntegerNode.new(thisToken.value));
       }
-      
+
       if (thisToken.type === 'close paren') {
         break;
       }
     }
     return tree;
   };
+
+  const _buildNode = (data, type, children = []) => {
+    return { data, type, children }
+  }
 
   exports.parse = parse;
 })(this);
