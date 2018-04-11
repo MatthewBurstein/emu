@@ -53,7 +53,7 @@
     tokenDictionary.push(newTokenLex)
     }
     const existingDictionaryVariable = variableDictionary.find(variable => {
-      return variable.variableName = arguments[0]
+      return variable.variableName === arguments[0]
     })
     if (existingDictionaryVariable) {
       existingDictionaryVariable.value = arguments[1]

@@ -32,23 +32,23 @@
   margin-top: 2em;
 }
 
-.methods p1 {
+.menu_content p1 {
   background-color: gainsboro;
 }
 
-.methods p2 {
+.menu_content p2 {
   font-size: 0.8em;
 }
 
-.methods p3 {
+.menu_content p3 {
   font-size: 0.75em;
   color: purple;
 }
 
-.methods h1 {
+.menu_content h1 {
   font-size: 1.3em
 }
 
-.methods h2 {
+.menu_content h2 {
   font-size: 1.15em;
 }

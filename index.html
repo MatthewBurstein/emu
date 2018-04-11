@@ -29,8 +29,18 @@
 
     <div class="drawer">
       <div class="menu_content">
+        <h1> Assigned variables: </h1>
+        <div class="var_info"><p2> You haven't assigned any variables yet, learn below how to do it. </p2></div>
+        <div class="variable"> </div>
         <div class="methods">
           <h1> Available methods: </h1>
+          <h2> Basic: </h2>
+          <p1> <code>say</code> </p1> <br>
+          <p2> Returns a given argument</p2> <br>
+          <p3> eg. say<"hello world"></p3> <br>
+          <p1> <code>clean</code> </p1> <br>
+          <p2> Cleans the output field</p2> <br>
+          <p3> eg. clean</p3>
           <h2> Maths: </h2>
           <p1> <code>add</code> </p1> <br>
           <p2> Returns a sum of given arguments </p2> <br>
@@ -55,9 +65,6 @@
           <p2> Tells if two arguements passed are equal </p2> <br>
           <p3> eg. isEqual<1 2> </p3>
           <h2> Advanced functionalities: </h2>
-          <p1> <code>say</code> </p1> <br>
-          <p2> Returns a given argument</p2> <br>
-          <p3> eg. say<"hello world"></p3>
           <br><p1> <code>assignVariable</code> </p1> <br>
           <p2> Assigns a variable. This variable can be later used in other methods </p2> <br>
           <p3> eg. assignVariable<"x" 1> </p3>
@@ -68,6 +75,13 @@
           <p2> It takes two expressions: the condition and the operation. The operation can consist of several operations. As long as the condition is met, while will run the operation. In order to run while properly you need to assign a variable first.</p2> <br>
           <p3> eg. assignVariable<"x" 1> </p3><br>
           <p3> while&lt;isLessThan&lt;x 5> say&lt;x> assignVariable&lt;x add&lt;x 1>>> </p3>
+          <h2> If you want to go crazy... </h2>
+          <p1> <code>FizzBuzz</code></p1> <br>
+          <p2> Try our FizzBuzz or build a similar function. </p2> <br>
+          <p2> In order to run our FizzBuzz, run:</p2> <br>
+          <p3> assignVariable<"x" 1> </p3><br>
+          <p2> and then:</p2> <br>
+          <p3> while&lt;isLessThan&lt;x 100> returnFirst&lt;if&lt;isEqual< modulo&lt;x 15> 0>say<"FizzBuzz"> if&lt;isEqual< modulo&lt;x 5> 0>say<"Buzz"> if&lt;isEqual< modulo&lt;x 3> 0>say<"Fizz"> say&lt;x> > > > assignVariable&lt;x add&lt;x 1>> >> </p3><br>
         </div>
       </div>
       <div class="button_div">
@@ -81,8 +95,9 @@
 
       <div class="output onegrid">
         <form class="write_code">
-          > <input type="textarea" placeholder="write your code here" class="write_code_form">
+           <input type="textarea" placeholder="write your code here" class="write_code_form">
         </form>
+        <div class="output_lines"> </div>
       </div>
 
       <div class="tokens onegrid">

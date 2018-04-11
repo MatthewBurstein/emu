@@ -1,17 +1,5 @@
 $( document ).ready(function() {
 
-  $('.write_code').submit(function(e) {
-    e.preventDefault();
-    emptyFields()
-    let value = $( ".write_code_form" ).val();
-    let tokens = tokenize(value)
-    showTokens(tokens)
-    let parsed = parse(tokens)
-    showTree(parsed)
-    let interpreted = interpret(parsed)
-    $('.output').append('<div class="result"> => '  + interpreted + '</div>');
-  })
-
   $('.show_hide_button').click( event => {
     $( ".drawer" ).toggleClass('open');
   })
@@ -22,9 +10,42 @@ $( document ).ready(function() {
       $('.emu').addClass('hidden');
   });
 
+  $('.write_code').submit(function(e) {
+    e.preventDefault();
+    emptyFields()
+    let value = $( ".write_code_form" ).val();
+    cleanOutputWindow(value)
+    let tokens = tokenize(value)
+    showTokens(tokens)
+    let parsed = parse(tokens)
+    showTree(parsed)
+    let interpreted = interpret(parsed)
+    showOutput(interpreted)
+    showVariables(value)
+  })
+
+  cleanOutputWindow = function(value) {
+    if (value === 'clean') {
+      $('.output_lines').empty();
+    }
+  }
+
+  showVariables = function(value) {
+    let substring = value.substring(0, 14)
+    if (substring === 'assignVariable') {
+      let last = variableDictionary.slice(-1)[0]
+      $('.var_info').text('');
+      $('.variable').append('<div class="variable_one"> variable: '  + last.variableName + ", value: " + last.value + '</div>');
+    }
+  }
+
   showTokens = function(tokens) {
     tokens.forEach( token => {
-      tokenString = "type: " + token.type + ", value: " + token.value + ";"
+      if (token.type === 'variable') {
+        tokenString = "type: " + token.type + ", variable name: " + token.variableName + ";"
+      } else {
+        tokenString = "type: " + token.type + ", value: " + token.value + ";"
+      }
       $('.tokens_list').append('<div class="' + token.type + '">' + tokenString + '</div>')
     })
   }
@@ -37,9 +58,25 @@ $( document ).ready(function() {
       if (argument.type === 'function') {
         showTree([argument], margin)
       } else {
-        $('.nodes').append('<div class="' + argument.type + '" style="margin-left: ' + margin + 'em">' + argument.type  +  " : " + argument.value + '</div>')
+        if (argument.type === 'variable') {
+          $('.nodes').append('<div class="' + argument.type + '" style="margin-left: ' + margin + 'em">' + argument.type  +  " : " + argument.variableName + '</div>')
+        } else {
+          $('.nodes').append('<div class="' + argument.type + '" style="margin-left: ' + margin + 'em">' + argument.type  +  " : " + argument.value + '</div>')
+        }
       }
     })
+  }
+
+  showOutput = function(interpreted) {
+    if (interpreted[0] !== undefined) {
+      if (typeof interpreted[0] === 'string' || typeof interpreted[0] === 'number') {
+        $('.output_lines').append('<div class="result"> => '  + interpreted + '</div>');
+      } else {
+        interpreted[0].forEach(singleOutput => {
+          $('.output_lines').append('<div class="result"> => '  + singleOutput + '</div>');
+        })
+      }
+    }
   }
 
   emptyFields = function() {
