@@ -50,8 +50,6 @@
         break;
       case 'loop':
         break;
-      default:
-        throw new Error('Do not know that token');
     }
     return _buildToken(tokenLex.type, tokenValue)
   }
