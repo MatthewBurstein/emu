@@ -87,7 +87,7 @@ describe('Parse', () => {
     tokens = [
       { type: 'function', data: 'say' },
       { type: 'open paren', data: '(' },
-      { type: 'variable', variableName: 'myVariable' },
+      { type: 'variable', data: 'myVariable' },
       { type: 'close paren', data: ')' }
     ];
 

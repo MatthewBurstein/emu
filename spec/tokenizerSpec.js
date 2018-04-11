@@ -38,7 +38,7 @@ describe('tokenize', () => {
 
   it('recognises user defined variable', () => {
     const variableTokenLex = {
-      regEx: /^createdVariable/, type: 'variable', data: 1, variableType: 'number', variableName: 'createdVariable'
+      regEx: /^createdVariable/, type: 'variable', data: 'createdVariable'
     };
 
     tokenDictionary.push(variableTokenLex);
@@ -48,7 +48,7 @@ describe('tokenize', () => {
       { type: 'function', data: 'add' },
       { type: 'open paren', data: '<' },
       { type: 'number', data: 2 },
-      { type: 'variable', data: 1, variableName: 'createdVariable' },
+      { type: 'variable', data: 'createdVariable' },
       { type: 'close paren', data: '>' }
     ];
 

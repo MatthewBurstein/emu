@@ -8,7 +8,7 @@
         tree.push(parentNode)
       }
       if (thisToken.type === 'variable') {
-        tree.push(_buildNode(thisToken.variableName, thisToken.type))
+        tree.push(_buildNode(thisToken.data, thisToken.type))
       }
       if (thisToken.type === 'string' || thisToken.type === 'number') {
         tree.push(_buildNode(thisToken.data, thisToken.type))

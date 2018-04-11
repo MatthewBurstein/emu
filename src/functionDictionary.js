@@ -102,11 +102,9 @@
 
   FunctionDictionary.prototype._updateTokenDictionary = function(args) {
     const existingTokenLex = tokenDictionary.find(tokenLex => {
-      return tokenLex.variableName === args[0]
+      return tokenLex.data === args[0]
     })
-    if (existingTokenLex) {
-      existingTokenLex.value = args[1]
-    } else {
+    if (!existingTokenLex) {
       const newTokenLex = this._buildTokenLex(args[0])
       tokenDictionary.push(newTokenLex)
     }
@@ -127,7 +125,7 @@
     return {
       regEx: new RegExp(`^${variableName}`),
       type: 'variable',
-      variableName: variableName
+      data: variableName
     }
   }
 
