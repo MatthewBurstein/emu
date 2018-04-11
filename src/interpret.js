@@ -1,20 +1,14 @@
 ;((exports) => {
   const interpret = function (tree) {
-    // functionDictionary = FunctionDictionary.new();
-    let output = tree.map((node, idx) => {
+    let output = tree.map( node => {
       if (node.type === 'function') {
-        const interpretedChildren = interpret(node.children);
-        const tempFunctionNode = {
-          children: interpretedChildren
+        const dictionaryReadyFunctionNode = {
+          children: interpret(node.children)
         }
-        return functionDictionary[node.data](tempFunctionNode);
+        return functionDictionary[node.data](dictionaryReadyFunctionNode);
       } else if (node.type === 'loop') {
-        return interpretLoop(node)
-      } else if (node.data) {
-        return node;
-      } else if (typeof node === 'number') {
-        return node;
-      } else if (typeof node === 'string') {
+        return _interpretLoop(node)
+      } else if (_isCollapsedLiteral(node)) {
         return node;
       } else {
         return node.data;
@@ -23,10 +17,9 @@
     return output;
   };
 
-  const interpretLoop = function(node) {
+  const _interpretLoop = function(node) {
     let output = [];
-    let i = 0
-    let condition = node.children.shift()
+    let condition = node.children.shift();
 
     while (interpret([condition])[0] === 'yes') {
       node.children.forEach((children) => {
@@ -37,6 +30,9 @@
     return output;
   }
 
-  exports.interpretLoop = interpretLoop;
+  const _isCollapsedLiteral = function(node) {
+    return typeof node === 'number' || typeof node === 'string'
+  }
+
   exports.interpret = interpret;
 })(this);

@@ -50,10 +50,10 @@ describe('interpret()', function() {
   })
 
   describe('it interprets a while loop', () => {
-    xit('calls interpretLoop method', () => {
-      let spyLoop = {
+    it('calls interpretLoop method', () => {
+      let loopNode = {
         type: 'loop',
-        children: []
+        children: [ 'hello world', 'bye world']
       }
       // const spyInterpretLoop = jasmine.createSpy('interpretLoop').and.returnValue('success')
       // let funcNode1 = {
@@ -67,7 +67,7 @@ describe('interpret()', function() {
       //   data: 'while',
       //   args: []
       // }
-      tree = [spyLoop]
+      tree = [loopNode]
       spyOn(spyLoop, '')
       interpret(tree)
       expect(spyLoop).toHaveBeenCalledWith(spyLoop.children)
