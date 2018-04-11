@@ -82,4 +82,19 @@ describe('Parse', () => {
     expect(parse(tokens)).toEqual(tree);
 
   })
+
+  it('understands a variable', () => {
+    tokens = [
+      { type: 'function', value: 'say' },
+      { type: 'open paren', value: '(' },
+      { type: 'variable', variableName: 'myVariable' },
+      { type: 'close paren', value: ')' }
+    ];
+
+    const variableNode = { data: 'myVariable', type: 'variable', children: [] }
+    const funcNode = { data: 'say', type: 'function', children: [variableNode] }
+    tree = [funcNode]
+
+    expect(parse(tokens)).toEqual(tree);
+  })
 });
