@@ -64,4 +64,18 @@ describe('interpret()', function() {
       expect(interpret(tree)).toEqual([['no']])
     })
   })
+
+  describe('when passed a variable node', () => {
+    it('processes a variable node', () => {
+      let variableNode = {
+        data: 'x',
+        type: 'variable',
+        children: []
+      }
+
+      tree = [variableNode]
+
+      expect(interpret(tree)).toEqual([variableNode])
+    })
+  })
 })

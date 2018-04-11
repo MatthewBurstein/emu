@@ -31,6 +31,7 @@ describe('FunctionDictionary', () => {
           'newDictionaryVariable',
           3
         ]}
+        
         let newDictionaryVariable = { name: 'newDictionaryVariable', data: 3 }
         functionDictionary.assignVariable(testNodeWithTwoArgs)
         expect(variableDictionary).toContain(newDictionaryVariable)
@@ -196,6 +197,14 @@ describe('FunctionDictionary', () => {
         };
         expect(functionDictionary.if(testNode)).toEqual(3);
       });
+
+      it('evaluates third method if first method evaluates to no', () => {
+        const testNode = {
+          name: 'if',
+          children: ['no', 3, 30]
+        };
+        expect(functionDictionary.if(testNode)).toEqual(30);
+      });     
     });
 
     describe('.returnFirst<>', () => {
