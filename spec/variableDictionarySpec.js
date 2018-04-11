@@ -10,15 +10,15 @@ describe('variableDictionary', () => {
       type: 'variable',
       data: 'variable2'
     }
-    variable1 = {
-      variableName: 'variable1',
-      value: 1
+    dictionaryVariable1 = {
+      name: 'variable1',
+      data: 1
     }
-    variable2 = {
-      variableName: 'variable2',
-      value: 'Some string'
+    dictionaryVariable2 = {
+      name: 'variable2',
+      data: 'Some string'
     }
-    variableDictionary.push(variable1, variable2)
+    variableDictionary.push(dictionaryVariable1, dictionaryVariable2)
   })
 
   describe('getVariableValue', () => {
@@ -37,8 +37,8 @@ describe('variableDictionary', () => {
 
   describe('.findVariableInDictionary()', () => {
     it('returns the variable from the dictionary specified by the passed variable node', () => {
-      expect(findVariableInDictionary(variableNode1)).toEqual(variable1)
-      expect(findVariableInDictionary(variableNode2)).toEqual(variable2)
+      expect(findVariableInDictionary(variableNode1)).toEqual(dictionaryVariable1)
+      expect(findVariableInDictionary(variableNode2)).toEqual(dictionaryVariable2)
     })
   })
 })

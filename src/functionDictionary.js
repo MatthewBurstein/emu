@@ -112,12 +112,12 @@
 
   FunctionDictionary.prototype._updateVariableDictionary = function(args) {
     const existingDictionaryVariable = variableDictionary.find(variable => {
-      return variable.variableName = args[0]
+      return variable.name = args[0]
     })
     if (existingDictionaryVariable) {
-      existingDictionaryVariable.value = args[1]
+      existingDictionaryVariable.data = args[1]
     } else {
-      variableDictionary.push({ variableName: args[0], value: args[1] })
+      variableDictionary.push({ name: args[0], data: args[1] })
     }
   }
 

@@ -31,7 +31,7 @@ describe('FunctionDictionary', () => {
           'newDictionaryVariable',
           3
         ]}
-        let newDictionaryVariable = { variableName: 'newDictionaryVariable', value: 3 }
+        let newDictionaryVariable = { name: 'newDictionaryVariable', data: 3 }
         functionDictionary.assignVariable(testNodeWithTwoArgs)
         expect(variableDictionary).toContain(newDictionaryVariable)
       })
@@ -43,8 +43,8 @@ describe('FunctionDictionary', () => {
           'forReplacementInDictionary',
           'newVariableValue'
         ]}
-        oldDictionaryVariable = { variableName: 'forReplacementInDictionary', value: 'oldVariableValue' }
-        newDictionaryVariable = { variableName: 'forReplacementInDictionary', value: 'newVariableValue'}
+        oldDictionaryVariable = { name: 'forReplacementInDictionary', data: 'oldVariableValue' }
+        newDictionaryVariable = { name: 'forReplacementInDictionary', data: 'newVariableValue'}
         dictionaryVariableBeforeReplacement = Object.create(oldDictionaryVariable)
         variableDictionary.push(oldDictionaryVariable)
         functionDictionary.assignVariable(testNodeWithTwoArgs);

@@ -3,16 +3,16 @@ const variableDictionary = [
 
 const getVariableValue = function(node) {
   const variable = findVariableInDictionary(node)
-  return variable.value
+  return variable.data
 }
 
 const getVariableName = function(node) {
   const variable = findVariableInDictionary(node)
-  return variable.variableName
+  return variable.name
 }
 
 const findVariableInDictionary = function(queryVariableNode) {
-  return variableDictionary.find( variable => {
-    return variable.variableName === queryVariableNode.data;
+  return variableDictionary.find( dictionaryVariable => {
+    return dictionaryVariable.name === queryVariableNode.data;
   })
 }
