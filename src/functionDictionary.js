@@ -7,33 +7,33 @@
   }
 
   FunctionDictionary.prototype.say = function(node) {
-    const arguments = this._convertVariablesToValues(node.children)
-    return arguments.join(' ')
+    const args = this._convertVariablesToValues(node.children)
+    return args.join(' ')
   }
 
   FunctionDictionary.prototype.add = function(node) {
-    const arguments = this._convertVariablesToValues(node.children)
-    if (arguments.length === 0 ) { return 0 }
-    return arguments.reduce((sum, value) => sum + value)
+    const args = this._convertVariablesToValues(node.children)
+    if (args.length === 0 ) { return 0 }
+    return args.reduce((sum, value) => sum + value)
   }
 
   FunctionDictionary.prototype.subtract = function(node) {
-    const arguments = this._convertVariablesToValues(node.children)
-    if (arguments.length === 0 ) { return 0 }
-    return arguments.reduce(function(accumulator, elem) { return accumulator - elem })
+    const args = this._convertVariablesToValues(node.children)
+    if (args.length === 0 ) { return 0 }
+    return args.reduce(function(accumulator, elem) { return accumulator - elem })
   }
 
   FunctionDictionary.prototype.multiply = function(node) {
-    const arguments = this._convertVariablesToValues(node.children)
-    if (arguments.length === 0 ) { return 0 }
-    return arguments.reduce(function(accumulator, elem) { return accumulator * elem })
+    const args = this._convertVariablesToValues(node.children)
+    if (args.length === 0 ) { return 0 }
+    return args.reduce(function(accumulator, elem) { return accumulator * elem })
   }
 
   FunctionDictionary.prototype.modulo = function(node) {
-    const arguments = this._convertVariablesToValues(node.children)
-    if (arguments.length === 0 ) { return 0 }
-    if (arguments.length === 1 ) { return arguments[0] }
-    return arguments[0] % arguments[1]
+    const args = this._convertVariablesToValues(node.children)
+    if (args.length === 0 ) { return 0 }
+    if (args.length === 1 ) { return args[0] }
+    return args[0] % args[1]
   }
 
   FunctionDictionary.prototype.assignVariable = function(node) {
@@ -43,44 +43,44 @@
   }
 
   FunctionDictionary.prototype.isGreaterThan = function(node) {
-    const arguments = this._convertVariablesToValues(node.children)
-    if (arguments.length === 0) {
+    const args = this._convertVariablesToValues(node.children)
+    if (args.length === 0) {
       return 'there is nothing to compare'
     }
-    if (arguments.length === 1) {
+    if (args.length === 1) {
       return 'pass two arguments'
     }
-    return arguments[0] > arguments[1] ? 'yes' : 'no'
+    return args[0] > args[1] ? 'yes' : 'no'
   }
 
   FunctionDictionary.prototype.isEqual = function(node) {
-    const arguments = this._convertVariablesToValues(node.children)
-    if (arguments.length === 0) {
+    const args = this._convertVariablesToValues(node.children)
+    if (args.length === 0) {
       return 'there is nothing to compare'
     }
-    if (arguments.length === 1) {
+    if (args.length === 1) {
       return 'pass two arguments'
     }
-    return arguments[0] === arguments[1] ? 'yes' : 'no'
+    return args[0] === args[1] ? 'yes' : 'no'
   }
 
   FunctionDictionary.prototype.isLessThan = function(node) {
-    const arguments = this._convertVariablesToValues(node.children)
-    if (arguments.length === 0) {
+    const args = this._convertVariablesToValues(node.children)
+    if (args.length === 0) {
       return 'there is nothing to compare'
     }
-    if (arguments.length === 1) {
+    if (args.length === 1) {
       return 'pass two arguments'
     }
-    return arguments[0] < arguments[1] ? 'yes' : 'no'
+    return args[0] < args[1] ? 'yes' : 'no'
   }
 
   FunctionDictionary.prototype.if = function(node) {
-    const arguments = this._convertVariablesToValues(node.children)
-    if ( arguments[0] === 'yes') {
-      return arguments[1]
+    const args = this._convertVariablesToValues(node.children)
+    if ( args[0] === 'yes') {
+      return args[1]
     } else {
-      return arguments[2]
+      return args[2]
     }
   }
 
@@ -90,13 +90,13 @@
 
   FunctionDictionary.prototype._convertVariablesToNames = function(functionNodeArgs) {
     return functionNodeArgs.map(arg => {
-      return arg.variableName ? getVariableName(arg) : arg;
+      return arg.data ? getVariableName(arg) : arg;
     })
   };
 
   FunctionDictionary.prototype._convertVariablesToValues = function(functionNodeArgs) {
-    return functionNodeArgs.map(arg => {
-      return arg.variableName ? getVariableValue(arg) : arg;
+    return functionNodeArgs.map(argNode => {
+      return argNode.data ? getVariableValue(argNode) : argNode;
     })
   };
 

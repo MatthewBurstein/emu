@@ -11,6 +11,10 @@ describe('interpret()', function() {
     spyOn(functionDictionary, 'add').and.returnValue('added')
   })
 
+  afterEach(() => {
+    functionDictionary.add.calls.reset()
+  })
+
   describe('when passed three-node AST', () => {
 
     beforeEach(() => {
@@ -50,11 +54,17 @@ describe('interpret()', function() {
   })
 
   describe('it interprets a while loop', () => {
-    it('calls interpretLoop method', () => {
+    xit('calls interpretLoop method', () => {
+      let funcNode1 = { data: 'say', type: 'function', children: [ 'hello world'] }
+      let funcNode2 = { data: 'say', type: 'function', children: ['bye world']}
       let loopNode = {
         type: 'loop',
-        children: [ 'hello world', 'bye world']
+        children: [funcNode1, funcNode2]
       }
+      tree = [loopNode]
+
+      spyOn(functionDictionary, 'say').and.returnValues('yes', 'no')
+
       // const spyInterpretLoop = jasmine.createSpy('interpretLoop').and.returnValue('success')
       // let funcNode1 = {
       //   type: 'function'
@@ -67,10 +77,9 @@ describe('interpret()', function() {
       //   data: 'while',
       //   args: []
       // }
-      tree = [loopNode]
-      spyOn(spyLoop, '')
-      interpret(tree)
-      expect(spyLoop).toHaveBeenCalledWith(spyLoop.children)
+
+
+      expect(interpret(tree)).toEqual([['no']])
     })
 
   })
