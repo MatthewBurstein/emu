@@ -35,16 +35,16 @@ $( document ).ready(function() {
     if (substring === 'assignVariable') {
       let last = variableDictionary.slice(-1)[0]
       $('.var_info').text('');
-      $('.variable').append('<div class="variable_one"> variable: '  + last.variableName + ", value: " + last.value + '</div>');
+      $('.variable').append('<div class="variable_one"> variable: '  + last.name + ", value: " + last.data + '</div>');
     }
   }
 
   showTokens = function(tokens) {
     tokens.forEach( token => {
       if (token.type === 'variable') {
-        tokenString = "type: " + token.type + ", variable name: " + token.value + ";"
+        tokenString = "type: " + token.type + ", variable name: " + token.data + ";"
       } else {
-        tokenString = "type: " + token.type + ", value: " + token.value + ";"
+        tokenString = "type: " + token.type + ", value: " + token.data + ";"
       }
       $('.tokens_list').append('<div class="' + token.type + '">' + tokenString + '</div>')
     })

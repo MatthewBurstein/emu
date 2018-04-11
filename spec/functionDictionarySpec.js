@@ -20,7 +20,7 @@ describe('FunctionDictionary', () => {
         newTokenLex = {
           regEx: /^newVariable/,
           type: 'variable',
-          variableName: 'newVariable'
+          data: 'newVariable'
         }
         functionDictionary.assignVariable(testNodeWithTwoArgs)
         expect(tokenDictionary).toContain(newTokenLex)
@@ -31,46 +31,20 @@ describe('FunctionDictionary', () => {
           'newDictionaryVariable',
           3
         ]}
-        let newDictionaryVariable = { variableName: 'newDictionaryVariable', value: 3 }
+        let newDictionaryVariable = { name: 'newDictionaryVariable', data: 3 }
         functionDictionary.assignVariable(testNodeWithTwoArgs)
         expect(variableDictionary).toContain(newDictionaryVariable)
       })
     })
 
     describe('when variable has been assigned before', () => {
-      it('replaces the tokenLex with the new value', () => {
-        previouslyCreatedTokenLex = {
-          regEx: /^forReplacement/,
-          type: 'variable',
-          value: 4,
-          variableName: 'forReplacement'
-        };
-        tokenLexBeforeReplacement = Object.create(previouslyCreatedTokenLex)
-        reassignedTokenLex = {
-          regEx: /^forReplacement/,
-          type: 'variable',
-          value: 'updated variable value',
-          variableName: 'forReplacement'
-        };
-        testNodeWithTwoArgs = { children: [
-          'forReplacement',
-          'updated variable value'
-        ]}
-        tokenDictionary.push(previouslyCreatedTokenLex);
-        functionDictionary.assignVariable(testNodeWithTwoArgs);
-
-        expect(tokenDictionary).toContain(reassignedTokenLex);
-        expect(tokenDictionary).not.toContain(tokenLexBeforeReplacement);
-
-      })
-
       it('replaces the dictionaryVariable with the new value', () => {
         testNodeWithTwoArgs = { children: [
           'forReplacementInDictionary',
           'newVariableValue'
         ]}
-        oldDictionaryVariable = { variableName: 'forReplacementInDictionary', value: 'oldVariableValue' }
-        newDictionaryVariable = { variableName: 'forReplacementInDictionary', value: 'newVariableValue'}
+        oldDictionaryVariable = { name: 'forReplacementInDictionary', data: 'oldVariableValue' }
+        newDictionaryVariable = { name: 'forReplacementInDictionary', data: 'newVariableValue'}
         dictionaryVariableBeforeReplacement = Object.create(oldDictionaryVariable)
         variableDictionary.push(oldDictionaryVariable)
         functionDictionary.assignVariable(testNodeWithTwoArgs);
