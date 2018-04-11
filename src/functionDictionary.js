@@ -37,29 +37,9 @@
   }
 
   FunctionDictionary.prototype.assignVariable = function(node) {
-    const arguments = this._convertVariablesToNames(node.args)
-    const existingTokenLex = tokenDictionary.find(tokenLex => {
-      return tokenLex.variableName === arguments[0]
-    })
-    if (existingTokenLex) {
-      existingTokenLex.value = arguments[1]
-    } else {
-      const newTokenLex = {
-        regEx: new RegExp(`^${arguments[0]}`),
-        type: 'variable',
-        // value: arguments[1],
-        variableName: arguments[0]
-      }
-    tokenDictionary.push(newTokenLex)
-    }
-    const existingDictionaryVariable = variableDictionary.find(variable => {
-      return variable.variableName = arguments[0]
-    })
-    if (existingDictionaryVariable) {
-      existingDictionaryVariable.value = arguments[1]
-    } else {
-      variableDictionary.push({ variableName: arguments[0], value: arguments[1] })
-    }
+    const args = this._convertVariablesToNames(node.args)
+    this._updateTokenDictionary(args)
+    this._updateVariableDictionary(args)
   }
 
   FunctionDictionary.prototype.isGreaterThan = function(node) {
@@ -119,6 +99,37 @@
       return arg.variableName ? getVariableValue(arg) : arg;
     })
   };
+
+  FunctionDictionary.prototype._updateTokenDictionary = function(args) {
+    const existingTokenLex = tokenDictionary.find(tokenLex => {
+      return tokenLex.variableName === args[0]
+    })
+    if (existingTokenLex) {
+      existingTokenLex.value = args[1]
+    } else {
+      const newTokenLex = this._buildTokenLex(args[0])
+      tokenDictionary.push(newTokenLex)
+    }
+  }
+
+  FunctionDictionary.prototype._updateVariableDictionary = function(args) {
+    const existingDictionaryVariable = variableDictionary.find(variable => {
+      return variable.variableName = args[0]
+    })
+    if (existingDictionaryVariable) {
+      existingDictionaryVariable.value = args[1]
+    } else {
+      variableDictionary.push({ variableName: args[0], value: args[1] })
+    }
+  }
+
+  FunctionDictionary.prototype._buildTokenLex = function(variableName) {
+    return {
+      regEx: new RegExp(`^${variableName}`),
+      type: 'variable',
+      variableName: variableName
+    }
+  }
 
   exports.FunctionDictionary = FunctionDictionary
 })(this)
