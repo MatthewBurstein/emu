@@ -3,21 +3,21 @@
     functionDictionary = FunctionDictionary.new();
     let output = tree.map((node, idx) => {
       if (node.type === 'function') {
-        const interpretedArgs = interpret(node.args);
+        const interpretedChildren = interpret(node.children);
         const tempFunctionNode = {
-          args: interpretedArgs
+          children: interpretedChildren
         }
-        return functionDictionary[node.name](tempFunctionNode);
+        return functionDictionary[node.data](tempFunctionNode);
       } else if (node.type === 'loop') {
         return interpretLoop(node)
-      } else if (node.variableName) {
+      } else if (node.data) {
         return node;
       } else if (typeof node === 'number') {
         return node;
       } else if (typeof node === 'string') {
         return node;
       } else {
-        return node.value;
+        return node.data;
       }
     });
     return output;
@@ -26,12 +26,12 @@
   const interpretLoop = function(node) {
     let output = [];
     let i = 0
-    let condition = node.args.shift()
+    let condition = node.children.shift()
 
     while (interpret([condition])[0] === 'yes') {
-      node.args.forEach((arg) => {
-        const interpretedArgs = interpret([arg])[0]
-        output.push(interpretedArgs)
+      node.children.forEach((children) => {
+        const interpretedChildren = interpret([arg])[0]
+        output.push(interpretedChildren)
       })
     }
     return output;

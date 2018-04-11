@@ -18,7 +18,7 @@ describe('interpret()', function() {
   describe('when passed one-node AST', () => {
     it('instantiates one dictionary', () => {
       let testFunctionSpy = jasmine.createSpy('testFunction').and.returnValue('success')
-      let funcNode = { name: 'testFunction' }
+      let funcNode = { data: 'testFunction' }
       let tree = [funcNode]
       interpret(tree)
       expect(FunctionDictionary.new).toHaveBeenCalledTimes(1)
@@ -29,14 +29,14 @@ describe('interpret()', function() {
 
     beforeEach(() => {
       let funcNode = {
-        name: 'add',
+        data: 'add',
         type: 'function',
-        args: [intNode1, intNode2]
+        children: [intNode1, intNode2]
       }
       tree = [funcNode]
     })
 
-    it('calls the right function name on the dictionary', () => {
+    it('calls the right function data on the dictionary', () => {
       expect(interpret(tree)).toEqual(['added'])
     })
 
@@ -49,14 +49,14 @@ describe('interpret()', function() {
   describe('when passed five-node nested AST', () => {
     beforeEach(() => {
       let innerFuncNode = {
-        name: 'add',
+        data: 'add',
         type: 'function',
-        args: [intNode2, intNode3]
+        children: [intNode2, intNode3]
       }
       let outerFuncNode = {
-        name: 'add',
+        data: 'add',
         type: 'function',
-        args: [intNode1, innerFuncNode]
+        children: [intNode1, innerFuncNode]
       }
       tree = [outerFuncNode]
     })
@@ -75,7 +75,7 @@ describe('interpret()', function() {
     xit('calls interpretLoop method', () => {
       let spyLoop = {
         type: 'loop',
-        args: []
+        children: []
       }
       // const spyInterpretLoop = jasmine.createSpy('interpretLoop').and.returnValue('success')
       // let funcNode1 = {
@@ -86,13 +86,13 @@ describe('interpret()', function() {
       // }
       // let whileNode = {
       //   type: 'loop',
-      //   name: 'while',
+      //   data: 'while',
       //   args: []
       // }
       tree = [spyLoop]
       spyOn(spyLoop, '')
       interpret(tree)
-      expect(spyLoop).toHaveBeenCalledWith(spyLoop.args)
+      expect(spyLoop).toHaveBeenCalledWith(spyLoop.children)
     })
 
   })
@@ -100,7 +100,7 @@ describe('interpret()', function() {
 })
 
 describe('interpretLoop', () => {
-  emu('assignVariable<"x" 1>')
+  // emu('assignVariable<"x" 1>')
   // 'while<isLessThan<x 3> returnFirst<say<x> assignVariable<x add<x 1>>>>'
   let variableNode = VariableNode.new('x')
   let threeNode = IntegerNode.new(3)
@@ -114,7 +114,7 @@ describe('interpretLoop', () => {
   let returnFirstNode = FunctionNode.new('returnFirst', 'function', [sayNode, assignVariableNode])
   let whileNode = FunctionNode.new('while', 'loop', [isLessThanNode, returnFirstNode])
 
-  it('evaluates a simple while node', () => {
+  xit('evaluates a simple while node', () => {
     expect(interpretLoop(whileNode)).toEqual(['1', '2'])
   })
 })
