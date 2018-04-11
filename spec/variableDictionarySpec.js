@@ -34,11 +34,4 @@ describe('variableDictionary', () => {
       expect(getVariableName(variableNode2)).toEqual('variable2')
     })
   })
-
-  describe('.findVariableInDictionary()', () => {
-    it('returns the variable from the dictionary specified by the passed variable node', () => {
-      expect(findVariableInDictionary(variableNode1)).toEqual(dictionaryVariable1)
-      expect(findVariableInDictionary(variableNode2)).toEqual(dictionaryVariable2)
-    })
-  })
 })
