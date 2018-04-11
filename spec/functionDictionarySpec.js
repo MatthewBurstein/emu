@@ -5,7 +5,7 @@ describe('FunctionDictionary', () => {
     testNodeWithTwoSameArgs;
 
   beforeEach(() => {
-    testNodeWithNoArgs = { args: [] };
+    testNodeWithNoArgs = { children: [] };
   });
 
   describe('.assignVariable<>', () => {
@@ -13,7 +13,7 @@ describe('FunctionDictionary', () => {
 
     describe('when variable has not been previously assigned', () => {
       it('generates a tokenLex using the passed arguments and stores it in the tokenDictionary', () => {
-        testNodeWithTwoArgs = { args: [
+        testNodeWithTwoArgs = { children: [
           'newVariable',
           3
         ]}
@@ -27,7 +27,7 @@ describe('FunctionDictionary', () => {
       })
 
       it('generates a new variable in the variableDictionary', () => {
-        testNodeWithTwoArgs = { args: [
+        testNodeWithTwoArgs = { children: [
           'newDictionaryVariable',
           3
         ]}
@@ -52,7 +52,7 @@ describe('FunctionDictionary', () => {
           value: 'updated variable value',
           variableName: 'forReplacement'
         };
-        testNodeWithTwoArgs = { args: [
+        testNodeWithTwoArgs = { children: [
           'forReplacement',
           'updated variable value'
         ]}
@@ -65,7 +65,7 @@ describe('FunctionDictionary', () => {
       })
 
       it('replaces the dictionaryVariable with the new value', () => {
-        testNodeWithTwoArgs = { args: [
+        testNodeWithTwoArgs = { children: [
           'forReplacementInDictionary',
           'newVariableValue'
         ]}
@@ -87,7 +87,7 @@ describe('FunctionDictionary', () => {
     });
 
     it('when passed arguments returns the concatenation of the arguments values', () => {
-      testNodeWithTwoArgs = { args: ['hello', 'world'] };
+      testNodeWithTwoArgs = { children: ['hello', 'world'] };
       expect(functionDictionary.say(testNodeWithTwoArgs)).toEqual('hello world');
     });
   });
@@ -95,13 +95,13 @@ describe('FunctionDictionary', () => {
   describe('mathematical functions', () => {
     beforeEach(() => {
       testNodeWithOneArg = {
-        args: [3]
+        children: [3]
       };
       testNodeWithTwoArgs = {
-        args: [4, 3]
+        children: [4, 3]
       };
       testNodeWithTwoSameArgs = {
-        args: [4, 4]
+        children: [4, 4]
       };
     });
 
@@ -159,7 +159,7 @@ describe('FunctionDictionary', () => {
       });
 
       it('returns no if first arg is greater than second arg', () => {
-        testNodeWithTwoArgs = { args: [3, 4] };
+        testNodeWithTwoArgs = { children: [3, 4] };
         expect(functionDictionary.isGreaterThan(testNodeWithTwoArgs)).toEqual('no');
       });
 
@@ -196,12 +196,12 @@ describe('FunctionDictionary', () => {
 
     describe('.isLessThan<>', () => {
       it('returns yes if the first argument is less than the second', () => {
-        testNodeWithTwoArgs = { args: [3, 4] };
+        testNodeWithTwoArgs = { children: [3, 4] };
         expect(functionDictionary.isLessThan(testNodeWithTwoArgs)).toEqual('yes');
       });
 
       it('returns no if the first argument is greater or equal to the second', () => {
-        testNodeWithTwoArgs = { args: [4, 3] };
+        testNodeWithTwoArgs = { children: [4, 3] };
         expect(functionDictionary.isLessThan(testNodeWithTwoArgs)).toEqual('no');
       });
 
@@ -218,7 +218,7 @@ describe('FunctionDictionary', () => {
       it('evaluates second method if first method evaluates to yes', () => {
         const testNode = {
           name: 'if',
-          args: ['yes', 3, 30]
+          children: ['yes', 3, 30]
         };
         expect(functionDictionary.if(testNode)).toEqual(3);
       });
@@ -226,7 +226,7 @@ describe('FunctionDictionary', () => {
 
     describe('.returnFirst<>', () => {
       it('returns the first argument passed', () => {
-        testNodeWithTwoArgs = { args: [
+        testNodeWithTwoArgs = { children: [
           1,
           2
         ]}
