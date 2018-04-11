@@ -196,6 +196,14 @@ describe('FunctionDictionary', () => {
         };
         expect(functionDictionary.if(testNode)).toEqual(3);
       });
+
+      it('evaluates third method if first method evaluates to no', () => {
+        const testNode = {
+          name: 'if',
+          children: ['yes', 30, 3]
+        };
+        expect(functionDictionary.if(testNode)).toEqual(30);
+      });     
     });
 
     describe('.returnFirst<>', () => {
