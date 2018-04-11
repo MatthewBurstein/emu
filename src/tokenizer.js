@@ -1,21 +1,21 @@
 ;((exports) => {
   const tokenDictionary = [
-    { regEx: /^say/, type: 'function', value: 'say' },
-    { regEx: /^add/, type: 'function', value: 'add' },
-    { regEx: /^subtract/, type: 'function', value: 'subtract' },
-    { regEx: /^multiply/, type: 'function', value: 'multiply' },
-    { regEx: /^modulo/, type: 'function', value: 'modulo' },
-    { regEx: /^</, type: 'open paren', value: '<' },
+    { regEx: /^say/, type: 'function', data: 'say' },
+    { regEx: /^add/, type: 'function', data: 'add' },
+    { regEx: /^subtract/, type: 'function', data: 'subtract' },
+    { regEx: /^multiply/, type: 'function', data: 'multiply' },
+    { regEx: /^modulo/, type: 'function', data: 'modulo' },
+    { regEx: /^</, type: 'open paren', data: '<' },
     { regEx: /^"([^"]*)"/, type: 'string' },
     { regEx: /^[0-9]+/, type: 'number' },
-    { regEx: /^>/, type: 'close paren', value: '>' },
-    { regEx: /^assignVariable/, type: 'function', value: 'assignVariable' },
-    { regEx: /^isGreaterThan/, type: 'function', value: 'isGreaterThan' },
-    { regEx: /^isLessThan/, type: 'function', value: 'isLessThan' },
-    { regEx: /^isEqual/, type: 'function', value: 'isEqual' },
-    { regEx: /^if/, type: 'function', value: 'if' },
-    { regEx: /^returnFirst/, type: 'function', value: 'returnFirst' },
-    { regEx: /^while/, type: 'loop', value: 'while' }
+    { regEx: /^>/, type: 'close paren', data: '>' },
+    { regEx: /^assignVariable/, type: 'function', data: 'assignVariable' },
+    { regEx: /^isGreaterThan/, type: 'function', data: 'isGreaterThan' },
+    { regEx: /^isLessThan/, type: 'function', data: 'isLessThan' },
+    { regEx: /^isEqual/, type: 'function', data: 'isEqual' },
+    { regEx: /^if/, type: 'function', data: 'if' },
+    { regEx: /^returnFirst/, type: 'function', data: 'returnFirst' },
+    { regEx: /^while/, type: 'loop', data: 'while' }
   ];
 
   function tokenize(workingString) {
@@ -47,7 +47,7 @@
         tokenValue = parseInt(tokenValue, 10);
         break;
       case 'variable':
-        tokenValue = tokenLex.value;
+        tokenValue = tokenLex.data;
         break;
       case 'loop':
         break;
@@ -61,11 +61,11 @@
     return string.match(tokenLex.regEx) ? string.match(tokenLex.regEx)[0] : null;
   }
 
-  function buildToken(type, value, variableName) {
+  function buildToken(type, data, variableName) {
     if(variableName) {
-      return { type, value, variableName }
+      return { type, data, variableName }
     } else {
-      return { type, value };
+      return { type, data };
     }
   }
 
