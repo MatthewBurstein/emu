@@ -1,19 +1,11 @@
 describe('FunctionDictionary', () => {
-  let functionDictionary,
-    testNodeWithNoArgs,
+  let testNodeWithNoArgs,
     testNodeWithOneArg,
     testNodeWithTwoArgs,
     testNodeWithTwoSameArgs;
 
   beforeEach(() => {
-    functionDictionary = new FunctionDictionary();
     testNodeWithNoArgs = { args: [] };
-  });
-
-  describe('.new<>', () => {
-    it('creates a new FunctionDictionary object', () => {
-      expect(FunctionDictionary.new()).toEqual(jasmine.any(FunctionDictionary));
-    });
   });
 
   describe('.assignVariable<>', () => {

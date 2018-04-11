@@ -1,6 +1,6 @@
 ;((exports) => {
   const interpret = function (tree) {
-    functionDictionary = FunctionDictionary.new();
+    // functionDictionary = FunctionDictionary.new();
     let output = tree.map((node, idx) => {
       if (node.type === 'function') {
         const interpretedArgs = interpret(node.args);

@@ -8,21 +8,7 @@ describe('interpret()', function() {
     intNode3 = { }
     intNode4 = { }
 
-    let fakeDictionary = {
-      add: function() { return 'added'}
-    }
-
-    spyOn(FunctionDictionary, 'new').and.returnValue(fakeDictionary)
-  })
-
-  describe('when passed one-node AST', () => {
-    it('instantiates one dictionary', () => {
-      let testFunctionSpy = jasmine.createSpy('testFunction').and.returnValue('success')
-      let funcNode = { name: 'testFunction' }
-      let tree = [funcNode]
-      interpret(tree)
-      expect(FunctionDictionary.new).toHaveBeenCalledTimes(1)
-    })
+    spyOn(functionDictionary, 'add').and.returnValue('added')
   })
 
   describe('when passed three-node AST', () => {
@@ -40,10 +26,6 @@ describe('interpret()', function() {
       expect(interpret(tree)).toEqual(['added'])
     })
 
-    it('calls FunctionDictionary.new twice', () => {
-      interpret(tree)
-      expect(FunctionDictionary.new).toHaveBeenCalledTimes(2)
-    })
   })
 
   describe('when passed five-node nested AST', () => {
@@ -65,10 +47,6 @@ describe('interpret()', function() {
       expect(interpret(tree)).toEqual(['added'])
     })
 
-    it('calls FunctionDictionary.new thrice', () => {
-      interpret(tree)
-      expect(FunctionDictionary.new).toHaveBeenCalledTimes(3);
-    })
   })
 
   describe('it interprets a while loop', () => {

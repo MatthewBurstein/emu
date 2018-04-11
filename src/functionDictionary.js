@@ -131,5 +131,5 @@
     }
   }
 
-  exports.FunctionDictionary = FunctionDictionary
+  exports.functionDictionary = FunctionDictionary.new()
 })(this)
