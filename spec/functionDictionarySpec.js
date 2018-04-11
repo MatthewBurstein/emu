@@ -200,7 +200,7 @@ describe('FunctionDictionary', () => {
       it('evaluates third method if first method evaluates to no', () => {
         const testNode = {
           name: 'if',
-          children: ['yes', 30, 3]
+          children: ['no', 3, 30]
         };
         expect(functionDictionary.if(testNode)).toEqual(30);
       });     
