@@ -8,6 +8,8 @@
         return functionDictionary[node.data](dictionaryReadyFunctionNode);
       } else if (node.type === 'loop') {
         return _interpretLoop(node)
+      } else if (node.type === 'variable') {
+        return node
       } else if (_isCollapsedLiteral(node)) {
         return node;
       } else {
@@ -20,10 +22,9 @@
   const _interpretLoop = function(node) {
     let output = [];
     let condition = node.children.shift();
-
     while (interpret([condition])[0] === 'yes') {
-      node.children.forEach((children) => {
-        const interpretedChildren = interpret([arg])[0]
+      node.children.forEach( child => {
+        const interpretedChildren = interpret([child])[0]
         output.push(interpretedChildren)
       })
     }
