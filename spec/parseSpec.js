@@ -8,9 +8,9 @@ describe('Parse', () => {
 
   it('understands a function with zero argument', () => {
     tokens = [
-      { type: 'function', value: 'say' },
-      { type: 'open paren', value: '(' },
-      { type: 'close paren', value: ')' }
+      { type: 'function', data: 'say' },
+      { type: 'open paren', data: '(' },
+      { type: 'close paren', data: ')' }
     ];
     tree = [ {data: 'say', type: 'function', children: []} ]
 
@@ -19,10 +19,10 @@ describe('Parse', () => {
 
   it('understands a function with one argument', () => {
     tokens = [
-      { type: 'function', value: 'say' },
-      { type: 'open paren', value: '(' },
-      { type: 'string', value: 'hello world' },
-      { type: 'close paren', value: ')' }
+      { type: 'function', data: 'say' },
+      { type: 'open paren', data: '(' },
+      { type: 'string', data: 'hello world' },
+      { type: 'close paren', data: ')' }
     ];
     tree = [ {data: 'say', type: 'function', children: [stringNode1] } ]
 
@@ -31,11 +31,11 @@ describe('Parse', () => {
 
   it('understands a function with two arguments', () => {
     tokens = [
-      { type: 'function', value: 'say' },
-      { type: 'open paren', value: '(' },
-      { type: 'string', value: 'hello world' },
-      { type: 'string', value: 'bye world' },
-      { type: 'close paren', value: ')' }
+      { type: 'function', data: 'say' },
+      { type: 'open paren', data: '(' },
+      { type: 'string', data: 'hello world' },
+      { type: 'string', data: 'bye world' },
+      { type: 'close paren', data: ')' }
     ];
     tree = [ { data: 'say', type: 'function', children: [stringNode1, stringNode2] } ];
 
@@ -44,14 +44,14 @@ describe('Parse', () => {
 
   it('understands a nested function with one argument', () => {
     tokens = [
-      { type: 'function', value: 'say' },
-      { type: 'open paren', value: '<' },
-      { type: 'string', value: 'hello world' },
-      { type: 'function', value: 'sayAgain' },
-      { type: 'open paren', value: '<' },
-      { type: 'string', value: 'bye world' },
-      { type: 'close paren', value: '>' },
-      { type: 'close paren', value: '>' }
+      { type: 'function', data: 'say' },
+      { type: 'open paren', data: '<' },
+      { type: 'string', data: 'hello world' },
+      { type: 'function', data: 'sayAgain' },
+      { type: 'open paren', data: '<' },
+      { type: 'string', data: 'bye world' },
+      { type: 'close paren', data: '>' },
+      { type: 'close paren', data: '>' }
     ];
 
     const innerFuncNode = { data: 'sayAgain', type: 'function', children: [stringNode2] }
@@ -63,15 +63,15 @@ describe('Parse', () => {
 
   it('understands a while node', () => {
     tokens = [
-      { type: 'loop', value: 'while' },
-      { type: 'open paren', value: '<' },
-      { type: 'function', value: 'condition' },
-      { type: 'open paren', value: '<' },
-      { type: 'close paren', value: '>' },
-      { type: 'function', value: 'operation' },
-      { type: 'open paren', value: '<' },
-      { type: 'close paren', value: '>' },
-      { type: 'close paren', value: '>' }
+      { type: 'loop', data: 'while' },
+      { type: 'open paren', data: '<' },
+      { type: 'function', data: 'condition' },
+      { type: 'open paren', data: '<' },
+      { type: 'close paren', data: '>' },
+      { type: 'function', data: 'operation' },
+      { type: 'open paren', data: '<' },
+      { type: 'close paren', data: '>' },
+      { type: 'close paren', data: '>' }
     ];
 
     const funcNode1 = { data: 'condition', type: 'function', children: [] }
@@ -85,10 +85,10 @@ describe('Parse', () => {
 
   it('understands a variable', () => {
     tokens = [
-      { type: 'function', value: 'say' },
-      { type: 'open paren', value: '(' },
+      { type: 'function', data: 'say' },
+      { type: 'open paren', data: '(' },
       { type: 'variable', variableName: 'myVariable' },
-      { type: 'close paren', value: ')' }
+      { type: 'close paren', data: ')' }
     ];
 
     const variableNode = { data: 'myVariable', type: 'variable', children: [] }
