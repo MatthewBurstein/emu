@@ -42,32 +42,33 @@ $( document ).ready(function() {
   showTokens = function(tokens) {
     tokens.forEach( token => {
       if (token.type === 'variable') {
-        tokenString = "type: " + token.type + ", variable name: " + token.variableName + ";"
+        tokenString = "type: " + token.type + ", variable name: " + token.data + ";"
       } else {
-        tokenString = "type: " + token.type + ", value: " + token.value + ";"
+        tokenString = "type: " + token.type + ", value: " + token.data + ";"
       }
       $('.tokens_list').append('<div class="' + token.type + '">' + tokenString + '</div>')
     })
   }
 
   showTree = function(tree, margin = 0) {
-    $('.nodes').append('<div class="' + tree[0].type + '" style="margin-left: ' + margin + 'em">' + tree[0].type + " : " + tree[0].name + '</div>')
+    $('.nodes').append('<div class="' + tree[0].type + '" style="margin-left: ' + margin + 'em">' + tree[0].type + " : " + tree[0].data + '</div>')
     margin += 2
     $('.nodes').append('<div style="margin-left: ' + margin + 'em"> arguments: </div>')
-    tree[0].args.forEach ( argument => {
+    tree[0].children.forEach ( argument => {
       if (argument.type === 'function') {
         showTree([argument], margin)
       } else {
         if (argument.type === 'variable') {
-          $('.nodes').append('<div class="' + argument.type + '" style="margin-left: ' + margin + 'em">' + argument.type  +  " : " + argument.variableName + '</div>')
+          $('.nodes').append('<div class="' + argument.type + '" style="margin-left: ' + margin + 'em">' + argument.type  +  " : " + argument.data + '</div>')
         } else {
-          $('.nodes').append('<div class="' + argument.type + '" style="margin-left: ' + margin + 'em">' + argument.type  +  " : " + argument.value + '</div>')
+          $('.nodes').append('<div class="' + argument.type + '" style="margin-left: ' + margin + 'em">' + argument.type  +  " : " + argument.data + '</div>')
         }
       }
     })
   }
 
   showOutput = function(interpreted) {
+    console.log(interpreted)
     if (interpreted[0] !== undefined) {
       if (typeof interpreted[0] === 'string' || typeof interpreted[0] === 'number') {
         $('.output_lines').append('<div class="result"> => '  + interpreted + '</div>');
