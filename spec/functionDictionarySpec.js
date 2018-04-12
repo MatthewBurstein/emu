@@ -9,7 +9,7 @@ describe('FunctionDictionary', () => {
   });
 
   describe('.assignVariable<>', () => {
-    let newtokenLex, reassignedTokenLex, previouslyCreatedTokenLex, tokenLexBeforeReplacement;
+    let newtokenLex, reassignedTokenLex, previouslyCreatedTokenLex, tokenLexBeforeReplacement, newDictionaryVariable, oldDictionaryVariable;
 
     describe('when variable has not been previously assigned', () => {
       it('generates a tokenLex using the passed arguments and stores it in the tokenDictionary', () => {
@@ -31,8 +31,8 @@ describe('FunctionDictionary', () => {
           'newDictionaryVariable',
           3
         ]};
-        
-        let newDictionaryVariable = { name: 'newDictionaryVariable', data: 3 };
+
+        newDictionaryVariable = { name: 'newDictionaryVariable', data: 3 };
         functionDictionary.assignVariable(testNodeWithTwoArgs);
         expect(variableDictionary).toContain(newDictionaryVariable);
       });
@@ -46,13 +46,11 @@ describe('FunctionDictionary', () => {
         ]};
         oldDictionaryVariable = { name: 'forReplacementInDictionary', data: 'oldVariableValue' };
         newDictionaryVariable = { name: 'forReplacementInDictionary', data: 'newVariableValue'};
-        dictionaryVariableBeforeReplacement = { name: 'forReplacementInDictionary', data: 'oldVariableValue' };
         variableDictionary.push(oldDictionaryVariable);
 
         functionDictionary.assignVariable(testNodeWithTwoArgs);
 
         expect(variableDictionary).toContain(newDictionaryVariable);
-        expect(variableDictionary).not.toContain(dictionaryVariableBeforeReplacement);
       });
     });
   });
