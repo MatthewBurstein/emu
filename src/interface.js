@@ -10,18 +10,20 @@ $( document ).ready(function() {
       $('.emu').addClass('hidden');
   });
 
-  $('.write_code').submit(function(e) {
-    e.preventDefault();
-    emptyFields()
-    let value = $( ".write_code_form" ).val();
-    cleanOutputWindow(value)
-    let tokens = tokenize(value)
-    showTokens(tokens)
-    let parsed = parse(tokens)
-    showTree(parsed)
-    let interpreted = interpret(parsed)
-    showOutput(interpreted)
-    showVariables(value)
+  $('.write_code').keypress(function(event) {
+    // e.preventDefault();
+    if (event.keyCode === 13 && !event.shiftKey) {
+      emptyFields()
+      let value = $( ".write_code_form" ).val();
+      cleanOutputWindow(value)
+      let tokens = tokenize(value)
+      showTokens(tokens)
+      let parsed = parse(tokens)
+      showTree(parsed)
+      let interpreted = interpret(parsed)
+      showOutput(interpreted)
+      showVariables(value)
+    }
   })
 
   cleanOutputWindow = function(value) {

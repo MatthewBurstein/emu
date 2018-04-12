@@ -46,6 +46,7 @@ body {
   background-color: black;
   height: 3em;
   color: white;
+  display: flex;
 }
 
 .write_code_form {
@@ -55,8 +56,15 @@ body {
   font-family: Work Sans;
   font-size: 0.9em;
   width: 95%;
-  resize: none;
+  height: 4em;
+}
+
+.button {
   height: 2em;
+}
+
+.button:hover {
+  background-color: #70e95e;
 }
 
 .write_code_form:hover {
