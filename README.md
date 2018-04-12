@@ -22,7 +22,7 @@ The main aim of our project was to learn more about the structure of computer pr
 
 ### Documentation
 
-* [EMU API](https://github.com/MatthewBurstein/emu/blob/master/docs/EMUAPI.md)
+* [EMU API](https://github.com/MatthewBurstein/emu/blob/master/documentation/EMUAPI.md)
 
 * [Tokenizer documentation](https://github.com/MatthewBurstein/emu/blob/master/documentation/tokenizer.md)
 
