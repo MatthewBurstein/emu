@@ -5,7 +5,7 @@ Emu is a new programming language built on top of JavaScript.
 Made by [Josué Estévez Fernández](https://github.com/Jestfer), [Justyna Zygmunt](https://github.com/Kotauror/), [Laura Chan](https://github.com/lwkchan), [Noel Vock](https://github.com/noel1uk) and [Matthew Burstein](https://github.com/MatthewBurstein).
 
 ## How to use
-[Syntax](https://github.com/MatthewBurstein/emu/blob/master/docs/syntax.md)
+[EMU API](https://github.com/MatthewBurstein/emu/blob/master/docs/EMUAPI.md)
 
 [Tokenizer documentation](https://github.com/MatthewBurstein/emu/blob/master/documentation/tokenizer.md)
 
