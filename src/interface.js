@@ -10,7 +10,7 @@ $( document ).ready(function() {
       $('.emu').addClass('hidden');
   });
 
-  $('.write_code').keypress(function(e) {
+  $('.write_code').keypress(function(event) {
     // e.preventDefault();
     if (event.keyCode === 13 && !event.shiftKey) {
       emptyFields()
