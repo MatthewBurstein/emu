@@ -5,7 +5,13 @@ Emu is a new programming language built on top of JavaScript.
 Made by [Josué Estévez Fernández](https://github.com/Jestfer), [Justyna Zygmunt](https://github.com/Kotauror/), [Laura Chan](https://github.com/lwkchan), [Noel Vock](https://github.com/noel1uk) and [Matthew Burstein](https://github.com/MatthewBurstein).
 
 ## How to use
-TBC - include documentation on the language syntax here.
+[Syntax](https://github.com/MatthewBurstein/emu/blob/master/docs/syntax.md)
+
+[Tokenizer documentation](https://github.com/MatthewBurstein/emu/blob/master/documentation/tokenizer.md)
+
+[Parser documentation](https://github.com/MatthewBurstein/emu/blob/master/documentation/parser.md)
+
+[Interpret documentation](https://github.com/MatthewBurstein/emu/blob/master/documentation/interpret.md)
 
 ### To test
 * Open SpecRunner.html in your web browser
