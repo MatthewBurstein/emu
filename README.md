@@ -22,12 +22,10 @@ The main aim of our project was to learn more about the structure of computer pr
 
 ### Documentation
 
-* [EMU API](https://github.com/MatthewBurstein/emu/blob/master/documentation/EMUAPI.md)
+* [EMU API](documentation/EMUAPI.md)
 
-* [Tokenizer documentation](https://github.com/MatthewBurstein/emu/blob/master/documentation/tokenizer.md)
+* [Tokenizer documentation](documentation/tokenizer.md)
 
-* [Parser documentation](https://github.com/MatthewBurstein/emu/blob/master/documentation/parser.md)
+* [Parser documentation](documentation/parser.md)
 
-* [Interpret documentation](https://github.com/MatthewBurstein/emu/blob/master/documentation/interpret.md)
-
-
+* [Interpret documentation](/documentation/interpreter.md)
