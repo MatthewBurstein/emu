@@ -46,8 +46,9 @@ describe('FunctionDictionary', () => {
         ]};
         oldDictionaryVariable = { name: 'forReplacementInDictionary', data: 'oldVariableValue' };
         newDictionaryVariable = { name: 'forReplacementInDictionary', data: 'newVariableValue'};
-        dictionaryVariableBeforeReplacement = Object.create(oldDictionaryVariable);
+        dictionaryVariableBeforeReplacement = { name: 'forReplacementInDictionary', data: 'oldVariableValue' };
         variableDictionary.push(oldDictionaryVariable);
+
         functionDictionary.assignVariable(testNodeWithTwoArgs);
 
         expect(variableDictionary).toContain(newDictionaryVariable);
@@ -204,7 +205,7 @@ describe('FunctionDictionary', () => {
           children: ['no', 3, 30]
         };
         expect(functionDictionary.if(testNode)).toEqual(30);
-      });     
+      });
     });
 
     describe('.returnFirst<>', () => {
