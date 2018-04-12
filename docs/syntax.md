@@ -56,6 +56,7 @@ In addition to its core functions described above, EMU provides for special func
 
 ```say<>``` - say can take one or more arguments and will return the evaluated arguments as a single string joined with a single space character.
 
+
 ```if<>``` - the if function takes three arguments. The first is the condition of the if. This should return only the literal strings ```"yes"``` and  ```"no"```. If the first argument evaluates to ```"yes"``` EMU evaluates the second argument, otherwise it evaluates the third. For example the expression
 
 ```
@@ -63,6 +64,7 @@ In addition to its core functions described above, EMU provides for special func
 ```
 
 evaluates to the string literal ```"the first argument is true"```.
+
 
 ```assignVariable<>``` - assignVariable takes two arguments. The first is the variable name, the second is the value the variable should hold. The first time a variable is declared, it's desired name should be passed as a string. This will then be stored in memory with the passed value and from then on the variable's name can be used as a literal. For example running
 
@@ -85,6 +87,7 @@ This function can be nested with other functions to dynamically alter the variab
 
 will generate a number by adding 5 to the value of myVariable, and then assign myVariable the newly generated value. This function does not return anything.
 
+
 ```returnFirst<>``` - this function takes one or more arguments. All arguments will be evaluated, but only the result of the first will be returned. This can be used to group operations together. For example the expression
 
 ```
@@ -92,6 +95,7 @@ will generate a number by adding 5 to the value of myVariable, and then assign m
 ```
 
 will assign the value 1 to a new variable x, but will only return "hello", and not the value of x.
+
 
 ```while<>``` - while takes two arguments. The first is a condition. EMU will evaluate the condition, and, if it returns ```"yes"``` proceed by evaluating the second argument, checking the first argument again and so on. While returns an array containing the successive results from evaluating the second argument. A simple while loop might look as follows:
 
