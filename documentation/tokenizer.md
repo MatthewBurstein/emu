@@ -10,7 +10,7 @@ It consists of an array of objects. Each of them have a regex, a type and a valu
 ```
 
 2. Tokenize method
-It gets the user input and it returns a new token array that we will parse later on. E.g.: if we type **add<4 4>**, this would be the outcome:
+It gets the user input and it returns a new array of token objects that we will parse later on. For example if the user runs ```add<4 4>```, the tokenizer would produce the following:
 
 ```js
 type: function, value: "add";
@@ -21,4 +21,4 @@ type: close paren, value: ">";
 ```
 
 3. Private methods
-We added several private methods (**processToken**, **matchRegex**, **buildToken**, **removeProcessedToken**). These methods help us separate concerns and follow the SRP.
+We added several private methods (```processToken()```, ```matchRegex()```, ```buildToken()```, ```removeProcessedToken()```. These methods help us achiev separation of concerns and follow the Single Responsibility Principle.
