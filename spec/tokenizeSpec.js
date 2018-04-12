@@ -118,5 +118,5 @@ describe('tokenize', () => {
     ];
 
     expect(tokenize(testString)).toEqual(tokenizedString);
-  })
+  });
 });
