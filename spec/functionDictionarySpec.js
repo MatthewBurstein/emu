@@ -31,7 +31,7 @@ describe('FunctionDictionary', () => {
           'newDictionaryVariable',
           3
         ]}
-        
+
         let newDictionaryVariable = { name: 'newDictionaryVariable', data: 3 }
         functionDictionary.assignVariable(testNodeWithTwoArgs)
         expect(variableDictionary).toContain(newDictionaryVariable)
@@ -45,8 +45,9 @@ describe('FunctionDictionary', () => {
           'newVariableValue'
         ]}
         oldDictionaryVariable = { name: 'forReplacementInDictionary', data: 'oldVariableValue' }
+        dictionaryVariableBeforeReplacement = { name: 'forReplacementInDictionary', data: 'oldVariableValue' }
         newDictionaryVariable = { name: 'forReplacementInDictionary', data: 'newVariableValue'}
-        dictionaryVariableBeforeReplacement = Object.create(oldDictionaryVariable)
+        
         variableDictionary.push(oldDictionaryVariable)
         functionDictionary.assignVariable(testNodeWithTwoArgs);
 
@@ -204,7 +205,7 @@ describe('FunctionDictionary', () => {
           children: ['no', 3, 30]
         };
         expect(functionDictionary.if(testNode)).toEqual(30);
-      });     
+      });
     });
 
     describe('.returnFirst<>', () => {
