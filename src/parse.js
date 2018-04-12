@@ -1,4 +1,4 @@
-((exports) => {
+;((exports) => {
   const parse = (tokens, tree = []) => {
     while (tokens.length > 0) {
       const thisToken = tokens.shift();

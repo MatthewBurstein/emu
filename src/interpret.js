@@ -1,4 +1,4 @@
-((exports) => {
+;((exports) => {
   const interpret = function (tree) {
     const output = tree.map((node) => {
       if (node.type === 'function') {
