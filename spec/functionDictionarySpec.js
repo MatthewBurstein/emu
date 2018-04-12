@@ -16,46 +16,46 @@ describe('FunctionDictionary', () => {
         testNodeWithTwoArgs = { children: [
           'newVariable',
           3
-        ]}
+        ]};
         newTokenLex = {
           regEx: /^newVariable/,
           type: 'variable',
           data: 'newVariable'
-        }
-        functionDictionary.assignVariable(testNodeWithTwoArgs)
-        expect(tokenDictionary).toContain(newTokenLex)
-      })
+        };
+        functionDictionary.assignVariable(testNodeWithTwoArgs);
+        expect(tokenDictionary).toContain(newTokenLex);
+      });
 
       it('generates a new variable in the variableDictionary', () => {
         testNodeWithTwoArgs = { children: [
           'newDictionaryVariable',
           3
-        ]}
-
-        let newDictionaryVariable = { name: 'newDictionaryVariable', data: 3 }
-        functionDictionary.assignVariable(testNodeWithTwoArgs)
-        expect(variableDictionary).toContain(newDictionaryVariable)
-      })
-    })
+        ]};
+        
+        let newDictionaryVariable = { name: 'newDictionaryVariable', data: 3 };
+        functionDictionary.assignVariable(testNodeWithTwoArgs);
+        expect(variableDictionary).toContain(newDictionaryVariable);
+      });
+    });
 
     describe('when variable has been assigned before', () => {
       it('replaces the dictionaryVariable with the new value', () => {
         testNodeWithTwoArgs = { children: [
           'forReplacementInDictionary',
           'newVariableValue'
-        ]}
-        oldDictionaryVariable = { name: 'forReplacementInDictionary', data: 'oldVariableValue' }
-        dictionaryVariableBeforeReplacement = { name: 'forReplacementInDictionary', data: 'oldVariableValue' }
-        newDictionaryVariable = { name: 'forReplacementInDictionary', data: 'newVariableValue'}
-        
-        variableDictionary.push(oldDictionaryVariable)
+        ]};
+        oldDictionaryVariable = { name: 'forReplacementInDictionary', data: 'oldVariableValue' };
+        newDictionaryVariable = { name: 'forReplacementInDictionary', data: 'newVariableValue'};
+        dictionaryVariableBeforeReplacement = { name: 'forReplacementInDictionary', data: 'oldVariableValue' };
+        variableDictionary.push(oldDictionaryVariable);
+
         functionDictionary.assignVariable(testNodeWithTwoArgs);
 
         expect(variableDictionary).toContain(newDictionaryVariable);
         expect(variableDictionary).not.toContain(dictionaryVariableBeforeReplacement);
-      })
-    })
-  })
+      });
+    });
+  });
 
   describe('.say<>', () => {
     it('when passed no arguments returns an empty string', () => {
@@ -213,9 +213,9 @@ describe('FunctionDictionary', () => {
         testNodeWithTwoArgs = { children: [
           1,
           2
-        ]}
-        expect(functionDictionary.returnFirst(testNodeWithTwoArgs)).toEqual(1)
-      })
-    })
+        ]};
+        expect(functionDictionary.returnFirst(testNodeWithTwoArgs)).toEqual(1);
+      });
+    });
   });
 });

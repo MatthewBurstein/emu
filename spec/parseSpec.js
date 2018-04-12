@@ -2,9 +2,9 @@ describe('Parse', () => {
   let tree, tokens, stringNode1, stringNode2;
 
   beforeEach(() => {
-    stringNode1 = { data: 'hello world', type: 'string', children: [] }
-    stringNode2 = { data: 'bye world', type: 'string', children: [] }
-  })
+    stringNode1 = { data: 'hello world', type: 'string', children: [] };
+    stringNode2 = { data: 'bye world', type: 'string', children: [] };
+  });
 
   it('understands a function with zero argument', () => {
     tokens = [
@@ -12,7 +12,7 @@ describe('Parse', () => {
       { type: 'open paren', data: '(' },
       { type: 'close paren', data: ')' }
     ];
-    tree = [ {data: 'say', type: 'function', children: []} ]
+    tree = [{ data: 'say', type: 'function', children: [] }];
 
     expect(parse(tokens)).toEqual(tree);
   });
@@ -24,7 +24,7 @@ describe('Parse', () => {
       { type: 'string', data: 'hello world' },
       { type: 'close paren', data: ')' }
     ];
-    tree = [ {data: 'say', type: 'function', children: [stringNode1] } ]
+    tree = [{ data: 'say', type: 'function', children: [stringNode1] }];
 
     expect(parse(tokens)).toEqual(tree);
   });
@@ -37,7 +37,7 @@ describe('Parse', () => {
       { type: 'string', data: 'bye world' },
       { type: 'close paren', data: ')' }
     ];
-    tree = [ { data: 'say', type: 'function', children: [stringNode1, stringNode2] } ];
+    tree = [{ data: 'say', type: 'function', children: [stringNode1, stringNode2] }];
 
     expect(parse(tokens)).toEqual(tree);
   });
@@ -54,8 +54,8 @@ describe('Parse', () => {
       { type: 'close paren', data: '>' }
     ];
 
-    const innerFuncNode = { data: 'sayAgain', type: 'function', children: [stringNode2] }
-    const outerFuncNode = { data: 'say', type: 'function', children: [stringNode1, innerFuncNode] }
+    const innerFuncNode = { data: 'sayAgain', type: 'function', children: [stringNode2] };
+    const outerFuncNode = { data: 'say', type: 'function', children: [stringNode1, innerFuncNode] };
     tree = [outerFuncNode];
 
     expect(parse(tokens)).toEqual(tree);
@@ -74,14 +74,13 @@ describe('Parse', () => {
       { type: 'close paren', data: '>' }
     ];
 
-    const funcNode1 = { data: 'condition', type: 'function', children: [] }
-    const funcNode2 = { data: 'operation', type: 'function', children: [] }
-    const whileNode = { data: 'while', type: 'loop', children: [funcNode1, funcNode2] }
-    tree = [whileNode]
+    const funcNode1 = { data: 'condition', type: 'function', children: [] };
+    const funcNode2 = { data: 'operation', type: 'function', children: [] };
+    const whileNode = { data: 'while', type: 'loop', children: [funcNode1, funcNode2] };
+    tree = [whileNode];
 
     expect(parse(tokens)).toEqual(tree);
-
-  })
+  });
 
   it('understands a variable', () => {
     tokens = [
@@ -91,10 +90,10 @@ describe('Parse', () => {
       { type: 'close paren', data: ')' }
     ];
 
-    const variableNode = { data: 'myVariable', type: 'variable', children: [] }
-    const funcNode = { data: 'say', type: 'function', children: [variableNode] }
-    tree = [funcNode]
+    const variableNode = { data: 'myVariable', type: 'variable', children: [] };
+    const funcNode = { data: 'say', type: 'function', children: [variableNode] };
+    tree = [funcNode];
 
     expect(parse(tokens)).toEqual(tree);
-  })
+  });
 });

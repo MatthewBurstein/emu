@@ -21,9 +21,7 @@
   function tokenize(workingString) {
     const tokenArray = [];
     while (workingString.length > 0) {
-      const thisTokenLex = tokenDictionary.find(tokenLex => {
-        return _matchRegEx(workingString, tokenLex)
-      });
+      const thisTokenLex = tokenDictionary.find((tokenLex) => _matchRegEx(workingString, tokenLex));
       tokenArray.push(_processToken(workingString, thisTokenLex));
       workingString = _removeProcessedToken(workingString, thisTokenLex);
     }
@@ -51,7 +49,7 @@
       case 'loop':
         break;
     }
-    return _buildToken(tokenLex.type, tokenValue)
+    return _buildToken(tokenLex.type, tokenValue);
   }
 
   function _matchRegEx(string, tokenLex) {
@@ -59,7 +57,7 @@
   }
 
   function _buildToken(type, data) {
-      return { type, data }
+    return { type, data };
   }
 
   function _removeProcessedToken(workingString, tokenLex) {
