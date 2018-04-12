@@ -1,6 +1,6 @@
-## EMU Syntax
+# EMU Syntax
 
-#### Objects
+### Objects
 
 EMU provides two object literals, number and string. Numbers are written as simple numbers, and are always integers. Strings are written inside quotation marks and can contain any other characters.
 In EMU, boolean values are represented by the strings ```"no"``` and ```"yes"```
@@ -9,7 +9,7 @@ In EMU, boolean values are represented by the strings ```"no"``` and ```"yes"```
 > "Hello world"    => represents the string literal 'Hello world'
 ```
 
-#### Functions
+### Functions
 
 EMU also provides the core functions of a programming language. A full description of the functions can be found here below.
 
@@ -22,22 +22,29 @@ The functions provided can be divided into three categories:
 - Comparisons
 - Special functions
 
-###### Operators
+#### Operators
 
 Operators are used to perform basic operations on literals. For example the ```modulo<>``` function takes the modulus of it's first argument with respect to it's second. So ```modulo<4 3>``` evaluates to ```1```. The descriptions of the provided operators are:
+
 ```add<>``` - returns the sum of the first and second arguments
+
 ```subtract<>``` - returns the first minus the second
+
 ```multiply<>``` - returns the product of the two arguments
+
 ```modulo<>``` - returns the modulus of the first argument with respect to the second
 
-###### Comparisons
+#### Comparisons
 
-Comparisons are used to determine whether integer values are less than, greater than or equal to each other. As described above, EMU uses the strings ```"yes"``` and ```"no"``` to represent boolean true and false so comparison operators return these strings. For example ```isGreaterThan<4 3>``` evaluates to ```"yes"``` because 4 is greater than 3. The comparisons available are
+Comparisons are used to determine whether integer values are less than, greater than or equal to each other. As described above, EMU uses the strings ```"yes"``` and ```"no"``` to represent boolean true and false so comparison operators return these strings. For example ```isGreaterThan<4 3>``` evaluates to ```"yes"``` because 4 is greater than 3. The comparisons available are:
+
 ```isLessThan``` - returns ```"yes"``` if the first argument is less than the second, otherwise it returns ```"no"```
+
 ```isGreaterThan``` - returns ```"yes"``` if the first argument is greater than the second, otherwise it returns ```"no"```
+
 ```isEqual``` - returns returns ```"yes"``` if the first argument is equal to the second, otherwise it returns ```"no"```
 
-###### Special cases
+#### Special cases
 
 In addition to its core functions described above, EMU provides for special functions which work slightly differently.
 
