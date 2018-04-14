@@ -21,4 +21,4 @@ type: close paren, value: ">";
 ```
 
 3. Private methods
-We added several private methods (```processToken()```, ```matchRegex()```, ```buildToken()```, ```removeProcessedToken()```. These methods help us achiev separation of concerns and follow the Single Responsibility Principle.
+We added several private methods (```processToken()```, ```matchRegex()```, ```buildToken()```, ```removeProcessedToken()```. These methods help us achieve separation of concerns and follow the Single Responsibility Principle.
