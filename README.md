@@ -12,6 +12,9 @@ Made by [Josué Estévez Fernández](https://github.com/Jestfer), [Justyna Zygmu
 ### To test
 * Open SpecRunner.html in your web browser
 
+### Test Coverage
+![Coverage](https://imgur.com/qBgXmNx.jpeg)
+
 # How it works
 The main aim of our project was to learn more about the structure of computer programming languages. When the user inputs Emu into our program, it goes through the following stages:
 
