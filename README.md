@@ -25,11 +25,11 @@ The main aim of our project was to learn more about the structure of computer pr
 
 ### Documentation
 
-* [EMU API](documentation/EMUAPI.md)
+* [EMU API](documentation/EMU_API.md)
 
 * [Tokenizer documentation](documentation/tokenizer.md)
 
 * [Parser documentation](documentation/parser.md)
 
 * [Interpret documentation](/documentation/interpreter.md)
-* [What we would do differently next time](/documentation/documentation/What_we_would_do_differently_next_time.md)
+* [What we would do differently next time](/documentation/What_we_would_do_differently_next_time.md)
